@@ -1,0 +1,550 @@
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+QWidgetItem(QWidget)
+
+[2019-10-24 12:08:58]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 114, in delete
+    o = layouts.itemAt(i).objectName()
+AttributeError: 'QWidgetItem' object has no attribute 'objectName'
+
+
+[2019-10-24 12:09:15]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 114, in delete
+    o = layouts.itemAt(i).objectName()
+AttributeError: 'QWidgetItem' object has no attribute 'objectName'
+
+
+[2019-10-24 12:21:38]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 120, in delete
+    layouts.itemAt(i).setVisible(False)
+AttributeError: 'QWidgetItem' object has no attribute 'setVisible'
+
+
+[2019-10-24 12:24:11]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 119, in delete
+    elif o.startswith('QListWidget'):
+AttributeError: 'QPushButton' object has no attribute 'startswith'
+
+
+[2019-10-24 12:24:12]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 119, in delete
+    elif o.startswith('QListWidget'):
+AttributeError: 'QLineEdit' object has no attribute 'startswith'
+
+
+[2019-10-24 12:53:24]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 13, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 178, in __init__
+    self.__init_meau_main__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 255, in __init_meau_main__
+    self.label_top_right.setAlignment(Qt.AlignCenter)
+AttributeError: 'Main' object has no attribute 'label_top_right'
+
+
+[2019-10-24 13:50:52]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:51:27]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:51:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:52:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:53:22]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:53:52]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:53:52]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:55:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:19]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:19]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:19]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:19]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 13:56:19]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 14:00:26]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 403, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 14:00:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 431, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 14:00:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 431, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 14:02:43]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 405, in btn_face_child_ok_clicked
+    if not os.path.isfile(image):
+  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
+    st = os.stat(path)
+ValueError: stat: path too long for Windows
+
+
+[2019-10-24 14:09:01]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 28, in __init__
+    self.faceApi = AipFace(self.appid,self.apikey,self.secretkey)
+NameError: name 'AipFace' is not defined
+
+
+[2019-10-24 14:37:55]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 424, in btn_face_child_ok_clicked
+    result = self.faceApi.addUser(image,image_type,group_id,user_id,option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 119, in addUser
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1274, in _send_request
+    body = _encode(body, 'body')
+  File "D:\application\python37\lib\http\client.py", line 160, in _encode
+    (name.title(), data[err.start:err.end], name)) from None
+UnicodeEncodeError: 'latin-1' codec can't encode characters in position 692975-692979: Body ('¿Í»§¶ËÌí¼Ó') is not valid Latin-1. Use body.encode('utf-8') if you want to send it encoded in UTF-8.
+
+
+[2019-10-24 15:03:47]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 286, in face_child_reload
+    self.cmbox_face_child_actiontype.setItemData(index=0,value='UPDATE')
+TypeError: setItemData(self, int, Any, role: int = Qt.UserRole): 'index' is not a valid keyword argument
+
+
+[2019-10-24 15:04:35]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 286, in face_child_reload
+    self.cmbox_face_child_actiontype.setItemData(0,value='UPDATE')
+TypeError: setItemData(self, int, Any, role: int = Qt.UserRole): 'value' is not a valid keyword argument
+
+
+[2019-10-24 15:16:45]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 426, in btn_face_child_ok_clicked
+    result = self.faceApi.userCopy(user_id,src_group_id,dst_group_id)
+TypeError: userCopy() takes from 2 to 3 positional arguments but 4 were given
+
