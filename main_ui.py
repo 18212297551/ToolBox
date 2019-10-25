@@ -30,14 +30,18 @@ from urllib.request import urlopen
 from urllib.request import Request
 from urllib.parse import urlencode
 from urllib.parse import quote_plus
+from PIL import Image,ImageDraw
+import pyautogui
+import cv2
 from multiprocessing import Process,Queue
-from ToolBox.baidu_aip import AipSpeech, AipFace
+from ToolBox.baidu_aip import AipSpeech, AipFace, AipBodyAnalysis
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt, QTimer, QPoint, QSize, QThread, pyqtSignal, QUrl, QFileSelector,QFile
-from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont
+from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont, QTransform
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QProgressBar, QPushButton, QMenuBar, QAction, qApp, \
-    QMenu, QTextEdit, QLabel, QColorDialog, QToolButton, QLineEdit, QListWidget, QComboBox, QSlider,QSpinBox,QMessageBox,QFileDialog
+    QMenu, QTextEdit, QLabel, QColorDialog, QToolButton, QLineEdit, QListWidget, QComboBox, QSlider,QSpinBox,\
+    QMessageBox,QFileDialog
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 
 # =========================================全局变量==============================================
@@ -46,11 +50,17 @@ func_historys = [None,None,None,None,None,None] # 之前访问的各级窗口初
 func_before = None #上次刷新窗口调用的函数
 before_layout = None # 当前窗口所在布局
 
+my_dirs = ['Record/Voice/Temp','Record/Img/Crop','Record/Img/Merge','Record/Img/Draw','Record/Img/BodySeg']
+
+for i in my_dirs:
+    i = os.path.abspath(i)
+    if not os.path.exists(i): os.makedirs(i)
 
 
 def catch_except(func):
     def wrapper(*args,**kwargs):
         try:
+
             return func(*args,**kwargs)
         except:
             with open('./log.txt', 'a+') as _f:
@@ -59,6 +69,12 @@ def catch_except(func):
                 content = "\n{}\n{}\n".format(_t,_error)
                 _f.write(content)
                 print(_error)
+                args[0].pbar_bottom.reset()
+                QMessageBox.warning(args[0], '出错了...', str(_error))
+
+
+
+
 
     return wrapper
 
@@ -92,7 +108,7 @@ def layout_dele2(func):
         elif before_layout.objectName() == 'grade_5':
             func_historys[5] = func
 
-        print('pass dele')
+
 
 
     return inner
@@ -198,6 +214,7 @@ class Ui(QWidget):
         # C = QColorDialog().getColor()
 
 
+
     def time_show_out(self, *args):
         self.time_now = time.strftime('%Y-%m-%d %a %H:%M:%S', time.localtime())
         self.label_top_center.setText(self.time_now)
@@ -268,7 +285,7 @@ class Ui(QWidget):
 
         self.label_top_right = QLabel()
         self.label_top_right.setObjectName('label_top_right')
-        self.label_top_right.setText('label')
+        # self.label_top_right.setText('label')
         self.label_top_right.setFixedWidth(150)
         self.label_top_right.setAlignment(Qt.AlignCenter)
 
@@ -288,19 +305,7 @@ class Ui(QWidget):
         self.btn_top_forward.clicked.connect(self.btn_top_forward_clicked)
         self.btn_top_back.clicked.connect(self.btn_top_back_clicked)
 
-        # 返回实现重新关联
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_voice)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_face)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_bodyays)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_ocr)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_imgrec)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_imgsearch)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_imgup)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_nlp)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_kgraph)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_audit)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_music)
-        self.btn_top_back.clicked.connect(self.btn_top_back_clicked_video)
+
 
 
 
@@ -348,7 +353,7 @@ class Ui(QWidget):
         self.glayout_status = QGridLayout()
         self.glayout_main.addLayout(self.glayout_status,3,0,Qt.AlignBottom)
         self.label_status_left = QLabel()
-        self.label_status_left.setText('这是状态栏')
+        # self.label_status_left.setText('这是状态栏')
         self.label_status_left.setFixedWidth(200)
         self.label_status_left.setAlignment(Qt.AlignCenter)
         self.glayout_status.addWidget(self.label_status_left,0,0,1,1)
@@ -357,13 +362,13 @@ class Ui(QWidget):
         self.pbar_bottom.setAlignment(Qt.AlignCenter)
         self.pbar_bottom.setRange(0,100)
         self.glayout_status.addWidget(self.pbar_bottom, 0, 1, 1, 1)
-        self.label_status_rihgt = QLabel()
-        self.label_status_rihgt.setText('这是状态栏')
-        self.label_status_rihgt.setAlignment(Qt.AlignCenter)
-        self.label_status_rihgt.setFixedWidth(200)
-        self.glayout_status.addWidget(self.label_status_rihgt,0,2,1,1)
+        self.label_status_right = QLabel()
+        # self.label_status_right.setText('这是状态栏')
+        self.label_status_right.setAlignment(Qt.AlignCenter)
+        self.label_status_right.setFixedWidth(200)
+        self.glayout_status.addWidget(self.label_status_right, 0, 2, 1, 1)
 
-        self.status_widgets = [self.label_status_rihgt,self.label_status_left,self.pbar_bottom]
+        self.status_widgets = [self.label_status_right, self.label_status_left, self.pbar_bottom]
         color = (random_color(mode='background'), random_color(mode='font'), random_color(mode='background'),
                 random_color(mode='font'))
         for widget in self.status_widgets:
@@ -505,45 +510,6 @@ class Ui(QWidget):
         self.Outter_Run.start()
 
 
-
-
-
-    def btn_top_back_clicked_voice(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_face(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_bodyays(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_ocr(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_imgrec(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_imgsearch(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_imgup(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_nlp(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_kgraph(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_audit(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_music(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
-    def btn_top_back_clicked_video(self,*args):
-        """用来供子类重写，解决返回主页，子窗口无法再打开问题"""
-        pass
 
 
 

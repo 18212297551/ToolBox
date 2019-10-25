@@ -327,3 +327,14 @@ class AipFace(AipBase):
         return self._request(self.__mergeUrl, json.dumps(images, ensure_ascii=False), {
             'Content-Type': 'application/json',
         })
+
+    __verifyUrl = 'https://aip.baidubce.com/rest/2.0/face/v1/faceliveness/verify'
+
+    def verify(self,images):
+        """
+            视频活体分析
+        """
+
+        return self._request(self.__verifyUrl, json.dumps(images, ensure_ascii=False), {
+            'Content-Type': 'application/json',
+        })

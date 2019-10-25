@@ -1,4 +1,6 @@
 # coding: utf-8
+from pydub import AudioSegment
+
 from ToolBox.main_ui import *
 
 
@@ -34,10 +36,6 @@ class Voice(Ui):
         self.play_common_player = QMediaPlayer()
         self.play_common_player.setPlaylist(self.play_common_list)
         self.play_common_player.stateChanged.connect(self.play_common_player_stateChanged)
-
-    def btn_top_back_clicked_voice(self, *args):
-        """重新关联"""
-        self.btn_home_voice.clicked.connect(self.voice_reload)
 
 
     def play_common_player_stateChanged(self,*args):
@@ -95,19 +93,19 @@ class Voice(Ui):
         self.glayout_voice.addWidget(self.txedit_voice_input_text, 2, 0, 1, 10)
 
         self.btn_voice_clear.setObjectName('btn_voice_clear')
-        self.btn_voice_clear.setFixedSize(QtCore.QSize(52, 25))
+        self.btn_voice_clear.setFixedSize(QSize(50, 25))
         self.btn_voice_clear.setText('清空')
         self.glayout_voice.addWidget(self.btn_voice_clear, 0, 11, 1, 2)
         self.listWidget_voice_used_info.setObjectName('listWidget_voice_used_info')
         self.glayout_voice.addWidget(self.listWidget_voice_used_info, 2, 10, 1, 3)
         self.btn_voice_ok.setObjectName('btn_voice_ok')
-        self.btn_voice_ok.setFixedSize(QtCore.QSize(52, 25))
+        self.btn_voice_ok.setFixedSize(QSize(60, 25))
         self.glayout_voice.addWidget(self.btn_voice_ok, 0, 10, 1, 1)
         self.btn_voice_ok.setText('确定')
 
         self.cmbox_voice_tool.setObjectName('cmbox_voice_tool')
-        self.cmbox_voice_tool.setFixedSize(QtCore.QSize(85, 25))
-        # self.cmbox_voice_tool.setMinimumSize(QtCore.QSize(60, 25))
+        self.cmbox_voice_tool.setFixedSize(QSize(85, 25))
+        # self.cmbox_voice_tool.setMinimumSize(QSize(60, 25))
         self.glayout_voice.addWidget(self.cmbox_voice_tool, 0, 0, 1, 2)
         tool = ['语音合成', '语音识别']
         self.cmbox_voice_tool.addItems(tool)
@@ -116,14 +114,14 @@ class Voice(Ui):
         # 发音人
         cm_6_per = ['普通女声', '普通男生', '成熟女性', '成熟男声', '度逍遥', '度丫丫']
         self.cmbox_voice_per.setObjectName('cmbox_voice_per')
-        self.cmbox_voice_per.setFixedSize(QtCore.QSize(85, 25))
-        # self.cmbox_voice_per.setMinimumSize(QtCore.QSize(60, 25))
+        self.cmbox_voice_per.setFixedSize(QSize(85, 25))
+        # self.cmbox_voice_per.setMinimumSize(QSize(60, 25))
         self.cmbox_voice_per.addItems(cm_6_per)
         self.glayout_voice.addWidget(self.cmbox_voice_per, 1, 0, 1, 1)
         # 格式
         self.cmbox_voice_aue.setObjectName('cmbox_voice_aue')
-        self.cmbox_voice_aue.setMaximumSize(QtCore.QSize(70, 25))
-        self.cmbox_voice_aue.setMinimumSize(QtCore.QSize(45, 25))
+        self.cmbox_voice_aue.setMaximumSize(QSize(70, 25))
+        self.cmbox_voice_aue.setMinimumSize(QSize(45, 25))
         cm_6_aue = ["wav", "mp3", "pcm-16k"]  # "pcm-8k",
         # 下载的文件格式, 3：mp3(default) 4： pcm-16k 5： pcm-8k 6. wav
         self.cmbox_voice_aue.addItems(cm_6_aue)
@@ -131,20 +129,20 @@ class Voice(Ui):
         # label
 
         self.label_voice_spd.setObjectName('label_voice_spd')
-        self.label_voice_spd.setMaximumSize(QtCore.QSize(45, 25))
-        self.label_voice_spd.setMinimumSize(QtCore.QSize(1, 1))
+        self.label_voice_spd.setMaximumSize(QSize(45, 25))
+        self.label_voice_spd.setMinimumSize(QSize(1, 1))
         self.glayout_voice.addWidget(self.label_voice_spd, 1, 1, 1, 1)
         self.label_voice_pit.setObjectName('label_voice_pit')
-        self.label_voice_pit.setMaximumSize(QtCore.QSize(45, 25))
-        self.label_voice_pit.setMinimumSize(QtCore.QSize(1, 1))
+        self.label_voice_pit.setMaximumSize(QSize(45, 25))
+        self.label_voice_pit.setMinimumSize(QSize(1, 1))
         self.glayout_voice.addWidget(self.label_voice_pit, 1, 3, 1, 1)
         self.label_voice_vol.setObjectName('label_voice_vol')
-        self.label_voice_vol.setMaximumSize(QtCore.QSize(45, 25))
-        self.label_voice_vol.setMinimumSize(QtCore.QSize(1, 1))
+        self.label_voice_vol.setMaximumSize(QSize(45, 25))
+        self.label_voice_vol.setMinimumSize(QSize(1, 1))
         self.glayout_voice.addWidget(self.label_voice_vol, 1, 5, 1, 1)
         self.label_voice_aue.setObjectName('label_voice_aue')
-        self.label_voice_aue.setMaximumSize(QtCore.QSize(45, 25))
-        self.label_voice_aue.setMinimumSize(QtCore.QSize(1, 1))
+        self.label_voice_aue.setMaximumSize(QSize(45, 25))
+        self.label_voice_aue.setMinimumSize(QSize(1, 1))
         self.glayout_voice.addWidget(self.label_voice_aue, 1, 7, 1, 1)
         self.label_voice_aue.setText(' 格式')
         self.label_voice_pit.setText(' 音调')
@@ -156,9 +154,9 @@ class Voice(Ui):
         self.label_voice_start.setObjectName('label_voice_start')
         self.glayout_voice.addWidget(self.label_voice_start, 1, 9, 1, 1)
 
-        self.slider_voice_vol.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_voice_vol.setOrientation(Qt.Horizontal)
         self.slider_voice_vol.setObjectName('slider_voice_vol')
-        self.slider_voice_vol.setFixedSize(QtCore.QSize(52, 25))
+        self.slider_voice_vol.setFixedSize(QSize(60, 25))
         self.slider_voice_vol.setRange(0, 100)
         self.slider_voice_vol.setValue(30)
         # self.slider_voice_vol.setStyleSheet("QSlider::handle{background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s); border-radius:4px;}"%(random_color(),random_color())) #border-radius:px  background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
@@ -167,18 +165,18 @@ class Voice(Ui):
 
 
         self.btn_voice_quit_vol.setObjectName('btn_voice_quit_vol')
-        self.btn_voice_quit_vol.setFixedSize(QtCore.QSize(25, 25))
+        self.btn_voice_quit_vol.setFixedSize(QSize(25, 25))
         ico_voice_vol_quit = QIcon()
         ico_voice_vol_quit.addPixmap(QPixmap(r'./Ico/play.ico'), QIcon.Normal,QIcon.Off)
         self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
-        self.btn_voice_quit_vol.setIconSize(QtCore.QSize(25, 25))
+        self.btn_voice_quit_vol.setIconSize(QSize(25, 25))
         self.glayout_voice.addWidget(self.btn_voice_quit_vol, 1, 11, 1, 1)
 
         # self.btn_voice_quit_vol.clicked.connect(self.play_common_stop)
 
         self.btn_voice_folder.setObjectName('btn_voice_folder')
-        self.btn_voice_folder.setFixedSize(QtCore.QSize(25, 25))
-        self.btn_voice_folder.setIconSize(QtCore.QSize(15, 15))
+        self.btn_voice_folder.setFixedSize(QSize(25, 25))
+        self.btn_voice_folder.setIconSize(QSize(15, 15))
         ico_voice_folder = QIcon()
         ico_voice_folder.addPixmap(QPixmap(r"./Ico/show.png"), QIcon.Normal, QIcon.Off)
         self.btn_voice_folder.setIcon(ico_voice_folder)
@@ -187,8 +185,8 @@ class Voice(Ui):
         # Qspinbox
         # 语速
         self.spb_voice_spd.setObjectName('spb_voice_spd')
-        self.spb_voice_spd.setMaximumSize(QtCore.QSize(60, 25))
-        self.spb_voice_spd.setMinimumSize(QtCore.QSize(45, 25))
+        self.spb_voice_spd.setMaximumSize(QSize(60, 25))
+        self.spb_voice_spd.setMinimumSize(QSize(45, 25))
         self.glayout_voice.addWidget(self.spb_voice_spd, 1, 2, 1, 1)
         self.spb_voice_spd.setMinimum(0)
         self.spb_voice_spd.setValue(5)
@@ -196,16 +194,16 @@ class Voice(Ui):
         # 音调
         self.spb_voice_pit.setObjectName('spb_voice_pit')
 
-        self.spb_voice_pit.setMaximumSize(QtCore.QSize(60, 25))
-        self.spb_voice_pit.setMinimumSize(QtCore.QSize(45, 25))
+        self.spb_voice_pit.setMaximumSize(QSize(60, 25))
+        self.spb_voice_pit.setMinimumSize(QSize(45, 25))
         self.glayout_voice.addWidget(self.spb_voice_pit, 1, 4, 1, 1)
         self.spb_voice_pit.setMinimum(0)
         self.spb_voice_pit.setValue(5)
         self.spb_voice_pit.setMaximum(15)
         # 音量
         self.spb_voice_vol.setObjectName('spb_voice_vol')
-        self.spb_voice_vol.setMaximumSize(QtCore.QSize(60, 25))
-        self.spb_voice_vol.setMinimumSize(QtCore.QSize(45, 25))
+        self.spb_voice_vol.setMaximumSize(QSize(60, 25))
+        self.spb_voice_vol.setMinimumSize(QSize(45, 25))
         self.glayout_voice.addWidget(self.spb_voice_vol, 1, 6, 1, 1)
         self.spb_voice_vol.setMinimum(0)
         self.spb_voice_vol.setValue(5)
@@ -216,6 +214,7 @@ class Voice(Ui):
         self.btn_voice_ok.clicked.connect(self.btn_voice_ok_clicked)
         self.btn_voice_clear.clicked.connect(self.btn_voice_clear_clicked)
         self.btn_voice_clear.clicked.connect(self.play_common_stop)
+        self.btn_voice_quit_vol.clicked.connect(self.play_common_stop)
         self.listWidget_voice_used_info.clicked.connect(self.listWidget_voice_used_info_clicked)
         self.listWidget_voice_used_info.doubleClicked.connect(self.listWidget_voice_used_info_doubleclicked)
         self.cmbox_voice_tool.currentTextChanged.connect(self.cmbox_voice_tool_currentTextChanged)
@@ -226,6 +225,9 @@ class Voice(Ui):
         # 信号处理
         self.speech_syn.speech_synthesis_log.connect(self.speech_syn_log_deal)
         self.voice_ars.asr_result.connect(self.voice_asr_result_deal)
+
+
+        self.btn_voice_folder.setFixedSize(25,25)
 
         self.voice_widgets = [self.spb_voice_vol, self.spb_voice_pit, self.spb_voice_spd, self.btn_voice_folder, self.btn_voice_quit_vol, self.slider_voice_vol, self.label_voice_start, self.label_voice_aue, self.label_voice_vol, self.label_voice_pit, self.label_voice_spd, self.cmbox_voice_aue, self.cmbox_voice_per, self.cmbox_voice_tool, self.btn_voice_ok, self.listWidget_voice_used_info, self.btn_voice_clear, self.txedit_voice_input_file,  self.txedit_voice_input_text]
 
@@ -240,10 +242,12 @@ class Voice(Ui):
             css = "*{background-color:%s;color:%s;border:0;height:25px;font:YaHei;} :pressed{background-color:%s;color:%s;}"%(random_color('background'),random_color('font'),random_color('background'),random_color()) # border:0px \         ,random_color('font')         "QToolTip{color:%s;font:Yahei;font-size:14px}
 
             if widget == self.slider_voice_vol:
-                css += "::handle{background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s); border-radius:4px;}"%(random_color(),random_color()) #border-radius:px  background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+                css += "QSlider::handle{border: 0 ;background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s);border-radius:3px}" \
+                       "QSlider::sub-page:horizontal{background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s)}"%(random_color('background'),random_color('font'),random_color('background'),random_color('font')) #border-radius:px  background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
 
             widget.setStyleSheet(css)
             widget.setVisible(False)
+
 
 
     @layout_dele
@@ -279,7 +283,7 @@ class Voice(Ui):
         self.play_common_player.play()
 
     def play_common_stop(self, *args):
-        if self.play_common_player.state() == 1:
+        if self.play_common_player.state() in [1,2]:
 
             self.play_common_player.stop()
             self.play_common_list.clear()
@@ -307,7 +311,8 @@ class Voice(Ui):
             self.play_common_list.clear()
     
     def open_folder(self, *args):
-        os.system('start explorer D:\XiaoU\Download')
+        print( "{}/Record".format(ROOTDIR))
+        os.system('start explorer "{}\Record"'.format(ROOTDIR))
 
 
 
@@ -340,20 +345,34 @@ class Voice(Ui):
     @catch_except
     def speech_syn_log_deal(self, syn_item):
         if isinstance(syn_item,int):
+            self.label_status_left.setText('语音合成')
+            self.label_status_right.setText('正在处理...')
             self.pbar_bottom.setValue(syn_item)
         elif syn_item[0] == '语音合成完成':
+            self.label_status_left.setText('语音合成')
+            self.label_status_right.setText('完成')
+            self.pbar_bottom.setValue(100)
             self.listWidget_voice_used_info.addItem('【合成】 - {}'.format(syn_item[1]))
             QMessageBox.about(self, '语音合成提示', '{} - {}'.format(syn_item[0], syn_item[1]))
 
     @catch_except
     def voice_asr_result_deal(self, asr_item):
-        if asr_item[0] == '语音识别错误':
-            QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
+        if isinstance(asr_item, int):
+            self.label_status_left.setText('语音识别')
+            self.label_status_right.setText('正在处理...')
+            self.pbar_bottom.setValue(asr_item)
         else:
-            self.listWidget_voice_used_info.addItem('【识别】 - {}'.format(asr_item[1]))
-            self.listWidget_voice_used_info.scrollToBottom()
-            self.txedit_voice_input_text.setText(asr_item[2])
-            QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
+            if asr_item[0] == '语音识别错误':
+                self.pbar_bottom.reset()
+                QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
+            else:
+                self.listWidget_voice_used_info.addItem('【识别】 - {}'.format(asr_item[1]))
+                self.listWidget_voice_used_info.scrollToBottom()
+                self.txedit_voice_input_text.setText(asr_item[2])
+                self.label_status_left.setText('语音识别')
+                self.label_status_right.setText('完成')
+                self.pbar_bottom.setValue(100)
+                QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
 
     @catch_except
     def listWidget_voice_used_info_doubleclicked(self, *args):
@@ -503,9 +522,9 @@ class Speech_synthesis(QThread):
                 if not SCOPE in result['scope'].split(' '):
                     raise DemoError('scope is not correct')
                 token = result['access_token']
-                if not os.path.exists(r'D:/XiaoU/Download/SpeechSynthesis'):
-                    os.makedirs(r'D:/XiaoU/Download/SpeechSynthesis')
-                syn_save_dic = r'D:/XiaoU/Download/SpeechSynthesis/{}.{}'.format(self.speech_name, self.out_aue)
+                if not os.path.exists(r'{}/Record/Voice'.format(ROOTDIR)):
+                    os.makedirs(r'{}/Record/Voice'.format(ROOTDIR))
+                syn_save_dic = r'{}/Record/Voice/{}.{}'.format(ROOTDIR,self.speech_name, self.out_aue)
                 self.speech_synthesis_log.emit(30)
                 f2 = open(syn_save_dic, 'wb')
                 voice_texts = []
@@ -566,6 +585,7 @@ class Voice_recognition(QThread):
 
         global Queue_ASR, asr_items
         while not Queue_ASR.empty():
+            self.asr_result.emit(1)
             result = []
             # '17376947', 'K7G0KLcoQnTLH4QjmCZMigyM', 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
             APP_ID = '17376947'
@@ -575,29 +595,28 @@ class Voice_recognition(QThread):
             speech_dic = item[0]
             asr_format = item[1]
 
-
             speech_dic = speech_dic.replace('\\','/')
 
             speech_file = re.findall('.*/(.*)\.(.*)', speech_dic)
             speech_name = speech_file[0][0]
-
+            self.asr_result.emit(5)
             # 获取音频时长
             sec = mediainfo(speech_dic)
             if sec:sec = eval(sec['duration'])
             else:sec = 0
-
+            self.asr_result.emit(10)
             file_list = []
             num = 0
             # 如果文件时长太长，则将文件分割
             if sec > 55:
                 ASFF = AudioSegment.from_file(speech_dic,format=speech_file[0][1])
-                if not os.path.exists(r'D:/XiaoU/Deal/Voice/Reco'):
-                    os.makedirs(r'D:/XiaoU/Deal/Voice/Reco')# shutil.rmtree(_file)
+                if not os.path.exists(r'{}/Record/Voice/Temp'.format(ROOTDIR)):
+                    os.makedirs(r'{}/Record/Voice/Temp'.format(ROOTDIR))# shutil.rmtree(_file)
                 while True:
                     end_t = (num + 1)*50*1000 if (num + 1)*50*1000 < sec*1000 else sec*1000
                     while True:
                         # 单次请求重复文件名
-                        _file = r'D:/XiaoU/Deal/Voice/Reco/P{}.{}'.format(random.randint(100,300),speech_file[0][1])
+                        _file = r'{}/Record/Voice/Temp/P{}.{}'.format(ROOTDIR,random.randint(100,300),speech_file[0][1])
                         if _file not in file_list:
                             break
                     ASFF[num*50*1000:end_t].export(_file,format=speech_file[0][1])
@@ -609,12 +628,17 @@ class Voice_recognition(QThread):
                 file_list.append(speech_dic)
             text_sub = ''
             err_file = ''
+            t = 55 // len(file_list)
+            num = 35 - t/2
             # 遍历文件
             for file in file_list:
+                num += t/2
+                self.asr_result.emit(int(num))
                 with open(file,'rb') as _f:
                     # , options = {"dev_pid": 1536, }
                     text = AipSpeech(APP_ID,APP_KEY,SECRET_KEY).asr(_f.read(),format=asr_format)
-                    print(text)
+                    num += t / 2
+                    self.asr_result.emit(int(num))
                     err_no = text['err_no'] if 'err_no' in text.keys() else text['error_code']
                     err_msg = text['err_msg'] if 'err_msg' in text.keys() else text['error_msg']
                     if str(err_no) == "0":
@@ -622,6 +646,7 @@ class Voice_recognition(QThread):
                     else:
                         err_file += '文件名：' + file + '/n失败原因：' + err_msg + '/n'
             if text_sub:
+                self.asr_result.emit(95)
                 res_log = '语音识别完成'
                 if err_file:
                     res_log += '/n未识别内容：/n' + err_file

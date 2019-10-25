@@ -1,5 +1,5 @@
 # coding: utf-8
-
+from PyQt5.QtGui import QPen
 
 from ToolBox.main_ui import *
 
@@ -33,10 +33,6 @@ class Face(Ui):
 
         self._init_face_ui_()
         self._init_face_child()
-
-    @catch_except
-    def btn_top_back_clicked_face(self,*args):
-        self.btn_home_face.clicked.connect(self.face_home_reload)
 
 
     def _init_face_ui_(self,*args):
@@ -75,7 +71,7 @@ class Face(Ui):
                                    [self.btn_face_home_group_getlist,'获取组列表'],[self.btn_face_home_group_add,'创建用户组'],
                                    [self.btn_face_home_delete,'删除人脸'],[self.btn_face_home_user_delete,'删除用户'],
                                    [self.btn_face_home_group_delete,'删除用户组'],[self.btn_face_home_faceverify,'在线活体检测'],
-                                   [self.btn_face_home_verify,'活体视频分析'], ]
+                                   [self.btn_face_home_verify,'活体视频分析'], [self.btn_face_home_sessioncode,'语音验证码']]
         # [self.btn_face_home_rpc,'智能视频监控'],
         #                                    [self.btn_face_home_sessioncode,'语音验证码']
 
@@ -264,6 +260,14 @@ class Face(Ui):
         self.btn_face_child_folder3.setIcon(QIcon('./Ico/floder.png')) # 27
         self.lnedit_face_child_video = QLineEdit()
         self.lnedit_face_child_video.setToolTip('视频路径')
+        self.label_face_child_imgcut = QLabel('生成人脸图') # 28
+        self.cmbox_face_child_imgcut = QComboBox()
+        self.cmbox_face_child_imgcut.addItems(['NONE','CROP','DRAW','ALL'])
+        self.label_face_child_changepos = QLabel('人脸位置调整')# 29
+        self.lnedit_face_child_changepos = QLineEdit()
+        self.label_face_child_deal_type = QLabel('处理途径') #30
+        self.cmbox_face_child_deal_type = QComboBox()
+        self.cmbox_face_child_deal_type.addItems(['NET','LOCAL','ALL'])
 
 
 
@@ -281,7 +285,9 @@ class Face(Ui):
                                    [self.label_face_child_facelocation2,self.lnedit_face_child_facelocation2],[self.label_face_child_user_info,self.lnedit_face_child_user_info],
                                    [self.label_face_child_groupid2,self.lnedit_face_child_groupid2],[self.label_face_index_start,self.spb_face_child_index_start],
                                    [self.label_face_child_length,self.spb_face_child_length],[self.label_face_child_face_token,self.lnedit_face_child_face_token],
-                                   [self.btn_face_child_folder3,self.lnedit_face_child_video]]
+                                   [self.btn_face_child_folder3,self.lnedit_face_child_video],[self.label_face_child_imgcut,self.cmbox_face_child_imgcut],
+                                   [self.label_face_child_changepos,self.lnedit_face_child_changepos],[self.cmbox_face_child_deal_type,self.cmbox_face_child_deal_type],
+                                   ]
 
         for widgets in self.face_child_widgets:
             for widget in widgets:
@@ -308,7 +314,10 @@ class Face(Ui):
         # 阈值 12， maxuser 13, action 14, userinfo 15,融合度 18,,optioninfo 19, start 24,length 25 ,video27
         if self.face_child_mode == '人脸检测':
             self.label_face_child_title.setText('人脸检测')
-            self.face_child_params = [17,0,1,2,7,3,16,6,10]
+            self.face_child_params = [17,0,1,2,7,3,28,16,6,29,10]
+        elif self.face_child_mode == '语音验证码':
+            self.face_child_params = [17,16,4,10]
+
         elif self.face_child_mode == '活体视频分析':
             self.label_face_child_title.setText(self.face_child_mode)
             self.face_child_params = [17,27,10]
@@ -376,7 +385,7 @@ class Face(Ui):
 
         elif self.face_child_mode == '人脸搜素':
             self.label_face_child_title.setText('人脸搜素')
-            self.face_child_params = [17,0,1,5,11,7,3,16,4,10]
+            self.face_child_params = [17,0,1,5,11,13,3,16,4,10]
 
         elif self.face_child_mode == '人脸搜索M:N':
             self.label_face_child_title.setText('人脸搜索M:N')
@@ -429,7 +438,10 @@ class Face(Ui):
 
         self.txedit_face_child_content = QTextEdit()
         self.glayout_face_child_content.addWidget(self.txedit_face_child_content,0,0,1,1)
-        # self.txedit_face_child_content.setEnabled(False)
+        self.txedit_face_child_content.setStyleSheet(
+            "*{background-color:%s;color:%s;border:0;height:25px;width:80px;font:YaHei;} :pressed{background-color:%s;color:%s;}" % (
+                random_color(mode='background'), random_color(mode='font'), random_color(mode='background'),
+                random_color(mode='font')))
         
 
 
@@ -442,60 +454,60 @@ class Face(Ui):
     def btn_face_child_ok_clicked(self,*args):
         """API访问实现"""
 
-        self.pbar_bottom.setValue(1)
+        print(i)
         # 局部变量代替全局变量
         current_mode = self.face_child_mode
         self.label_status_left.setText(current_mode)
+        self.pbar_bottom.setValue(1)
+        self.label_status_right.setText('正在处理...')
 
         result = None
+        others = {} # 传入处理函数的可选参数
+        self.label_status_left.setText(current_mode)
+        self.pbar_bottom.setValue(5) # 进度条更新
         if current_mode == '人脸检测':
-            image = self.lnedit_face_child_img.text()
+            filepath = self.lnedit_face_child_img.text()
 
-            self.label_status_left.setText(current_mode)
-            self.pbar_bottom.setValue(5)
-            if not os.path.isfile(image):
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image),'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath),'rb').read()).decode()
 
-            self.label_status_left.setText(current_mode)
-            self.pbar_bottom.setValue(20)
+
             image_type = self.cmbox_face_child_imgtype.currentText()
             face_type = self.cmbox_face_child_facetype.currentText()
             face_field = self.lnedit_face_child_facefield.text()
             max_face_num = str(self.spb_face_child_maxface.value())
             liveness_control = self.cmbox_face_child_liveness_control.currentText()
 
-            self.label_status_left.setText(current_mode)
-            self.pbar_bottom.setValue(30)
             option = {}
             if face_field: option['face_field'] = face_field
             if max_face_num: option['max_face_num'] = max_face_num
             if liveness_control: option['liveness_control'] = liveness_control
             if face_type: option['face_type'] = face_type
-
-            self.label_status_left.setText(current_mode)
-            self.pbar_bottom.setValue(50)
             result = self.faceApi.detect(image,image_type,options=option)
+            imgcrop = self.cmbox_face_child_imgcut.currentText()
+            changepos = self.lnedit_face_child_changepos.text()
+            if imgcrop != 'NONE':
+                others.update({'filepath':filepath})
+                others.update({'action':imgcrop})
+                if changepos: others.update({'changepos':changepos})
 
-            self.label_status_left.setText(current_mode)
-            self.pbar_bottom.setValue(80)
-
-        elif current_mode == '活体视频分析':
+        elif current_mode == '活体视频分析': # 测试失败
             video = self.lnedit_face_child_video.text()
             if not os.path.isfile(video):
-                QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
+                QMessageBox.warning(self,'提示','视频不存在',QMessageBox.Cancel)
                 return None
             video = base64.b64encode(open(r'{}'.format(video),'rb').read()).decode()
-            option = {'video':video}
-            result = self.faceApi.videoSessioncode(option)
+            option = {'video_base64':video} #video_base64
+            result = self.faceApi.verify(option)
 
         elif current_mode == '在线活体检测':
-            image = self.lnedit_face_child_img.text()
-            if not os.path.isfile(image):
+            filepath = self.lnedit_face_child_img.text()
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image),'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath),'rb').read()).decode()
             image_type = self.cmbox_face_child_imgtype.currentText()
             face_field = self.lnedit_face_child_facefield.text()
             option = self.cmbox_face_child_optioninfo.currentText()
@@ -517,7 +529,6 @@ class Face(Ui):
             user_id = self.lnedit_face_child_userid.text()
             group_id = self.lnedit_face_child_groupid.text()
             face_token = self.lnedit_face_child_face_token.text()
-            print(user_id,group_id,face_token)
 
             result = self.faceApi.faceDelete(user_id,group_id,face_token)
 
@@ -551,11 +562,11 @@ class Face(Ui):
             result = self.faceApi.userCopy(user_id,option)
 
         elif current_mode in ['人脸更新', '人脸注册']:
-            image = self.lnedit_face_child_img.text()
-            if not os.path.isfile(image):
+            filepath = self.lnedit_face_child_img.text()
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image),'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath),'rb').read()).decode()
             image_type = self.cmbox_face_child_imgtype.currentText()
             group_id = self.lnedit_face_child_groupid.text()
             user_id = self.lnedit_face_child_userid.text()
@@ -577,20 +588,17 @@ class Face(Ui):
                 result = self.faceApi.updateUser(image, image_type, group_id, user_id, option)
 
         elif current_mode == '人脸融合':
-
-            image = self.lnedit_face_child_img.text()
-            print(image)
-            if not os.path.isfile(image):
+            filepath = self.lnedit_face_child_img.text()
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','模板图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image),'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath),'rb').read()).decode()
 
-            image2 = self.lnedit_face_child_img2.text()
-            print(image2)
-            if not os.path.isfile(image2):
+            filepath2 = self.lnedit_face_child_img2.text()
+            if not os.path.isfile(filepath2):
                 QMessageBox.warning(self,'提示','目标图片不存在',QMessageBox.Cancel)
                 return None
-            image2 = base64.b64encode(open(r'{}'.format(image2),'rb').read()).decode()
+            image2 = base64.b64encode(open(r'{}'.format(filepath2),'rb').read()).decode()
             face_location = self.lnedit_face_child_facelocation.text()
             face_location2 = self.lnedit_face_child_facelocation2.text()
 
@@ -606,21 +614,20 @@ class Face(Ui):
             if face_location2:images['image_target']['face_location'] = face_location2
 
             result = self.faceApi.merge(images)
-            with open('./merge.png','wb') as f:
-                f.write(base64.b64decode(result['result']['merge_image']))
+
 
         elif current_mode == '人脸对比':
-            image = self.lnedit_face_child_img.text()
-            if not os.path.isfile(image):
+            filepath = self.lnedit_face_child_img.text()
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image),'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath),'rb').read()).decode()
 
-            image2 = self.lnedit_face_child_img2.text()
-            if not os.path.isfile(image2):
+            filepath2 = self.lnedit_face_child_img2.text()
+            if not os.path.isfile(filepath2):
                 QMessageBox.warning(self,'提示','图片2不存在',QMessageBox.Cancel)
                 return None
-            image2 = base64.b64encode(open(r'{}'.format(image2),'rb').read()).decode()
+            image2 = base64.b64encode(open(r'{}'.format(filepath2),'rb').read()).decode()
 
             image_type = self.cmbox_face_child_imgtype.currentText()
             image_type2 = self.cmbox_face_child_imgtype2.currentText()
@@ -635,11 +642,11 @@ class Face(Ui):
             result = self.faceApi.match(images)
 
         elif current_mode == '人脸搜素':
-            image = self.lnedit_face_child_img.text()
-            if not os.path.isfile(image):
+            filepath = self.lnedit_face_child_img.text()
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image),'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath),'rb').read()).decode()
             image_type = self.cmbox_face_child_imgtype.currentText()
             group_id = self.lnedit_face_child_groupid.text()
 
@@ -658,11 +665,11 @@ class Face(Ui):
 
 
         elif current_mode == '人脸搜索M:N':
-            image = self.lnedit_face_child_img.text()
-            if not os.path.isfile(image):
+            filepath = self.lnedit_face_child_img.text()
+            if not os.path.isfile(filepath):
                 QMessageBox.warning(self,'提示','图片不存在',QMessageBox.Cancel)
                 return None
-            image = base64.b64encode(open(r'{}'.format(image), 'rb').read()).decode()
+            image = base64.b64encode(open(r'{}'.format(filepath), 'rb').read()).decode()
             image_type = self.cmbox_face_child_imgtype.currentText()
             group_id = self.lnedit_face_child_groupid.text()
 
@@ -681,7 +688,7 @@ class Face(Ui):
             if quality_control: option['quality_control'] = quality_control
             if max_user_num: option['max_user_num'] = max_user_num
 
-            result = self.faceApi.search(image, image_type, group_id, option)
+            result = self.faceApi.multiSearch(image, image_type, group_id, option)
 
         elif current_mode == '用户人脸列表':
             user_id = self.lnedit_face_child_userid.text()
@@ -689,32 +696,302 @@ class Face(Ui):
 
             result = self.faceApi.faceGetlist(user_id,group_id)
 
+        elif current_mode == '语音验证码':
+            user_id = self.lnedit_face_child_userid.text()
+            option = {'user_id':user_id}
+            result = self.faceApi.videoSessioncode(option)
 
 
 
-        self.txedit_face_child_content.setText(str(result))
+        self.label_status_left.setText(current_mode)
+        self.pbar_bottom.setValue(60) # 进度条更新
+        # 进入数据处理函数
+        self.face_child_result_deal(current_mode,result,others)
+
         self.label_status_left.setText(current_mode)
         self.pbar_bottom.setValue(100)
-        self.label_status_rihgt.setText('完成！')
+        self.label_status_right.setText('完成！')
+
+
+    @catch_except
+    def face_child_result_deal(self, mode, result,options=None):
+
+        datas = result.get('result')
+        if mode in ['复制用户', '创建用户组', '删除人脸', '删除用户', '删除用户组']:
+            content = '{}完成'.format(mode)
+            self.txedit_face_child_content.setText(content)
+
+        elif datas:
+            if mode == '人脸检测':
+                faces = datas['face_list']
+                content = '人脸检测完成\n'
+                multi_pos = []
+                for index,face in enumerate(faces):
+                    index += 1
+                    face_token = face['face_token']
+                    left = face['location']['left']
+                    top = face['location']['top']
+                    width = face['location']['width']
+                    height = face['location']['height']
+                    angle = face['angle']
+
+                    content += 'face{}:\nface_token:{}\nloactions:\n\tleft:{}\n\ttop:{}\n\twidth:{}\n\theight:{}\n\n'.format(index,face_token,left,top,width,height)
+
+                    if options:
+                        img = options.get('filepath')
+                        action = options.get('action')
+                        # 人脸位置
+                        x, y, x2, y2 = left, top, left + width, top + height
+
+                        changepos = options.get('changepos')
+                        if changepos:  # 人脸位置调整
+                            if not changepos.endswith(','): changepos += ','
+                            changes = re.findall('(.*?),',changepos)
+
+                            for i, change in enumerate(changes):
+                                if change:
+                                    if i == 0:
+                                        x += float(change)
+                                    elif i == 1:
+                                        y += float(change)
+                                    elif i == 2:
+                                        x2 += float(change)
+                                    elif i == 3:
+                                        y2 += float(change)
+
+                        face_pos = (x,y,x2,y2)
+                        multi_pos.append(face_pos)
+
+                self.txedit_face_child_content.setText(content)
+                if options:
+                    img = options.get('filepath')
+                    action = options.get('action')
+                    if action in ['CROP', 'ALL']:  # 裁切
+                        for i,pos in enumerate(multi_pos):
+                            i += 1
+                            img2 = img.replace('\\', '/')
+                            newname = re.findall('(.*)/(.*)\.(.*?)$', img2)[0][1] + str(i)
+                            self.face_crop(img, pos, newname)
+
+                    if action in ['DRAW', 'ALL']:  # 绘制
+                        img2 = img.replace('\\', '/')
+                        newname = re.findall('(.*)/(.*)\.(.*?)$', img2)[0][1]
+                        self.face_draw(img, multi_pos,newname)
+
+            elif mode == '人脸融合':
+                _session_id = time.strftime('%Y%m%d-%H%M%S', time.localtime()) + str(random.randint(0, 9))
+                _path = r'./Record/Img/Merge/{}.png'.format(_session_id)
+                with open(_path, 'wb') as f:
+                    f.write(base64.b64decode(datas['merge_image']))
+
+                content = self.txedit_face_child_content.toPlainText()
+                _path_face = os.path.abspath(_path)
+                content += '\n人脸融合完成，保存在 -> {}'.format(_path_face)
+                self.txedit_face_child_content.setText(content)
+
+            elif mode == '人脸搜素':
+                face_token = datas['face_token']
+                user_list = datas['user_list']
+
+                content = '人脸搜索完成\nface_token:{}\n'.format(face_token)
+                for i, user in enumerate(user_list): # 获取用户
+                    i += 1
+                    content += 'user{}:\n'.format(i)
+                    for k, v in user.items():
+                        content += '  {}:{}\n'.format(k,v)
+
+                self.txedit_face_child_content.setText(content)
+
+            elif mode == '人脸搜索M:N':
+
+                face_num = datas.get('face_num')
+                face_list = datas.get('face_list')
+                content = '人脸搜索M:N完成\nface_num:{}\n\n'.format(face_num)
+                for i, face in enumerate(face_list): # 获取用户
+                    i += 1
+                    face_token = face['face_token']
+                    location = face['location']
+                    content += 'face{}:\nface_token:{}\nlocation:\n'.format(i,face_token)
+
+                    for k, v in location.items():
+                        content += '  {}:{}\n'.format(k,v)
+                    content += '\n'
+                    user_list = face['user_list']
+                    for j, user in enumerate(user_list): # 获取用户信息
+                        j += 1
+                        for k,v in user.items():
+                            content += '  {}:{}\n'.format(k,v)
+
+                        content += '\n\n'
+
+                self.txedit_face_child_content.setText(content)
+
+            elif mode == '人脸对比':
+                score = datas.get('score')
+                face_list = datas.get('face_list') # 列表
+                content = '人脸对比完成\nscore:{}\nface_list:\n'.format(score)
+                for i, face in enumerate(face_list):
+                    i += 1
+                    content += 'face{}:\n'.format(i)
+                    for k,v in face.items():
+                        content += '  {}:{}\n'.format(k,v)
+                    content += '\n'
+
+                self.txedit_face_child_content.setText(content)
+
+            elif mode in ['人脸注册','人脸更新']:
+                face_token = datas.get('face_token')
+                location = datas.get('location')
+                content = '{}成功\nface_token:{}\nlocation:\n'.format(mode,face_token)
+                for k,v in location.items():
+                    content += '  {}:{}\n'.format(k,v)
+
+                self.txedit_face_child_content.setText(content)
+
+
+
+            elif mode in ['用户信息查询']:
+                user_list = datas.get('user_list')
+                content = '{}完成\n'.format(mode)
+                for i, user in enumerate(user_list):
+                    i += 1
+                    content += 'user{}:\n'.format(i)
+                    for k, v in user.items():
+                        content += ' {}:{}\n'.format(k, v)
+                    content += '\n'
+
+                self.txedit_face_child_content.setText(content)
+
+            elif mode == '用户人脸列表':
+                face_list = datas.get('face_list')
+                content = '获取用户列表完成\n'
+                for i, face in enumerate(face_list):
+                    i += 1
+                    content += 'face{}:\n'.format(i)
+                    for k, v in face.items():
+                        content += '  {}:{}\n'.format(k, v)
+                    content += '\n'
+                self.txedit_face_child_content.setText(content)
+
+            elif mode == '组用户列表':
+                user_id_list = datas.get('user_id_list')
+                content = '获取组用户列表完成\n'
+                for i, user_id in enumerate(user_id_list):
+                    i += 1
+                    content += '用户{}:{}\n'.format(i,user_id)
+                self.txedit_face_child_content.setText(content)
+
+            elif mode == '获取组列表':
+                user_id_list = datas.get('group_id_list')
+                content = '获取组列表完成\n'
+                for i, group_id in enumerate(user_id_list):
+                    i += 1
+                    content += '组{}:{}\n'.format(i, group_id)
+                self.txedit_face_child_content.setText(content)
+
+
+            elif mode == '在线活体检测':
+                print(result)
+                thresholds = datas.get('thresholds')
+                face_liveness = datas.get('face_liveness')
+                face_list = datas.get('face_list')
+                content = '在线活体检测完成\nthresholds:\n'
+                content = self.dict_get_value(thresholds,content)
+                content += '\nface_liveness:{}\nface_list:\n'.format(face_liveness)
+                for face in face_list:
+                    content = self.dict_get_value(face,content,0)
+
+                self.txedit_face_child_content.setText(content)
+
+            elif mode =='语音验证码':
+                session_id = datas.get('session_id')
+                code = datas.get('code')
+                content = '语音验证码获取成功\nsession_id:{}\ncode:{}'.format(session_id,code)
+                self.txedit_face_child_content.setText(content)
+                print(result)
+
+            elif mode == '活体视频分析':
+                print(result)
+
+
+            else:
+
+                content = str(datas).replace('{','\n').replace('}','\n').replace('[','\n').replace(']','\n').replace(',','\n')
+                self.txedit_face_child_content.setText(content)
+
+        else:
+
+            content = str(datas).replace('{','\n').replace('}','\n').replace('[','\n').replace(']','\n').replace(',','\n')
+            self.txedit_face_child_content.setText(content)
+
+
+    @catch_except
+    def face_draw(self,img:str,multi_pos:list,newname=None):
+        """人脸位置绘制"""
+
+        _session_id = time.strftime('%Y%m%d-%H%M%S', time.localtime()) + str(random.randint(0, 9))
+        if newname: _session_id = newname
+        _path_face = './Record/Img/Draw/{}.png'.format(_session_id)
+        image = Image.open(img)
+        draw = ImageDraw.Draw(image)
+        for pos in multi_pos:
+            draw.rectangle(pos,width=3)
+        image.save(_path_face)
+        content = self.txedit_face_child_content.toPlainText()
+        _path_face = os.path.abspath(_path_face)
+        content += '\n人脸绘制完成，保存在 -> {}'.format(_path_face)
+        self.txedit_face_child_content.setText(content)
+
+
+    @catch_except
+    def face_crop(self,img,face_pos,newname=None):
+        """
+        传入原图像和人脸位置数据，切割人脸图像并保存
+
+        """
+
+        _session_id = time.strftime('%Y%m%d-%H%M%S', time.localtime()) + str(random.randint(0, 9))
+        if newname: _session_id = newname
+        _path_face = './Record/Img/Crop/{}.png'.format(_session_id)
+        _img = Image.open(img)
+        _face = _img.crop(face_pos)
+        _face.save(_path_face)
+
+        content = self.txedit_face_child_content.toPlainText()
+        _path_face = os.path.abspath(_path_face)
+        content += '\n人脸裁切完成，保存在 -> {}'.format(_path_face)
+        self.txedit_face_child_content.setText(content)
+
+
 
     def btn_face_child_folder3_clicked(self, *args):
         file = QFileDialog.getOpenFileName(self,'选择视频',"./","All File(*)")
         if file[0]:
             self.lnedit_face_child_video.setText(file[0])
 
+
     @catch_except
     def btn_face_child_folder_clicked(self,*args):
-        file = QFileDialog.getOpenFileName(self,'选择图片',"./","png(*.png);;jpeg(*.jpeg);;jpg(*.jpg);;bmp(*.bmp);;All File(*)")
+        file = QFileDialog.getOpenFileName(self,'选择图片',"./","All File(*);;png(*.png);;jpeg(*.jpeg);;jpg(*.jpg);;bmp(*.bmp)")
         if file[0]:
             self.lnedit_face_child_img.setText(file[0])
         pass
     def btn_face_child_folder2_clicked(self,*args):
-        file = QFileDialog.getOpenFileName(self,'选择图片',"./","png(*.png);;jpeg(*.jpeg);;jpg(*.jpg);;bmp(*.bmp);;All File(*)")
+        file = QFileDialog.getOpenFileName(self,'选择图片',"./","All File(*);;png(*.png);;jpeg(*.jpeg);;jpg(*.jpg);;bmp(*.bmp)")
         print(file)
         if file[0]:
             self.lnedit_face_child_img2.setText(file[0])
 
+    def dict_get_value(self, dicts, value='',grade=-1):
+        grade += 1
+        for k, v in dicts.items():
+            if isinstance(v, dict):
+                value += '{}{}:\n'.format('  '*grade,k)
+                value = self.dict_get_value(v, value,grade)
+            else:
+                value += '{}{}:{}\n'.format('  '*grade,k,v)
 
+        return value
 
     def resizeEvent_face(self, a0: QtGui.QResizeEvent) -> None:
         value = int(self.width()*0.2 /6)

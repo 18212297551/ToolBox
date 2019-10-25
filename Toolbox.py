@@ -18,18 +18,18 @@
 
 from ToolBox.voice import *
 from ToolBox.face_ import *
+from ToolBox.bodyays import *
 
-class Main(Voice,Face):
+class Main(Voice,Face,Body):
     def __init__(self):
         super(Main, self).__init__()
 
     def resizeEvent(self, a0: QtGui.QResizeEvent) -> None:
         self.resizeEvent_ui(a0)
         self.resizeEvent_face(a0)
+        self.resizeEvent_body(a0)
 
 if __name__ == "__main__":
-
-
     app = QApplication(sys.argv)
     UI = Main()
     UI.show()

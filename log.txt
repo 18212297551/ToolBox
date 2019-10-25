@@ -1,497 +1,570 @@
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-QWidgetItem(QWidget)
-
-[2019-10-24 12:08:58]
+人体关键点识别
+人体检测和属性识别
+人流量统计
+手势识别
+人像分割
+驾驶行为分析
+人流量统计（动态版）
+手部关键点识别（邀测）
+危险行为识别（邀测）
+[2019-10-24 18:33:56]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 114, in delete
-    o = layouts.itemAt(i).objectName()
-AttributeError: 'QWidgetItem' object has no attribute 'objectName'
-
-
-[2019-10-24 12:09:15]
-Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 114, in delete
-    o = layouts.itemAt(i).objectName()
-AttributeError: 'QWidgetItem' object has no attribute 'objectName'
-
-
-[2019-10-24 12:21:38]
-Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 120, in delete
-    layouts.itemAt(i).setVisible(False)
-AttributeError: 'QWidgetItem' object has no attribute 'setVisible'
-
-
-[2019-10-24 12:24:11]
-Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 119, in delete
-    elif o.startswith('QListWidget'):
-AttributeError: 'QPushButton' object has no attribute 'startswith'
-
-
-[2019-10-24 12:24:12]
-Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 119, in delete
-    elif o.startswith('QListWidget'):
-AttributeError: 'QLineEdit' object has no attribute 'startswith'
-
-
-[2019-10-24 12:53:24]
-Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 13, in __init__
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
     super(Face,self).__init__()
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 178, in __init__
-    self.__init_meau_main__()
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 255, in __init_meau_main__
-    self.label_top_right.setAlignment(Qt.AlignCenter)
-AttributeError: 'Main' object has no attribute 'label_top_right'
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    self.__init_body_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 19, in __init_body_ui
+    self.glayout_body_ui.setObjectName('grade_2')
+AttributeError: 'Main' object has no attribute 'glayout_body_ui'
 
 
-[2019-10-24 13:50:52]
+[2019-10-24 18:34:13]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    self.__init_body_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 31, in __init_body_ui
+    self.body_home_btns = [[self.btn_body_home_0, "人体关键点识别"],[self.btn_body_home_1, "人体检测和属性识别"],[self.btn_body_home_2, "人流量统计"],[self.btn_body_home_3, "手势识别"],[self.btn_body_home_4, "人像分割"],[self.btn_body_home_5, "驾驶行为分析"],[self.btn_body_home_6, "人流量统计（动态版）"],[self.btn_body_home_7, "手部关键点识别（邀测）"],[self.btn_body_home_8, "危险行为识别（邀测）"],]
+AttributeError: 'Main' object has no attribute 'btn_body_home_0'
 
 
-[2019-10-24 13:51:27]
+[2019-10-24 18:35:01]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 125, in inner
+    if before_layout.objectName() == 'grade_1':
+AttributeError: 'NoneType' object has no attribute 'objectName'
 
 
-[2019-10-24 13:51:48]
+[2019-10-24 19:15:01]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 125, in inner
+    if before_layout.objectName() == 'grade_1':
+AttributeError: 'NoneType' object has no attribute 'objectName'
 
 
-[2019-10-24 13:52:14]
+[2019-10-24 19:15:18]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 319, in btn_top_back_clicked
+    index = func_historys.index(func_before)
+ValueError: <function Body.body_home_btn_clicked at 0x000002947A607488> is not in list
 
 
-[2019-10-24 13:53:22]
+[2019-10-24 19:39:10]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 395, in btn_face_child_ok_clicked
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 125, in inner
+    if before_layout.objectName() == 'grade_1':
+AttributeError: 'NoneType' object has no attribute 'objectName'
 
 
-[2019-10-24 13:53:52]
+[2019-10-24 19:39:58]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 129, in body_child_reload
+    return self.glayout_body_child
+AttributeError: 'Main' object has no attribute 'glayout_body_child'
 
 
-[2019-10-24 13:53:52]
+[2019-10-24 19:41:22]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 159, in body_child_reload
+    self.glayout_body_child_param.addWidget(widget[0],index,0,1,1)
+AttributeError: 'Main' object has no attribute 'glayout_body_child_param'
 
 
-[2019-10-24 13:55:09]
+[2019-10-24 19:43:46]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 160, in body_child_reload
+    self.glayout_body_child_param.addWidget(widget[0],index,0,1,1)
+AttributeError: 'Main' object has no attribute 'glayout_body_child_param'
 
 
-[2019-10-24 13:55:09]
+[2019-10-24 20:00:15]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 193, in btn_body_child_ok_clicked
+    result = self.bodyApi.bodySeg(image)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\bodyanalysis.py", line 97, in bodySeg
+    data['image'] = base64.b64encode(image).decode()
+  File "D:\application\python37\lib\base64.py", line 58, in b64encode
+    encoded = binascii.b2a_base64(s, newline=False)
+TypeError: a bytes-like object is required, not 'str'
 
 
-[2019-10-24 13:55:09]
+[2019-10-24 20:42:16]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 229, in body_child_result_deal
+    open('./foreground.png','wb').write(base64.b64decode(foreground))
+  File "D:\application\python37\lib\base64.py", line 80, in b64decode
+    s = _bytes_from_decode_data(s)
+  File "D:\application\python37\lib\base64.py", line 46, in _bytes_from_decode_data
+    "string, not %r" % s.__class__.__name__) from None
+TypeError: argument should be a bytes-like object or ASCII string, not 'NoneType'
 
 
-[2019-10-24 13:55:09]
+[2019-10-24 21:05:35]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 246, in body_child_result_deal
+    h = pix.height()/pix.width() * w
+ZeroDivisionError: division by zero
 
 
-[2019-10-24 13:55:40]
+[2019-10-24 21:06:36]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 247, in body_child_result_deal
+    h = pix.height()/pix.width() * w
+ZeroDivisionError: division by zero
 
 
-[2019-10-24 13:55:40]
+[2019-10-24 21:07:55]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 249, in body_child_result_deal
+    label.setPixmap(QPixmap('./{}.png'.format(image),w=w,h=h))
+TypeError: 'w' is an unknown keyword argument
 
 
-[2019-10-24 13:55:40]
+[2019-10-24 21:09:36]
 Traceback (most recent call last):
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 249, in body_child_result_deal
+    label.setPixmap(QPixmap('./{}.png'.format(image),{'w':w,'h':h}))
+TypeError: arguments did not match any overloaded call:
+  QPixmap(): too many arguments
+  QPixmap(int, int): argument 1 has unexpected type 'str'
+  QPixmap(QSize): argument 1 has unexpected type 'str'
+  QPixmap(str, format: str = None, flags: Union[Qt.ImageConversionFlags, Qt.ImageConversionFlag] = Qt.AutoColor): argument 2 has unexpected type 'dict'
+  QPixmap(List[str]): argument 1 has unexpected type 'str'
+  QPixmap(QPixmap): argument 1 has unexpected type 'str'
+  QPixmap(Any): too many arguments
 
 
-[2019-10-24 13:55:40]
+[2019-10-24 21:16:05]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 249, in body_child_result_deal
+    painter.drawPixmap(pix)
+TypeError: arguments did not match any overloaded call:
+  drawPixmap(self, QRectF, QPixmap, QRectF): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, QRect, QPixmap, QRect): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, Union[QPointF, QPoint], QPixmap): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, QPoint, QPixmap): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, QRect, QPixmap): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, int, int, QPixmap): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, int, int, int, int, QPixmap): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, int, int, int, int, QPixmap, int, int, int, int): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, int, int, QPixmap, int, int, int, int): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, Union[QPointF, QPoint], QPixmap, QRectF): argument 1 has unexpected type 'QPixmap'
+  drawPixmap(self, QPoint, QPixmap, QRect): argument 1 has unexpected type 'QPixmap'
 
 
-[2019-10-24 13:56:08]
+[2019-10-24 21:26:49]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 250, in body_child_result_deal
+    painter.drawPixmap((0,0,w,h),pix)
+TypeError: arguments did not match any overloaded call:
+  drawPixmap(self, QRectF, QPixmap, QRectF): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, QRect, QPixmap, QRect): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, Union[QPointF, QPoint], QPixmap): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, QPoint, QPixmap): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, QRect, QPixmap): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, int, int, QPixmap): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, int, int, int, int, QPixmap): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, int, int, int, int, QPixmap, int, int, int, int): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, int, int, QPixmap, int, int, int, int): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, Union[QPointF, QPoint], QPixmap, QRectF): argument 1 has unexpected type 'tuple'
+  drawPixmap(self, QPoint, QPixmap, QRect): argument 1 has unexpected type 'tuple'
 
 
-[2019-10-24 13:56:08]
+[2019-10-24 21:28:37]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 248, in body_child_result_deal
+    label.setPixmap(pix)
+TypeError: setPixmap(self, QPixmap): argument 1 has unexpected type 'bool'
 
 
-[2019-10-24 13:56:08]
+[2019-10-24 22:29:30]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
 
+During handling of the above exception, another exception occurred:
 
-[2019-10-24 13:56:08]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 426, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
 
+During handling of the above exception, another exception occurred:
 
-[2019-10-24 13:56:17]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
 
+During handling of the above exception, another exception occurred:
 
-[2019-10-24 13:56:17]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 309, in btn_body_child_ok_clicked
+    result = self.bodyApi.gesture(image)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\bodyanalysis.py", line 88, in gesture
+    return self._request(self.__gestureUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
 
 
-[2019-10-24 13:56:17]
+[2019-10-24 22:42:09]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 370, in body_child_result_deal
+    print(content)
+UnboundLocalError: local variable 'content' referenced before assignment
 
 
-[2019-10-24 13:56:17]
+[2019-10-24 22:43:50]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 123, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 201, in body_child_reload
+    widget = self.body_child_widgets[i]
+IndexError: list index out of range
 
 
-[2019-10-24 13:56:17]
+[2019-10-24 23:41:19]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 37, in __init_body_ui
+    self.btn_body_home_9.setWordWrap(True)
+AttributeError: 'QPushButton' object has no attribute 'setWordWrap'
 
 
-[2019-10-24 13:56:19]
+[2019-10-24 23:41:26]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 123, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 70, in __body_home_reload
+    for btn in self.body_home_btns:
+AttributeError: 'Main' object has no attribute 'body_home_btns'
 
 
-[2019-10-24 13:56:19]
+[2019-10-24 23:51:36]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 243, in init_voice_ui
+    css = "QSlider::handle{border-radius:4px;border:1px soid #5c5c5c;width:10px;margin:-2px 0;}"%(random_color(),random_color()) #border-radius:px  background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+TypeError: not all arguments converted during string formatting
 
 
-[2019-10-24 13:56:19]
+[2019-10-24 23:52:11]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 243, in init_voice_ui
+    css = "QSlider::handle{border-radius:4px;border:1px soid #5c5c5c;width:10px;margin:-2px 0;}"%(random_color()) #border-radius:px  background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+TypeError: not all arguments converted during string formatting
 
 
-[2019-10-24 13:56:19]
+[2019-10-25 00:21:29]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "D:\application\python37\lib\urllib\request.py", line 1317, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "D:\application\python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\application\python37\lib\http\client.py", line 928, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "D:\application\python37\lib\socket.py", line 707, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "D:\application\python37\lib\socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
 
+During handling of the above exception, another exception occurred:
 
-[2019-10-24 13:56:19]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 55, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 398, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 496, in run
+    ff = urlopen(reqf, timeout=30)
+  File "D:\application\python37\lib\urllib\request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "D:\application\python37\lib\urllib\request.py", line 525, in open
+    response = self._open(req, data)
+  File "D:\application\python37\lib\urllib\request.py", line 543, in _open
+    '_open', req)
+  File "D:\application\python37\lib\urllib\request.py", line 503, in _call_chain
+    result = func(*args)
+  File "D:\application\python37\lib\urllib\request.py", line 1345, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "D:\application\python37\lib\urllib\request.py", line 1319, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 11001] getaddrinfo failed>
 
 
-[2019-10-24 14:00:26]
+[2019-10-25 10:39:29]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 403, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 734, in face_child_result_deal
+    self.face_crop(img,face_pos)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 753, in face_crop
+    name = re.findall('(.*)\\\\(.*)\.(.*?)$',img)
+  File "D:\application\python37\lib\re.py", line 223, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
 
 
-[2019-10-24 14:00:48]
+[2019-10-25 10:42:43]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 431, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 734, in face_child_result_deal
+    self.face_crop(img,face_pos)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 754, in face_crop
+    name = re.findall('(.*)\\\\(.*)\.(.*?)$',img)
+  File "D:\application\python37\lib\re.py", line 223, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
 
 
-[2019-10-24 14:00:48]
+[2019-10-25 10:45:08]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 431, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 735, in face_child_result_deal
+    self.face_crop(img,face_pos)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 754, in face_crop
+    print(img)
+NameError: name 'img' is not defined
 
 
-[2019-10-24 14:02:43]
+[2019-10-25 10:46:59]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 405, in btn_face_child_ok_clicked
-    if not os.path.isfile(image):
-  File "D:\application\python37\lib\genericpath.py", line 30, in isfile
-    st = os.stat(path)
-ValueError: stat: path too long for Windows
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 738, in face_child_result_deal
+    self.face_crop(img,face_pos)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 761, in face_crop
+    _img = Image.open(img)
+NameError: name 'img' is not defined
 
 
-[2019-10-24 14:09:01]
+[2019-10-25 10:48:46]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face.py", line 28, in __init__
-    self.faceApi = AipFace(self.appid,self.apikey,self.secretkey)
-NameError: name 'AipFace' is not defined
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 738, in face_child_result_deal
+    self.face_crop(img,face_pos)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 761, in face_crop
+    _img = Image.open(img)
+NameError: name 'img' is not defined
 
 
-[2019-10-24 14:37:55]
+[2019-10-25 10:50:26]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 424, in btn_face_child_ok_clicked
-    result = self.faceApi.addUser(image,image_type,group_id,user_id,option)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 119, in addUser
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 737, in face_child_result_deal
+    self.face_crop(img,face_pos,newname)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 762, in face_crop
+    _face.save(_path_face)
+  File "D:\application\python37\lib\site-packages\PIL\Image.py", line 2085, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: './Record/Crop/A1.png'
+
+
+[2019-10-25 10:50:46]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 737, in face_child_result_deal
+    self.face_crop(img,face_pos,newname)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 764, in face_crop
+    self.face_search(_path_face)
+AttributeError: 'Main' object has no attribute 'face_search'
+
+
+[2019-10-25 11:32:31]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 490, in btn_face_child_ok_clicked
+    result = self.faceApi.detect(image,image_type,options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
     'Content-Type': 'application/json',
   File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
     ), proxies=self._proxies
@@ -503,48 +576,931 @@ Traceback (most recent call last):
     resp = self.send(prep, **send_kwargs)
   File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
     r = adapter.send(request, **kwargs)
-  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
-    timeout=timeout
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 11:32:36]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 757, in face_child_result_deal
+    for change, source in zip(changes,sources):
+ValueError: could not convert string to float: '12，13'
+
+
+[2019-10-25 11:36:45]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
     chunked=chunked)
   File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
     conn.request(method, url, **httplib_request_kw)
   File "D:\application\python37\lib\http\client.py", line 1229, in request
     self._send_request(method, url, body, headers, encode_chunked)
-  File "D:\application\python37\lib\http\client.py", line 1274, in _send_request
-    body = _encode(body, 'body')
-  File "D:\application\python37\lib\http\client.py", line 160, in _encode
-    (name.title(), data[err.start:err.end], name)) from None
-UnicodeEncodeError: 'latin-1' codec can't encode characters in position 692975-692979: Body ('客户端添加') is not valid Latin-1. Use body.encode('utf-8') if you want to send it encoded in UTF-8.
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
 
+During handling of the above exception, another exception occurred:
 
-[2019-10-24 15:03:47]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
-    return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
-    before_layout = func(*args)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 286, in face_child_reload
-    self.cmbox_face_child_actiontype.setItemData(index=0,value='UPDATE')
-TypeError: setItemData(self, int, Any, role: int = Qt.UserRole): 'index' is not a valid keyword argument
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
 
+During handling of the above exception, another exception occurred:
 
-[2019-10-24 15:04:35]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 122, in inner
-    before_layout = func(*args)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 286, in face_child_reload
-    self.cmbox_face_child_actiontype.setItemData(0,value='UPDATE')
-TypeError: setItemData(self, int, Any, role: int = Qt.UserRole): 'value' is not a valid keyword argument
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 491, in btn_face_child_ok_clicked
+    result = self.faceApi.detect(image,image_type,options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
 
 
-[2019-10-24 15:16:45]
+[2019-10-25 11:37:37]
 Traceback (most recent call last):
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 54, in wrapper
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
     return func(*args,**kwargs)
-  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 426, in btn_face_child_ok_clicked
-    result = self.faceApi.userCopy(user_id,src_group_id,dst_group_id)
-TypeError: userCopy() takes from 2 to 3 positional arguments but 4 were given
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 763, in face_child_result_deal
+    x2 += float(change)
+ValueError: could not convert string to float: 
+
+
+[2019-10-25 11:54:51]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 765, in face_child_result_deal
+    self.face_crop(img,face_pos,newname)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 801, in face_crop
+    _face = _img.crop(face_pos)
+  File "D:\application\python37\lib\site-packages\PIL\Image.py", line 2085, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: './Record/Crop/2016-06-11 (40)1.png'
+
+
+[2019-10-25 11:55:11]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 767, in face_child_result_deal
+    self.face_draw(img,face_pos,newname)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 787, in face_draw
+    pix.save(_path_face)
+TypeError: arguments did not match any overloaded call:
+  drawRect(self, QRectF): argument 1 has unexpected type 'tuple'
+  drawRect(self, int, int, int, int): argument 1 has unexpected type 'tuple'
+  drawRect(self, QRect): argument 1 has unexpected type 'tuple'
+
+
+[2019-10-25 12:08:53]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 796, in face_draw
+    painter.drawRect(face_pos[0],pos[1],pos[2],pos[3])
+NameError: name 'face_pos' is not defined
+
+
+[2019-10-25 12:13:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 794, in face_draw
+    cv2.drawContours(img,pos)
+TypeError: drawContours() missing required argument 'contourIdx' (pos 3)
+
+
+[2019-10-25 12:20:30]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 797, in face_draw
+    draw = ImageDraw(image)
+TypeError: 'module' object is not callable
+
+
+[2019-10-25 12:40:42]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 491, in btn_face_child_ok_clicked
+    result = self.faceApi.detect(image,image_type,options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 12:59:15]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 624, in btn_face_child_ok_clicked
+    result = self.faceApi.merge(images)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 328, in merge
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 12:59:57]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 781, in face_child_result_deal
+    with open(_path, 'wb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: './Record/Img/Merge/20191025-1259571.png'
+
+
+[2019-10-25 14:06:03]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 182, in __init__
+    self.__init_meau_main__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 296, in __init_meau_main__
+    self.btn_top_back.clicked.connect(self.btn_top_back_clicked_voice)
+AttributeError: 'Main' object has no attribute 'btn_top_back_clicked_voice'
+
+
+[2019-10-25 14:16:52]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 800, in face_child_result_deal
+    face_num = datas['face_num']
+KeyError: 'face_num'
+
+
+[2019-10-25 14:18:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 802, in face_child_result_deal
+    face_list = datas['face_list']
+KeyError: 'face_list'
+
+
+[2019-10-25 14:22:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 807, in face_child_result_deal
+    loaction = face['loaction']
+KeyError: 'loaction'
+
+
+[2019-10-25 14:23:37]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 810, in face_child_result_deal
+    for k, v in location:
+ValueError: too many values to unpack (expected 2)
+
+
+[2019-10-25 14:29:38]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 695, in btn_face_child_ok_clicked
+    result = self.faceApi.multiSearch(image, image_type, group_id, option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 102, in multiSearch
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 15:51:30]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 519, in btn_face_child_ok_clicked
+    result = self.faceApi.faceverify(images)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 308, in faceverify
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 16:01:50]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 519, in btn_face_child_ok_clicked
+    result = self.faceApi.faceverify(images)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 308, in faceverify
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 16:42:10]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 510, in btn_face_child_ok_clicked
+    result = self.faceApi.verify(option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 339, in verify
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 16:57:10]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 16:57:55]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 16:58:41]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 16:59:16]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 16:59:44]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:00:54]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:02:29]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:05:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    args[0].pbar_bottom.setValue(0)
+RuntimeError: super-class __init__() of type Main was never called
+
+
+[2019-10-25 17:05:25]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 58, in wrapper
+    args[0].pbar_bottom.setValue(0)
+RuntimeError: super-class __init__() of type Main was never called
+
+
+[2019-10-25 17:06:12]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:09:22]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:09:54]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:12:02]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:12:47]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:13:35]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:14:10]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:14:35]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 59, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 457, in btn_face_child_ok_clicked
+    print(i)
+NameError: name 'i' is not defined
+
+
+[2019-10-25 17:53:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 64, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 364, in voice_asr_result_deal
+    if asr_item[0] == '语音识别错误':
+TypeError: 'float' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 64, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 364, in voice_asr_result_deal
+    if asr_item[0] == '语音识别错误':
+TypeError: 'float' object is not subscriptable
+
+
+[2019-10-25 17:53:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 64, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 364, in voice_asr_result_deal
+    if asr_item[0] == '语音识别错误':
+TypeError: 'float' object is not subscriptable
 
