@@ -50,6 +50,10 @@ func_historys = [None,None,None,None,None,None] # 之前访问的各级窗口初
 func_before = None #上次刷新窗口调用的函数
 before_layout = None # 当前窗口所在布局
 
+APPID = '17376947'
+APIKEY = 'K7G0KLcoQnTLH4QjmCZMigyM'
+SECRETKEY = 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
+
 my_dirs = ['Record/Voice/Temp','Record/Img/Crop','Record/Img/Merge','Record/Img/Draw','Record/Img/BodySeg']
 
 for i in my_dirs:
@@ -95,7 +99,6 @@ def layout_dele2(func):
         before_layout = func(*args)
         func_before = func
 
-        print(before_layout.objectName(),func_before)
 
         if before_layout.objectName() == 'grade_1':
             func_historys[1] = func

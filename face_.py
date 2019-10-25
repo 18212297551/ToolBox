@@ -21,10 +21,8 @@ class Face(Ui):
         self.glayout_face_child.setObjectName('grade_3')
         self.glayout_main.addLayout(self.glayout_face_child,2,0)
 
-        self.appid = '17376947'
-        self.apikey = 'K7G0KLcoQnTLH4QjmCZMigyM'
-        self.secretkey = 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
-        self.faceApi = AipFace(self.appid,self.apikey,self.secretkey)
+
+        self.faceApi = AipFace(APPID,APIKEY,SECRETKEY)
 
         # 当前人脸模块
         self.face_child_mode = None
@@ -442,19 +440,15 @@ class Face(Ui):
             "*{background-color:%s;color:%s;border:0;height:25px;width:80px;font:YaHei;} :pressed{background-color:%s;color:%s;}" % (
                 random_color(mode='background'), random_color(mode='font'), random_color(mode='background'),
                 random_color(mode='font')))
-        
 
 
-
-        # print(self.cmbox_face_child_liveness_control.currentText())
-
+        # 返回布局以便退出隐藏
         return self.glayout_face_child
 
     @catch_except
     def btn_face_child_ok_clicked(self,*args):
         """API访问实现"""
 
-        print(i)
         # 局部变量代替全局变量
         current_mode = self.face_child_mode
         self.label_status_left.setText(current_mode)
@@ -891,7 +885,7 @@ class Face(Ui):
 
 
             elif mode == '在线活体检测':
-                print(result)
+
                 thresholds = datas.get('thresholds')
                 face_liveness = datas.get('face_liveness')
                 face_list = datas.get('face_list')
@@ -908,10 +902,10 @@ class Face(Ui):
                 code = datas.get('code')
                 content = '语音验证码获取成功\nsession_id:{}\ncode:{}'.format(session_id,code)
                 self.txedit_face_child_content.setText(content)
-                print(result)
+
 
             elif mode == '活体视频分析':
-                print(result)
+                pass
 
 
             else:
@@ -978,7 +972,7 @@ class Face(Ui):
         pass
     def btn_face_child_folder2_clicked(self,*args):
         file = QFileDialog.getOpenFileName(self,'选择图片',"./","All File(*);;png(*.png);;jpeg(*.jpeg);;jpg(*.jpg);;bmp(*.bmp)")
-        print(file)
+
         if file[0]:
             self.lnedit_face_child_img2.setText(file[0])
 
@@ -998,8 +992,8 @@ class Face(Ui):
         self.glayout_face_home.setSpacing(value)
         pass
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    UI = Face()
-    UI.show()
-    sys.exit(app.exec_())
+# if __name__ == '__main__':
+#     app = QApplication(sys.argv)
+#     UI = Face()
+#     UI.show()
+#     sys.exit(app.exec_())

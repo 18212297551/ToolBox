@@ -311,7 +311,6 @@ class Voice(Ui):
             self.play_common_list.clear()
     
     def open_folder(self, *args):
-        print( "{}/Record".format(ROOTDIR))
         os.system('start explorer "{}\Record"'.format(ROOTDIR))
 
 
@@ -353,7 +352,12 @@ class Voice(Ui):
             self.label_status_right.setText('完成')
             self.pbar_bottom.setValue(100)
             self.listWidget_voice_used_info.addItem('【合成】 - {}'.format(syn_item[1]))
+            # QMessageBox.about(self, '语音合成提示', '{} - {}'.format(syn_item[0], syn_item[1]))
+        else:
             QMessageBox.about(self, '语音合成提示', '{} - {}'.format(syn_item[0], syn_item[1]))
+            self.pbar_bottom.reset()
+            self.label_status_right.setText('出错')
+
 
     @catch_except
     def voice_asr_result_deal(self, asr_item):
@@ -364,6 +368,7 @@ class Voice(Ui):
         else:
             if asr_item[0] == '语音识别错误':
                 self.pbar_bottom.reset()
+                self.label_status_right.setText('出错')
                 QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
             else:
                 self.listWidget_voice_used_info.addItem('【识别】 - {}'.format(asr_item[1]))
@@ -372,7 +377,8 @@ class Voice(Ui):
                 self.label_status_left.setText('语音识别')
                 self.label_status_right.setText('完成')
                 self.pbar_bottom.setValue(100)
-                QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
+                # QMessageBox.about(self, '语音识别提示', '{} - {}'.format(asr_item[0], asr_item[1]))
+            self.pbar_bottom.reset()
 
     @catch_except
     def listWidget_voice_used_info_doubleclicked(self, *args):
@@ -471,13 +477,11 @@ class Speech_synthesis(QThread):
             self.speech_synthesis_log.emit(1)
             self.syn_result = []
             item = Queue_speech.get()
-            self.speech_name = item[0]
-            self.voice_text = item[1]
-            self.per = item[2]
-            self.spd = item[3]
-            self.pit = item[4]
-            self.vol = item[5]
-            self.aue = item[6]
+            self.speech_name,self.voice_text, self.per, self.spd = item[0],item[1],item[2],item[3]
+            if not self.voice_text:
+                self.speech_synthesis_log.emit(['语音合成错误','请输入合成文本'])
+                continue
+            self.pit, self.vol, self.aue = item[4], item[5], item[6]
             self.people = {'普通女声': 0, '普通男生': 1, '成熟女性': 5, '成熟男声': 2, '度逍遥': 3, '度丫丫': 4}
             self.per = self.people[self.per]
             speech_aue = {"mp3": 3, "pcm-16k": 4, "pcm-8k": 5, "wav": 6}
@@ -489,85 +493,53 @@ class Speech_synthesis(QThread):
             # 发音人选择, 0为普通女声，1为普通男生，2成熟男声，3为情感合成-度逍遥，4为情感合成-度丫丫，5成熟女性，默认为普通女声
             if self.speech_name == '':
                 self.speech_name = time.strftime('%Y%m%d-%H%M%S', time.localtime())
-            TTS_URL = 'http://tsn.baidu.com/text2audio'
-            API_KEY = 'fWF3HKtPBAOejtCtfGqIGwIr'
-            SECRET_KEY = 'omiaIm5GGe1rWEO4vQPmCvXeclQmvqc7'
 
-            class DemoError(Exception):
-                pass
+            Client = AipSpeech(APPID,APIKEY,SECRETKEY)
 
-            TOKEN_URL = 'http://openapi.baidu.com/oauth/2.0/token'
-            SCOPE = 'audio_tts_post'  # 有此scope表示有tts能力，没有请在网页里勾选
+            if not os.path.exists(r'{}/Record/Voice'.format(ROOTDIR)):
+                os.makedirs(r'{}/Record/Voice'.format(ROOTDIR))
+            syn_save_dic = r'{}/Record/Voice/{}.{}'.format(ROOTDIR,self.speech_name, self.out_aue)
+            self.speech_synthesis_log.emit(30)
+            f2 = open(syn_save_dic, 'wb')
+            voice_texts = []
+            if len(self.voice_text) <= 2000:
+                voice_texts.append(self.voice_text)
+            else:
+                all_num = len(self.voice_text)
+                num = 0
+                while all_num > num*2000:
+                    voice_texts.append(self.voice_text[num*2000:(num+1)*2000 if all_num >= (num+1)*2000 else all_num])
+                    num += 1
+            self.speech_synthesis_log.emit(35)
+            t = 55 // len(voice_texts)
+            num = 35
+            for index, voice_text in enumerate(voice_texts):
 
-            param = {'grant_type': 'client_credentials',
-                     'client_id': API_KEY,
-                     'client_secret': SECRET_KEY}
-            self.speech_synthesis_log.emit(5)
-            post_data = urlencode(param)
+                params = { 'per': self.per, 'spd': self.spd, 'pit': self.pit,
+                          'vol': self.vol, 'aue': self.aue_h,
+                          'cuid': "123456PYTHON"}
+                result = Client.synthesis(voice_text,options=params)
+                if isinstance(result,dict):
+                    self.speech_synthesis_log.emit(['语音合成错误', str(result)])
+                    continue
 
-            self.speech_synthesis_log.emit(10)
+                num += t//2
+                self.speech_synthesis_log.emit(num + t // 2)
+                f2.write(result)
+                f2.flush()
 
-            post_data = post_data.encode('utf-8')
-            reqf = Request(TOKEN_URL, post_data)
+            self.speech_synthesis_log.emit(95)
 
-            self.speech_synthesis_log.emit(15)
-            ff = urlopen(reqf, timeout=30)
-
-            self.speech_synthesis_log.emit(20)
-            result_strf = ff.read()
-            result_strf = result_strf.decode()
-            result = json.loads(result_strf)
-            if 'access_token' in result.keys() and 'scope' in result.keys():
-                self.speech_synthesis_log.emit(25)
-                if not SCOPE in result['scope'].split(' '):
-                    raise DemoError('scope is not correct')
-                token = result['access_token']
-                if not os.path.exists(r'{}/Record/Voice'.format(ROOTDIR)):
-                    os.makedirs(r'{}/Record/Voice'.format(ROOTDIR))
-                syn_save_dic = r'{}/Record/Voice/{}.{}'.format(ROOTDIR,self.speech_name, self.out_aue)
-                self.speech_synthesis_log.emit(30)
-                f2 = open(syn_save_dic, 'wb')
-                voice_texts = []
-                if len(self.voice_text) <= 2000:
-                    voice_texts.append(self.voice_text)
-                else:
-                    all_num = len(self.voice_text)
-                    num = 0
-                    while all_num > num*2000:
-                        voice_texts.append(self.voice_text[num*2000:(num+1)*2000 if all_num >= (num+1)*2000 else all_num])
-                        num += 1
-                self.speech_synthesis_log.emit(35)
-                t = 55 // len(voice_texts)
-                num = 35
-                for index, voice_text in enumerate(voice_texts):
-                    # print(index,len(voice_texts)-1)
-                    tex = quote_plus(voice_text)  # 此处TEXT需要两次urlencode
-                    params = {'tok': token, 'tex': tex, 'per': self.per, 'spd': self.spd, 'pit': self.pit,
-                              'vol': self.vol, 'aue': self.aue_h,
-                              'cuid': "123456PYTHON",
-                              'lan': 'zh', 'ctp': 1}  # lan ctp 固定参数
-                    data = urlencode(params)
-                    num += t//2
-                    self.speech_synthesis_log.emit(num)
-                    req = Request(TTS_URL, data.encode('utf-8'))
-                    f = urlopen(req)
-                    num += t//2
-                    self.speech_synthesis_log.emit(num + t // 2)
-                    f2.write(f.read())
-                    f2.flush()
-
-                self.speech_synthesis_log.emit(95)
-
-                f2.close()
-                res_log = '语音合成完成'
-                self.syn_name_out = '{}.{}'.format(self.speech_name, self.out_aue)
-                self.syn_result.append(res_log)
-                self.syn_result.append(self.syn_name_out)
-                self.syn_result.append(syn_save_dic)
-                # 将名字，路径，文本保存在字典
-                syn_items[self.syn_name_out] = [syn_save_dic, self.voice_text]
-                self.speech_synthesis_log.emit(self.syn_result)
-                self.speech_synthesis_log.emit(100)
+            f2.close()
+            res_log = '语音合成完成'
+            self.syn_name_out = '{}.{}'.format(self.speech_name, self.out_aue)
+            self.syn_result.append(res_log)
+            self.syn_result.append(self.syn_name_out)
+            self.syn_result.append(syn_save_dic)
+            # 将名字，路径，文本保存在字典
+            syn_items[self.syn_name_out] = [syn_save_dic, self.voice_text]
+            self.speech_synthesis_log.emit(100)
+            self.speech_synthesis_log.emit(self.syn_result)
 
 
 
@@ -662,9 +634,9 @@ class Voice_recognition(QThread):
                 result.append(err_file)
                 self.asr_result.emit(result)
 
-if __name__ == "__main__":
-
-    app = QApplication(sys.argv)
-    UI = Voice()
-    UI.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#
+#     app = QApplication(sys.argv)
+#     UI = Voice()
+#     UI.show()
+#     sys.exit(app.exec_())

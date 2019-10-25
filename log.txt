@@ -1504,3 +1504,48 @@ Traceback (most recent call last):
     if asr_item[0] == '”Ô“Ù ∂±¥ÌŒÛ':
 TypeError: 'float' object is not subscriptable
 
+
+[2019-10-25 18:53:55]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 517, in run
+    f2.write(result.read())
+AttributeError: 'dict' object has no attribute 'read'
+
+
+[2019-10-25 18:58:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 515, in run
+    f2.write(result)
+TypeError: a bytes-like object is required, not 'dict'
+
+
+[2019-10-25 18:59:11]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 516, in run
+    f2.write(result)
+TypeError: a bytes-like object is required, not 'dict'
+
+
+[2019-10-25 19:04:52]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 523, in run
+    self.speech_synthesis_log.emit('”Ô“Ù∫œ≥…¥ÌŒÛ',str(result))
+TypeError: Speech_synthesis.speech_synthesis_log[object] signal has 1 argument(s) but 2 provided
+
+
+[2019-10-25 19:05:18]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 527, in run
+    f2.write(result)
+TypeError: a bytes-like object is required, not 'dict'
+
