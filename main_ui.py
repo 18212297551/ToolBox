@@ -16,25 +16,23 @@
 
 """
 import os
+import pickle
 import re
 import random
+import socket
 import sys
 import time
 import threading
 import traceback
-from pydub.utils import mediainfo
+from pydub import AudioSegment
 import requests
 import json
 import base64
-from urllib.request import urlopen
-from urllib.request import Request
-from urllib.parse import urlencode
-from urllib.parse import quote_plus
 from PIL import Image,ImageDraw
 import pyautogui
 import cv2
 from multiprocessing import Process,Queue
-from ToolBox.baidu_aip import AipSpeech, AipFace, AipBodyAnalysis
+from ToolBox.baidu_aip import AipSpeech, AipFace, AipBodyAnalysis, AipImageClassify,AipOcr,AipImageSearch,AipNlp,AipContentCensor,AipKg,imageprocess
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt, QTimer, QPoint, QSize, QThread, pyqtSignal, QUrl, QFileSelector,QFile
 from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont, QTransform
@@ -43,6 +41,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QProgressBar, QP
     QMenu, QTextEdit, QLabel, QColorDialog, QToolButton, QLineEdit, QListWidget, QComboBox, QSlider,QSpinBox,\
     QMessageBox,QFileDialog
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
+from ToolBox.encrypt import *
 
 # =========================================全局变量==============================================
 ROOTDIR = os.getcwd() # 当前根目录
@@ -50,35 +49,45 @@ func_historys = [None,None,None,None,None,None] # 之前访问的各级窗口初
 func_before = None #上次刷新窗口调用的函数
 before_layout = None # 当前窗口所在布局
 
-APPID = '17376947'
-APIKEY = 'K7G0KLcoQnTLH4QjmCZMigyM'
-SECRETKEY = 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
+socket.setdefaulttimeout(15)
 
-my_dirs = ['Record/Voice/Temp','Record/Img/Crop','Record/Img/Merge','Record/Img/Draw','Record/Img/BodySeg']
+# APPID = '17376947' #182
+# APIKEY = 'K7G0KLcoQnTLH4QjmCZMigyM'
+# SECRETKEY = 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
 
-for i in my_dirs:
-    i = os.path.abspath(i)
-    if not os.path.exists(i): os.makedirs(i)
+# 用于语音合成等
+RUNID = time.strftime('%Y%m%d%H%M%S', time.localtime()) + str(random.randint(0,9))
+BGCOLORS = [] # 背景设置使用过的颜色，保证文字与背景颜色不同
+
+my_dirs = ['Record/Voice/Temp','Record/Img/Crop','Record/Img/Merge','Record/Img/Draw','Record/Img/BodySeg','Config','Record\Img\Imgup']
+
+for di in my_dirs:
+    di = os.path.abspath(di)
+    if not os.path.exists(di): os.makedirs(di)
 
 
 def catch_except(func):
     def wrapper(*args,**kwargs):
         try:
-
             return func(*args,**kwargs)
         except:
-            with open('./log.txt', 'a+') as _f:
-                _error = traceback.format_exc()
+            with open('{}./Config/log.txt'.format(ROOTDIR), 'a+') as _f:
+                _error = str(traceback.format_exc())
                 _t = '[' + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()) + ']'
                 content = "\n{}\n{}\n".format(_t,_error)
                 _f.write(content)
                 print(_error)
-                args[0].pbar_bottom.reset()
-                QMessageBox.warning(args[0], '出错了...', str(_error))
-
-
-
-
+                _err = _error[-400:] if len(_error) > 401 else _error
+                classname = type(args[0]).__name__
+                if not classname in ['Speech_synthesis','Voice_recognition','Setting']:
+                    try:
+                        args[0].pbar_bottom.reset()
+                    except Exception as e:
+                        _f.write(str(e))
+                        print(str(e))
+                    QMessageBox.warning(args[0], '出错了...', _err)
+                if "KeyError: 'access_token'" in _err:
+                    print('账户信息错误')
 
     return wrapper
 
@@ -99,7 +108,6 @@ def layout_dele2(func):
         before_layout = func(*args)
         func_before = func
 
-
         if before_layout.objectName() == 'grade_1':
             func_historys[1] = func
         elif before_layout.objectName() == 'grade_2':
@@ -111,14 +119,11 @@ def layout_dele2(func):
         elif before_layout.objectName() == 'grade_5':
             func_historys[5] = func
 
-
-
-
     return inner
 
 def layout_dele(func):
     """
-    删除上一个布局的控件，以显示当前布局控件
+    设置上一个布局的控件不可见，以显示当前布局控件
     :param func:
     :return:
     """
@@ -128,18 +133,16 @@ def layout_dele(func):
         @catch_except
         def delete(layouts):
             if layouts:
-                for i in range(layouts.count()):
-                    t = layouts.itemAt(i).__doc__
+                for _i in range(layouts.count()):
+                    t = layouts.itemAt(_i).__doc__
                     # 防止layout中还有layout
                     if t == 'QGridLayout(QWidget)\nQGridLayout()':
-                        delete(layouts.itemAt(i))
-                    elif not layouts.itemAt(i).widget() is None:
-                        layouts.itemAt(i).widget().setVisible(False)
-
+                        delete(layouts.itemAt(_i))
+                    elif not layouts.itemAt(_i).widget() is None:
+                        layouts.itemAt(_i).widget().setVisible(False)
         delete(before_layout)
         func_before = func
         before_layout = func(*args)
-
         # print(before_layout.objectName(),func_before)
         if before_layout.objectName() == 'grade_1':
             func_historys[1] = func
@@ -173,12 +176,15 @@ def random_color(mode='rgb',r=None,g=None,b=None):
         g = random.randint(140,255)
         b = random.randint(140,255)
         color = 'rgb({},{},{})'.format(r, g, b)
+        BGCOLORS.append(color)
 
     elif mode == 'font':
         r = random.randint(0, 100)
         g = random.randint(0,100)
         b = random.randint(0,100)
         color = 'rgb({},{},{})'.format(r,g,b)
+        if color in BGCOLORS:
+            return random_color(mode,r,g,b)
 
     else: raise TypeError("invalid parameter {}".format(mode))
 
@@ -192,16 +198,19 @@ class Ui(QWidget):
     """
     def __init__(self,*args):
         super(Ui, self).__init__()
-        self.__init_ui__()
-        self.__init_var__()
-        self.__init_meau_main__()
+        self.__init_main__()
+        self.__init_ui__() # 其他窗口依赖项
         self.__init_status__()
+        self.__init_meau_main__()
         self.__init_home__()
+
+        self.__init_var__() # 包含时间关联，最后初始化
+
 
     def __init_ui__(self,*args):
         self.resize(640,480)
         self.setWindowTitle('Toolbox')
-        self.setWindowIcon(QIcon('./Ico/toolbox.png'))
+        self.setWindowIcon(QIcon('{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR)))
         self.setMouseTracking(True)
         # self.setWindowOpacity(0.8)
 
@@ -217,6 +226,49 @@ class Ui(QWidget):
         # C = QColorDialog().getColor()
 
 
+    def __init_main__(self):
+        self.APPID = '17621214'
+        self.APIKEY = 'kUaRn85Ljekp2AapOZaSMNIe'
+        self.SECRETKEY = 'SVABkvSEzMGMhRkFqV0gxCO19Aqwo4gK'
+        self.user_info_all_dict = {}
+        path = r'{}/Config/config'.format(ROOTDIR)
+        if os.path.exists(path):
+            with open(path, 'r') as f:
+                data = self.read_info_from_file(f.read())
+                if data:
+                    data = json.loads(data)
+                    if 'APPID' and 'APIKEY' and 'SECRETKEY' in data.keys():
+                        self.user_info_all_dict = data
+                        self.APPID = self.user_info_all_dict.get('APPID')
+                        self.APIKEY = self.user_info_all_dict.get('APIKEY')
+                        self.SECRETKEY = self.user_info_all_dict.get('SECRETKEY')
+            os.remove(path)
+        self.user_info_all_dict['APPID'] = self.APPID
+        self.user_info_all_dict['APIKEY'] = self.APIKEY
+        self.user_info_all_dict['SECRETKEY'] = self.SECRETKEY
+        self.userinfo_change_save()
+
+    def read_info_from_file(self, fb, key=None):
+        if not key: key = 'BNM123456'
+        try:
+            data = decrypt(int(fb), key)
+            return data
+        except Exception as e:
+            return None
+        # APPID = '17621214' #152
+        # APIKEY = 'kUaRn85Ljekp2AapOZaSMNIe'
+        # SECRETKEY = 'SVABkvSEzMGMhRkFqV0gxCO19Aqwo4gK'
+
+
+    @catch_except
+    def userinfo_change_save(self,*args):
+
+        with open(r'Config\config','w') as f:
+            key = 'BNM123456'
+            data = json.dumps(self.user_info_all_dict)
+            data_int,k = encrypt(data,key)
+            f.write(data_int.__str__())
+            # print('保存完成')
 
     def time_show_out(self, *args):
         self.time_now = time.strftime('%Y-%m-%d %a %H:%M:%S', time.localtime())
@@ -248,22 +300,22 @@ class Ui(QWidget):
         self.glayout_top.addLayout(self.glayout_meau,0,0)
         self.meau_main = QMenuBar()
         self.meau_main.setFixedSize(100,30)
-        # self.meau_main.setWindowIcon(QIcon('./Ico/bg_img.png'))
+        # self.meau_main.setWindowIcon(QIcon('{}/Ico/bg_img.png'.format(ROOTDIR)))
         self.glayout_meau.addWidget(self.meau_main,0,0,1,1)
 
-        meau = QAction('设置',self.meau_main)
-        meau.setText('设置')
+        self.set_btn = QAction('设置',self.meau_main)
+        self.set_btn.setText('设置')
         # meau.triggered.connect(self._test_ui)
-        self.meau_main.addAction(meau)
+        self.meau_main.addAction(self.set_btn)
 
 
         # 返回按钮等
         self.btn_top_back = QToolButton()
-        self.btn_top_back.setIcon(QIcon('./Ico/back.png'))
+        self.btn_top_back.setIcon(QIcon('{}/Ico/back.png'.format(ROOTDIR).format(ROOTDIR)))
         self.btn_top_back.setStyleSheet('*{width:22px;height:22px;border:0}')
         self.glayout_meau.addWidget(self.btn_top_back,0,1,1,1)
         self.btn_top_forward = QToolButton()
-        self.btn_top_forward.setIcon(QIcon('./Ico/forward.png'))
+        self.btn_top_forward.setIcon(QIcon('{}/Ico/forward.png'.format(ROOTDIR).format(ROOTDIR)))
         self.btn_top_forward.setStyleSheet('*{width:22px;height:22px;border:0}')
         self.glayout_meau.addWidget(self.btn_top_forward,0,2,1,1)
 
@@ -309,15 +361,6 @@ class Ui(QWidget):
         self.btn_top_back.clicked.connect(self.btn_top_back_clicked)
 
 
-
-
-
-
-
-
-
-
-
     @catch_except
     def btn_top_back_clicked(self,*args):
         """返回按钮实际实现方法"""
@@ -333,10 +376,14 @@ class Ui(QWidget):
             else:
                 self.btn_top_forward.setVisible(False)
 
+        # 底部状态栏清空
+        self.pbar_bottom.reset()
+        self.label_status_left.clear()
+        self.label_status_right.clear()
 
     @catch_except
     def btn_top_forward_clicked(self,*args):
-
+        """实现窗口向前，注意子窗口调用函数中应该不包含sender()初始化，否则将导致窗口向前失效"""
         # global func_historys
         # print('forward',func_before)
         if func_before:
@@ -387,8 +434,6 @@ class Ui(QWidget):
         主页布局
         :return:
         """
-
-
         self.glayout_home = QGridLayout()
         self.glayout_home.setObjectName('grade_1')
         self.glayout_main.addLayout(self.glayout_home,2,0,Qt.AlignCenter)
@@ -399,29 +444,29 @@ class Ui(QWidget):
         self.home_btns = []
 
         self.btn_home_voice = QPushButton()
-        self.home_btns.append([self.btn_home_voice,0,0,1,1,'语音技术','btn_home_voice',80,60,'./Ico/voice.png'])
+        self.home_btns.append([self.btn_home_voice,0,0,1,1,'语音技术','btn_home_voice',80,60,'{}/Ico/voice.png'.format(ROOTDIR)])
         self.btn_home_face = QPushButton()
-        self.home_btns.append([self.btn_home_face,0,1,1,1,'人脸识别','btn_home_face',80,60,'./Ico/face.png'])
+        self.home_btns.append([self.btn_home_face,0,1,1,1,'人脸识别','btn_home_face',80,60,'{}/Ico/face.png'.format(ROOTDIR)])
         self.btn_home_bodyays = QPushButton()
-        self.home_btns.append([self.btn_home_bodyays,0,2,1,1,'人体分析','btn_home_bodyays',80,60,'./Ico/bodyays.png'])
+        self.home_btns.append([self.btn_home_bodyays,0,2,1,1,'人体分析','btn_home_bodyays',80,60,'{}/Ico/bodyays.png'.format(ROOTDIR)])
         self.btn_home_ocr = QPushButton()
-        self.home_btns.append([self.btn_home_ocr,0,3,1,1,'文字识别','btn_home_ocr',80,60,'./Ico/ocr.png'])
+        self.home_btns.append([self.btn_home_ocr,0,3,1,1,'文字识别','btn_home_ocr',80,60,'{}/Ico/ocr.png'.format(ROOTDIR)])
         self.btn_home_imgrec = QPushButton()
-        self.home_btns.append([self.btn_home_imgrec,1,0,1,1,'图像识别','btn_home_imgrec',80,60,'./Ico/imgrec.png'])
+        self.home_btns.append([self.btn_home_imgrec,1,0,1,1,'图像识别','btn_home_imgrec',80,60,'{}/Ico/imgrec.png'.format(ROOTDIR)])
         self.btn_home_imgsearch = QPushButton()
-        self.home_btns.append([self.btn_home_imgsearch,1,1,1,1,'图像搜索','btn_home_imgsearch',80,60,'./Ico/imgsearch.png'])
+        self.home_btns.append([self.btn_home_imgsearch,1,1,1,1,'图像搜索','btn_home_imgsearch',80,60,'{}/Ico/imgsearch.png'.format(ROOTDIR)])
         self.btn_home_imgup = QPushButton()
-        self.home_btns.append([self.btn_home_imgup,1,2,1,1,'图像效果增强','btn_home_imgup',80,60,'./Ico/imgup.png'])
+        self.home_btns.append([self.btn_home_imgup,1,2,1,1,'图像效果增强','btn_home_imgup',80,60,'{}/Ico/imgup.png'.format(ROOTDIR)])
         self.btn_home_nlp = QPushButton()
-        self.home_btns.append([self.btn_home_nlp,1,3,1,1,'自然语言处理','btn_home_nlp',80,60,'./Ico/nlp.png'])
+        self.home_btns.append([self.btn_home_nlp,1,3,1,1,'自然语言处理','btn_home_nlp',80,60,'{}/Ico/nlp.png'.format(ROOTDIR)])
         self.btn_home_kgraph = QPushButton()
-        self.home_btns.append([self.btn_home_kgraph,2,0,1,1,'知识图谱','btn_home_kgraph',80,60,'./Ico/kgraph.png'])
+        self.home_btns.append([self.btn_home_kgraph,2,0,1,1,'知识图谱','btn_home_kgraph',80,60,'{}/Ico/kgraph.png'.format(ROOTDIR)])
         self.btn_home_audit = QPushButton()
-        self.home_btns.append([self.btn_home_audit,2,1,1,1,'内容审核','btn_home_audit',80,60,'./Ico/audit.png'])
+        self.home_btns.append([self.btn_home_audit,2,1,1,1,'内容审核','btn_home_audit',80,60,'{}/Ico/audit.png'.format(ROOTDIR)])
         self.btn_home_music = QPushButton()
-        self.home_btns.append([self.btn_home_music,2,2,1,1,'音乐','btn_home_music',80,60,'./Ico/music.png'])
+        self.home_btns.append([self.btn_home_music,2,2,1,1,'音乐','btn_home_music',80,60,'{}/Ico/music.png'.format(ROOTDIR)])
         self.btn_home_video = QPushButton()
-        self.home_btns.append([self.btn_home_video,2,3,1,1,'视频','btn_home_video',80,60,'./Ico/video.png'])
+        self.home_btns.append([self.btn_home_video,2,3,1,1,'视频','btn_home_video',80,60,'{}/Ico/video.png'.format(ROOTDIR)])
 
 
         # 为btn设置参数
@@ -475,35 +520,7 @@ class Ui(QWidget):
         return self.glayout_home
 
 
-    @layout_dele
-    def _tool_voice(self,*args):
-        """
-        语音合成，识别模块
-        :return:
-        """
-        # 初始化模块总布局
-        self.glayout_voice = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_voice,2,0)
 
-        self.txedit_voice = QTextEdit()
-        self.glayout_voice.addWidget(self.txedit_voice, 0,0,1,1)
-
-        return self.glayout_voice
-
-    @layout_dele
-    def _test_ui(self,*args):
-        self.glayout_test = QGridLayout(self)
-        self.glayout_main.addLayout(self.glayout_test,1,0)
-
-        self.pbar = QProgressBar()
-        self.pbar.setAlignment(Qt.AlignCenter)
-        self.pbar.setFixedSize(100,10)
-        self.glayout_test.addWidget(self.pbar,0,0,1,1)
-        self.btn_ok = QPushButton()
-        self.glayout_test.addWidget(self.btn_ok,1,1,1,1)
-        self.btn_ok.clicked.connect(self._tool_voice)
-
-        return self.glayout_test
 
     def bottom_pbar_changed(self,*args):
         pass
@@ -512,9 +529,75 @@ class Ui(QWidget):
         self.Outter_Run.value = list(range(101))
         self.Outter_Run.start()
 
+    def dict_get_value(self, dicts, value='',grade=-1):
+        """遍历字典并返回所有数据"""
+        grade += 1
+        if isinstance(dicts, dict):
+            for k, v in dicts.items():
+                if isinstance(v, dict):
+                    value += '{}{}:\n'.format('  ' * grade, k)
+                    value = self.dict_get_value(v, value, grade)
+                elif isinstance(v, tuple) or isinstance(v, list):
+                    value += "{}{}:\n".format('  ' * grade, k)
+                    value = self.list_get_value(v, value, grade)
+                else:
+                    value += '{}{}:{}\n'.format('  ' * grade, k, v)
+        elif isinstance(dicts, tuple) or isinstance(dicts, list):
+            value = self.list_get_value(dicts, value, grade)
+        else:
+            value += '{}{}\n'.format('  ' * grade, dicts)
+        return value
 
+    def list_get_value(self,lists, value='', grade=-1):
+        """遍历列表并返回所有数据"""
+        if isinstance(lists, tuple) or isinstance(lists, list):
+            for l in lists:
+                if isinstance(lists, tuple) or isinstance(lists, list):
+                    value = self.list_get_value(l, value, grade)
+                elif isinstance(l, dict):
+                    value = self.dict_get_value(l, value, grade)
+                else:
+                    if str(l).replace('\s','').replace('\n', ''):
+                        value += "{}{}:\n".format('  ' * grade, l)
+                    else:value += "{}{}\n".format('  ' * grade, l)
+        elif isinstance(lists, dict):
+            value = self.dict_get_value(lists, value, grade)
 
+        else:
+            if str(lists).replace('\n', '').replace('\t', ''):
+                value += "{}{}:\n".format('  ' * grade, lists)
+            else:
+                value += "{}{}\n".format('  ' * grade, lists)
 
+        return value
+
+    def dict_get_value_by_key(self,dicts, key, value=''):
+        """遍历字典并返回指定键值的所有数据"""
+
+        def list_get_dict(lists, _key, _value=''):
+            """遍历列表并返回所有数据"""
+            if isinstance(lists, tuple) or isinstance(lists, list):
+                for l in lists:
+                    if isinstance(lists, tuple) or isinstance(lists, list):
+                        _value = list_get_dict(l, _key, _value)
+                    elif isinstance(l, dict):
+                        _value = self.dict_get_value_by_key(l, _key, _value)
+            elif isinstance(lists, dict):
+                _value = self.dict_get_value_by_key(lists, _key, _value)
+            return _value
+
+        if isinstance(dicts, dict):
+            if key in dicts.keys(): value += dicts.get(key) + '\n'
+            for k, v in dicts.items():
+                if isinstance(v, dict):
+                    value = self.dict_get_value_by_key(v, key, value)
+                elif isinstance(v, tuple) or isinstance(v, list):
+                    value = list_get_dict(v, key, value)
+
+        elif isinstance(dicts, tuple) or isinstance(dicts, list):
+            value = list_get_dict(dicts, key, value)
+
+        return value
 
     def resizeEvent_ui(self, a0: QtGui.QResizeEvent) -> None:
         value = int(self.width()*0.2 /6)
@@ -526,7 +609,21 @@ class Ui(QWidget):
 
         # 背景
         painter = QPainter(self)
-        painter.drawPixmap(self.rect(), QPixmap('./Ico/bg_img.png'))
+        painter.drawPixmap(self.rect(), QPixmap('{}/Ico/bg_img.png'.format(ROOTDIR)))
+
+
+
+
+# class QTextEdit(QTextEdit):
+#     def __init__(self):
+#         super(QTextEdit, self).__init__()
+#         font = QFont()
+#         font.setFamily('YaHei')
+#         font.setPointSize(12)
+#         self.setFont(font)
+#         self.setAlignment(Qt.AlignLeft)
+#
+#
 
 class Outter_Run(QThread):
     sign = pyqtSignal(object)
@@ -540,9 +637,7 @@ class Outter_Run(QThread):
             time.sleep(0.2)
             self.sign.emit(value)
 
-
 if __name__ == "__main__":
-
 
     app = QApplication(sys.argv)
     UI = Ui()

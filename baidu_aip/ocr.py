@@ -95,8 +95,20 @@ class AipOcr(AipBase):
 
     __customUrl = 'https://aip.baidubce.com/rest/2.0/solution/v1/iocr/recognise'
 
+
+    def basicGeneral(self, options=None):
+        """
+            通用文字识别
+        """
+        options = options or {}
+
+        data = {}
+
+        data.update(options)
+
+        return self._request(self.__generalBasicUrl, data)
     
-    def basicGeneral(self, image, options=None):
+    def basicGeneralByImage(self, image, options=None):
         """
             通用文字识别
         """
@@ -122,27 +134,27 @@ class AipOcr(AipBase):
 
         return self._request(self.__generalBasicUrl, data)
     
-    def basicAccurate(self, image, options=None):
+    def basicAccurate(self,  options=None):
         """
             通用文字识别（高精度版）
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
         return self._request(self.__accurateBasicUrl, data)
     
-    def general(self, image, options=None):
+    def general(self, options=None):
         """
             通用文字识别（含位置信息版）
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -161,27 +173,27 @@ class AipOcr(AipBase):
 
         return self._request(self.__generalUrl, data)
     
-    def accurate(self, image, options=None):
+    def accurate(self, options=None):
         """
             通用文字识别（含位置高精度版）
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
         return self._request(self.__accurateUrl, data)
     
-    def enhancedGeneral(self, image, options=None):
+    def enhancedGeneral(self, options=None):
         """
             通用文字识别（含生僻字版）
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -200,14 +212,14 @@ class AipOcr(AipBase):
 
         return self._request(self.__generalEnhancedUrl, data)
     
-    def webImage(self, image, options=None):
+    def webImage(self, options=None):
         """
             网络图片文字识别
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -551,6 +563,34 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__qrcodeUrl, data)
+
+    __sealUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/seal'
+    def seal(self, image, options=None):
+        """
+            印章检测
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__sealUrl, data)
+
+    __formulaUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/formula'
+    def formula(self, image, options=None):
+        """
+            公式识别
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__formulaUrl, data)
     
     def numbers(self, image, options=None):
         """

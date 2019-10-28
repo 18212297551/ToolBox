@@ -65,4 +65,59 @@ class AipImageProcess(AipBase):
         data.update(options)
 
         return self._request(self.__contrastEnhanceUrl, data)
-    
+
+    __colourizeUrl = 'https://aip.baidubce.com/rest/2.0/image-process/v1/colourize'
+    def colourize(self, image, options=None):
+        """
+            黑白图像上色
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__colourizeUrl, data)
+
+    __stretch_restoreUrl = 'https://aip.baidubce.com/rest/2.0/image-process/v1/stretch_restore'
+    def stretch_restore(self, image, options=None):
+        """
+            图像拉伸恢复
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__stretch_restoreUrl, data)
+
+    __style_transUrl = 'https://aip.baidubce.com/rest/2.0/image-process/v1/style_trans'
+    def style_trans(self, image, options=None):
+        """
+            图像风格转换
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__contrastEnhanceUrl, data)
+
+    __inpaintingUrl = 'https://aip.baidubce.com/rest/2.0/image-process/v1/inpainting'
+    def inpainting(self, image, options=None):
+        """
+            图像修复
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__inpaintingUrl, data)

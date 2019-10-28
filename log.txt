@@ -1549,3 +1549,2586 @@ Traceback (most recent call last):
     f2.write(result)
 TypeError: a bytes-like object is required, not 'dict'
 
+
+[2019-10-25 19:26:39]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 141, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 225, in body_child_reload
+    widget[0].setWorldWrap(True)
+AttributeError: 'QLabel' object has no attribute 'setWorldWrap'
+
+
+[2019-10-25 20:02:25]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 373, in body_child_result_deal
+    for person in person_info:
+TypeError: 'NoneType' object is not iterable
+
+
+[2019-10-25 20:03:36]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 373, in body_child_result_deal
+    if person_info:
+TypeError: 'NoneType' object is not iterable
+
+
+[2019-10-25 20:06:50]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 389, in body_child_result_deal
+    results = datas.get('result')
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 517, in dict_get_value
+    for k, v in dicts.items():
+AttributeError: 'list' object has no attribute 'items'
+
+
+[2019-10-25 20:50:10]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 8, in __init__
+    self.__init_imrec_child_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 70, in __init_imrec_child_ui
+    self.glayout_main.addLayout(self.glayout_imrec_child)
+TypeError: arguments did not match any overloaded call:
+  addLayout(self, QLayout, int, int, alignment: Union[Qt.Alignment, Qt.AlignmentFlag] = Qt.Alignment()): not enough arguments
+  addLayout(self, QLayout, int, int, int, int, alignment: Union[Qt.Alignment, Qt.AlignmentFlag] = Qt.Alignment()): not enough arguments
+
+
+[2019-10-25 21:26:32]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 141, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 133, in imrec_child_reload
+    for index, i in enumerate(self.face_child_params):
+TypeError: 'NoneType' object is not iterable
+
+
+[2019-10-25 21:27:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 141, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 152, in imrec_child_reload
+    widget[1].setVisible(True)
+IndexError: list index out of range
+
+
+[2019-10-25 22:04:38]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 192, in btn_imrec_child_ok_clicked
+    result = self.imrecApi.advancedGeneral(image,option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imageclassify.py", line 60, in advancedGeneral
+    data['image'] = base64.b64encode(image).decode()
+  File "D:\application\python37\lib\base64.py", line 58, in b64encode
+    encoded = binascii.b2a_base64(s, newline=False)
+TypeError: a bytes-like object is required, not 'str'
+
+
+[2019-10-25 22:08:31]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 192, in btn_imrec_child_ok_clicked
+    baike_num = str(self.spb_imrec_child_baike_num.value())
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imageclassify.py", line 64, in advancedGeneral
+    return self._request(self.__advancedGeneralUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 22:10:20]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 192, in btn_imrec_child_ok_clicked
+    baike_num = str(self.spb_imrec_child_baike_num.value())
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imageclassify.py", line 64, in advancedGeneral
+    return self._request(self.__advancedGeneralUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 22:17:00]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 195, in btn_imrec_child_ok_clicked
+    result = self.imrecApi.advancedGeneral(image,option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imageclassify.py", line 64, in advancedGeneral
+    return self._request(self.__advancedGeneralUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 22:22:56]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 194, in btn_imrec_child_ok_clicked
+    result = self.imrecApi.objectDetect(image,option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imageclassify.py", line 182, in objectDetect
+    return self._request(self.__objectDetectUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-25 22:37:20]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 141, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 154, in imrec_child_reload
+    widgets = self.imrec_child_widgets[i]
+IndexError: list index out of range
+
+
+[2019-10-26 00:46:36]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 355, in btn_imrec_child_ok_clicked
+    custom_lib = self.cmbox_imrec_child_custom_lib.text()
+AttributeError: 'QComboBox' object has no attribute 'text'
+
+
+[2019-10-26 09:25:53]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 307, in btn_imrec_child_ok_clicked
+    result = self.imrecApi.dishsearch(option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imageclassify.py", line 270, in dishsearch
+    data['image'] = base64.b64encode(image).decode()
+  File "D:\application\python37\lib\base64.py", line 58, in b64encode
+    encoded = binascii.b2a_base64(s, newline=False)
+TypeError: a bytes-like object is required, not 'dict'
+
+
+[2019-10-26 10:29:47]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 306, in btn_imrec_child_ok_clicked
+    result = {{},}
+TypeError: unhashable type: 'dict'
+
+
+[2019-10-26 10:31:13]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 400, in btn_imrec_child_ok_clicked
+    self.imrec_child_result_deal(mode,result, others)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 421, in imrec_child_result_deal
+    content = self.dict_get_value(datas, content)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 517, in dict_get_value
+    for k, v in dicts.items():
+AttributeError: 'list' object has no attribute 'items'
+
+
+[2019-10-26 10:48:02]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 287, in btn_imrec_child_ok_clicked
+    briefs = re.findall('(.*?),',brief)
+  File "D:\application\python37\lib\re.py", line 223, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
+
+
+[2019-10-26 12:44:19]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 7, in __init__
+    self.__ocr_home_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 19, in __ocr_home_ui
+    self.glayout_main.addLayout(self.glayout_ocr_home,2,0,Qt.AlignCenter)
+AttributeError: 'Main' object has no attribute 'glayout_main'
+
+
+[2019-10-26 12:50:05]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 133, in inner
+    if before_layout.objectName() == 'grade_1':
+AttributeError: 'NoneType' object has no attribute 'objectName'
+
+
+[2019-10-26 13:00:03]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 131, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 95, in ocr_child_reload
+    return self.glayout_ocr_child
+AttributeError: 'Main' object has no attribute 'glayout_ocr_child'
+
+
+[2019-10-26 14:00:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 131, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 152, in ocr_child_reload
+    widgets = self.ocr_child_widgets[i]
+AttributeError: 'Main' object has no attribute 'ocr_child_widgets'
+
+
+[2019-10-26 15:24:24]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 131, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 164, in ocr_child_reload
+    self.ocr_child_params.insert(0, 0)
+AttributeError: 'NoneType' object has no attribute 'insert'
+
+
+[2019-10-26 15:24:41]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 316, in btn_top_back_clicked
+    index = func_historys.index(func_before)
+ValueError: <function Ocr.ocr_child_reload at 0x000002935C61AA60> is not in list
+
+
+[2019-10-26 15:39:07]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 248, in btn_ocr_child_ok_clicked
+    option = {'image':base64.b64encode(image).decode()}
+  File "D:\application\python37\lib\base64.py", line 58, in b64encode
+    encoded = binascii.b2a_base64(s, newline=False)
+TypeError: a bytes-like object is required, not 'NoneType'
+
+
+[2019-10-26 16:15:43]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 131, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 171, in ocr_child_reload
+    widgets = self.ocr_child_widgets[i]
+IndexError: list index out of range
+
+
+[2019-10-26 17:49:23]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 11, in __init__
+    self.__init_ocr_child_invoice_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 385, in __init_ocr_child_invoice_ui
+    for btn in self.ocr_invoice_home_btns:
+AttributeError: 'Main' object has no attribute 'ocr_invoice_home_btns'
+
+
+[2019-10-26 17:50:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 131, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 410, in ocr_invoice_home_reload
+    for btn in self.ocr_invoice_btns:
+AttributeError: 'Main' object has no attribute 'ocr_invoice_btns'
+
+
+[2019-10-26 18:27:12]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 133, in inner
+    if before_layout.objectName() == 'grade_1':
+AttributeError: 'NoneType' object has no attribute 'objectName'
+
+
+[2019-10-26 18:32:46]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 316, in btn_top_back_clicked
+    index = func_historys.index(func_before)
+ValueError: <function Ocr.ocr_invoice_child_reload at 0x000001560B30E378> is not in list
+
+
+[2019-10-26 18:32:50]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 68, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 316, in btn_top_back_clicked
+    index = func_historys.index(func_before)
+ValueError: <function Ocr.ocr_invoice_child_reload at 0x000001560B30E378> is not in list
+
+
+[2019-10-26 20:14:04]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 245, in btn_ocr_child_ok_clicked
+    result = self.Apiocr.basicGeneral(option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\ocr.py", line 109, in basicGeneral
+    return self._request(self.__generalBasicUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-26 20:21:48]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 482, in btn_face_child_ok_clicked
+    result = self.faceApi.detect(image,image_type,options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-26 20:23:49]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 482, in btn_face_child_ok_clicked
+    result = self.faceApi.detect(image,image_type,options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-26 20:27:26]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 482, in btn_face_child_ok_clicked
+    result = self.faceApi.detect(image,image_type,options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-26 21:16:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 7, in __init__
+    self.__ocr_home_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 46, in __ocr_home_ui
+    self.ocr_home_btns = [self.btn_ocr_home_1,self.btn_ocr_home_2,self.btn_ocr_home_3,self.btn_ocr_home_4,self.btn_ocr_home_5,self.btn_ocr_home_6,self.btn_ocr_home_7,self.btn_ocr_home_8,self.btn_ocr_home_9,self.btn_ocr_home_10,self.btn_ocr_home_11,self.btn_ocr_home_12,self.btn_ocr_home_13,self.btn_ocr_home_14,self.btn_ocr_home_15,self.btn_ocr_home_16,self.btn_ocr_home_17,self.btn_ocr_home_18]
+AttributeError: 'Main' object has no attribute 'btn_ocr_home_16'
+
+
+[2019-10-26 22:30:52]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 734, in ocr_other_home_reload
+    for btn in self.ocr_other_home_btns:
+AttributeError: 'Main' object has no attribute 'ocr_other_home_btns'
+
+
+[2019-10-26 22:38:06]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 988, in btn_ocr_other_ok_clicked
+    detect_language = self.cmbox_ocr_other_lan_type.currentText()
+AttributeError: 'Main' object has no attribute 'cmbox_ocr_other_lan_type'
+
+
+[2019-10-26 22:39:47]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 988, in btn_ocr_other_ok_clicked
+    detect_language = self.label_ocr_other_detect_lan.currentText()
+AttributeError: 'QLabel' object has no attribute 'currentText'
+
+
+[2019-10-26 22:44:40]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 872, in ocr_other_child_reload
+    widgets = self.ocr_other_widgets[i]
+IndexError: list index out of range
+
+
+[2019-10-26 22:47:01]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 872, in ocr_other_child_reload
+    widgets = self.ocr_other_widgets[i]
+IndexError: list index out of range
+
+
+[2019-10-26 22:47:57]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 921, in btn_ocr_other_ok_clicked
+    request_id = self.lnedit_ocr_other_request_id.currentText()
+AttributeError: 'QLineEdit' object has no attribute 'currentText'
+
+
+[2019-10-27 00:06:47]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 6, in __init__
+    self.__imsearch_child_ui()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 88, in __imsearch_child_ui
+    self.cmbox_imsearch_child_action.addItems()
+TypeError: addItems(self, Iterable[str]): not enough arguments
+
+
+[2019-10-27 00:07:13]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 65, in imsearch_home_reload
+    for btn in self.imsearch_home_btns:
+AttributeError: 'Main' object has no attribute 'imsearch_home_btns'
+
+
+[2019-10-27 00:08:50]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 313, in btn_top_back_clicked
+    index = func_historys.index(func_before)
+ValueError: <function Imsearch.imsearch_home_reload at 0x000002461ACAD6A8> is not in list
+
+
+[2019-10-27 00:10:51]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 313, in btn_top_back_clicked
+    index = func_historys.index(func_before)
+ValueError: <function Imsearch.imsearch_home_reload at 0x000001E1FDEBE6A8> is not in list
+
+
+[2019-10-27 11:39:24]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 156, in imsearch_child_reload
+    for j, widget in enumerate(widgets):
+TypeError: 'QLabel' object is not iterable
+
+
+[2019-10-27 11:40:27]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 155, in imsearch_child_reload
+    widgets = self.imsearch_child_widgets[i]
+IndexError: list index out of range
+
+
+[2019-10-27 12:14:42]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 236, in body_child_reload
+    widget.setClearButtonEnabled(True)
+AttributeError: 'list' object has no attribute 'setClearButtonEnabled'
+
+
+[2019-10-27 12:16:04]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 437, in face_child_reload
+    widget.setClearButtonEnabled(True)
+AttributeError: 'list' object has no attribute 'setClearButtonEnabled'
+
+
+[2019-10-27 12:35:03]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 87, in init_voice_ui
+    self.txedit_voice_input_text.returnPressed.connect(self.btn_voice_ok_clicked)
+AttributeError: 'QTextEdit' object has no attribute 'returnPressed'
+
+
+[2019-10-27 12:35:31]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 72, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 137, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 269, in voice_reload
+    widget.setVisible(True)
+AttributeError: 'Main' object has no attribute 'voice_widgets'
+
+
+[2019-10-27 15:35:28]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 75, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 90, in init_voice_ui
+    self.speech_syn = Speech_synthesis(self,self.ApiVoice)
+TypeError: __init__() takes 2 positional arguments but 3 were given
+
+
+[2019-10-27 15:52:46]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 75, in wrapper
+    return func(*args,**kwargs)
+  File "E:/Programme/GIT/Python/Hotchpotch/ToolBox/Toolbox.py", line 78, in userinfo_change_save
+    with open('Config\config','r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'Config\\config'
+
+
+[2019-10-27 15:56:30]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 194, in __init__
+    self.__init_info__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 205, in __init_info__
+    data = decrypt(int(f.read().__str__()),'BNM123456')
+ValueError: invalid literal for int() with base 10: "(20837974904564816075233507148000606792648747646740942860439050905430523576375153658986228473765228098404812327049747979976906571, 'BNM123456')"
+
+
+[2019-10-27 15:57:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 194, in __init__
+    self.__init_status__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 368, in __init_status__
+    self.glayout_main.addLayout(self.glayout_status,3,0,Qt.AlignBottom)
+AttributeError: 'Main' object has no attribute 'glayout_main'
+
+
+[2019-10-27 15:58:39]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 196, in __init__
+    self.__init_status__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 370, in __init_status__
+    self.glayout_main.addLayout(self.glayout_status,3,0,Qt.AlignBottom)
+AttributeError: 'Main' object has no attribute 'glayout_main'
+
+
+[2019-10-27 16:00:22]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 196, in __init__
+    self.__init_status__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 370, in __init_status__
+    self.glayout_main.addLayout(self.glayout_status,3,0,Qt.AlignBottom)
+AttributeError: 'Main' object has no attribute 'glayout_main'
+
+
+[2019-10-27 16:03:39]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 199, in __init__
+    self.__init_info__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 208, in __init_info__
+    data = decrypt(int(f.read().__str__()),'BNM123456')
+ValueError: invalid literal for int() with base 10: "(20837974904564816075233507148000606792648747646740942860439050905430523576375153658986228473765228098404812327049747979976906571, 'BNM123456')"
+
+
+[2019-10-27 16:05:11]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 199, in __init__
+    self.__init_info__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 208, in __init_info__
+    data = decrypt(int(f.read()),'BNM123456')
+ValueError: invalid literal for int() with base 10: "(20837974904564816075233507148000606792648747646740942860439050905430523576375153658986228473765228098404812327049747979976906571, 'BNM123456')"
+
+
+[2019-10-27 16:09:27]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 76, in wrapper
+    except:
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 510, in run
+    Client = AipSpeech(APPID,APIKEY,SECRETKEY)
+NameError: name 'APPID' is not defined
+
+
+[2019-10-27 16:10:49]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 75, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 532, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+'Speech_synthesis' object has no attribute 'pbar_bottom'
+[2019-10-27 16:16:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 532, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+'Speech_synthesis' object has no attribute 'pbar_bottom'
+[2019-10-27 16:35:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 533, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+'Speech_synthesis' object has no attribute 'pbar_bottom'
+[2019-10-27 16:37:17]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 534, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+'Speech_synthesis' object has no attribute 'pbar_bottom'
+[2019-10-27 16:39:05]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 534, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+'Speech_synthesis' object has no attribute 'pbar_bottom'
+[2019-10-27 16:39:49]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 534, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 16:40:23]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 203, in __init__
+    print(self.__name__)
+AttributeError: 'Main' object has no attribute '__name__'
+
+
+[2019-10-27 16:45:57]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 534, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 16:48:22]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 534, in run
+    result = self.ApiVoice.synthesis(voice_text,options=params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 536, in run
+    print(sr(e))
+NameError: name 'sr' is not defined
+
+
+[2019-10-27 16:48:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 539, in run
+    if isinstance(result,dict):
+UnboundLocalError: local variable 'result' referenced before assignment
+
+
+[2019-10-27 16:49:42]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 545, in run
+    f2.write(result)
+TypeError: a bytes-like object is required, not 'NoneType'
+
+
+[2019-10-27 16:54:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 560, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 16:54:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 560, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 534, in run
+    result = self.call_api(voice_text,params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 91, in wrapper
+    QMessageBox.warning(args[0], '出错了...', _err)
+TypeError: warning(QWidget, str, str, buttons: Union[QMessageBox.StandardButtons, QMessageBox.StandardButton] = QMessageBox.Ok, defaultButton: QMessageBox.StandardButton = QMessageBox.NoButton): argument 1 has unexpected type 'Speech_synthesis'
+
+
+[2019-10-27 16:55:54]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 560, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 16:56:00]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 560, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:00:01]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 628, in run
+    text = self.call_api(_f.read(),format=asr_format)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 78, in asr
+    return self._request(self.__asrUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:00:16]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 628, in run
+    text = self.call_api(_f.read(),format=asr_format)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 78, in asr
+    return self._request(self.__asrUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:01:07]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+TypeError: call_api() got an unexpected keyword argument 'format'
+
+
+[2019-10-27 17:01:07]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 631, in run
+    err_no = text['err_no'] if 'err_no' in text.keys() else text['error_code']
+AttributeError: 'NoneType' object has no attribute 'keys'
+
+
+[2019-10-27 17:02:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 656, in call_api
+    text = self.ApiVoice.asr(content, format=asr_format)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 78, in asr
+    return self._request(self.__asrUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:02:08]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 631, in run
+    err_no = text['err_no'] if 'err_no' in text.keys() else text['error_code']
+AttributeError: 'NoneType' object has no attribute 'keys'
+
+
+[2019-10-27 17:04:41]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 560, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:04:59]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 626, in run
+    with open(file,'rb') as _f:
+OSError: [Errno 22] Invalid argument: '12E:/Programme/GIT/Python/Hotchpotch/ToolBox/Record/Voice/12.wav'
+
+
+[2019-10-27 17:08:04]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 656, in call_api
+    @catch_except
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 78, in asr
+    return self._request(self.__asrUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:08:04]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 631, in run
+    num += t / 2
+AttributeError: 'NoneType' object has no attribute 'keys'
+
+
+[2019-10-27 17:13:33]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:13:45]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 659, in call_api
+    text = self.ApiVoice.asr(content, format=asr_format)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 78, in asr
+    return self._request(self.__asrUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:17:27]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 658, in call_api
+    text = self.ApiVoice.asr(content, format=asr_format)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 78, in asr
+    return self._request(self.__asrUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 17:17:56]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 718, in face_child_result_deal
+    faces = datas['face_list']
+TypeError: 'NoneType' object is not subscriptable
+
+
+[2019-10-27 17:29:35]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 718, in face_child_result_deal
+    faces = datas.get('face_list')
+AttributeError: 'NoneType' object has no attribute 'get'
+
+
+[2019-10-27 17:37:33]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 485, in btn_face_child_ok_clicked
+    result = self.ApiFace.detect(image, image_type, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\face.py", line 70, in detect
+    'Content-Type': 'application/json',
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-27 17:53:46]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 147, in inner
+    before_layout = func(*args)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 209, in ocr_child_reload
+    if widget.__doc__.startswith('QLabel'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+
+
+[2019-10-27 18:05:51]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 560, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:08:54]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:09:43]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 214, in __init_info__
+    data = decrypt(int(f.read()),'BNM123456')
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:09:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 6, in __init__
+    self.ApiImsearch = AipImageSearch(self.APPID,self.APIKEY,self.SECRETKEY)
+AttributeError: 'Main' object has no attribute 'APPID'
+
+
+[2019-10-27 18:15:34]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 200, in __init__
+    self.__init_info__() # 不受其他参数限制，其他窗口依赖项，应该首先初始化
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 213, in __init_info__
+    data = self.read_info_from_file(f.read())
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 221, in read_info_from_file
+    data = decrypt(int(fb), key)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:15:56]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 222, in read_info_from_file
+    data = decrypt(int(fb), key)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:16:00]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 200, in __init__
+    self.__init_info__() # 不受其他参数限制，其他窗口依赖项，应该首先初始化
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 214, in __init_info__
+    self.user_info_all_dict = json.loads(data) or {}
+  File "D:\application\python37\lib\json\__init__.py", line 341, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not NoneType
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:16:16]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 222, in read_info_from_file
+    data = decrypt(int(fb), key)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:16:32]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 5, in __init__
+    super(Imsearch, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 200, in __init__
+    self.__init_info__() # 不受其他参数限制，其他窗口依赖项，应该首先初始化
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 214, in __init_info__
+    self.user_info_all_dict = json.loads(data) or {}
+  File "D:\application\python37\lib\json\__init__.py", line 341, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not NoneType
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:19:13]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 222, in read_info_from_file
+    data = decrypt(int(fb), key)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:19:48]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 222, in read_info_from_file
+    data = decrypt(int(fb), key)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+'Main' object has no attribute 'pbar_bottom'
+[2019-10-27 18:28:14]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 6, in __init__
+    self.ApiImsearch = AipImageSearch(self.APPID,self.APIKEY,self.SECRETKEY)
+AttributeError: 'Main' object has no attribute 'APPID'
+
+
+[2019-10-27 18:32:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\face_.py", line 12, in __init__
+    super(Face,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\bodyays.py", line 7, in __init__
+    super(Body, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imrec.py", line 6, in __init__
+    super(Imrec, self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\t_ocr.py", line 6, in __init__
+    super(Ocr,self).__init__()
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 6, in __init__
+    self.ApiImsearch = AipImageSearch(self.APPID,self.APIKEY,self.SECRETKEY)
+AttributeError: 'Main' object has no attribute 'APPID'
+
+
+[2019-10-27 18:32:13]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:/Programme/GIT/Python/Hotchpotch/ToolBox/Toolbox.py", line 65, in read_info_from_file
+    data = decrypt(int(fb), key)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\encrypt.py", line 44, in decrypt
+    return decrypted_bytes.decode()
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb2 in position 1: invalid start byte
+
+
+[2019-10-27 18:35:43]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:37:36]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:37:36]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 535, in run
+    result = self.call_api(voice_text,params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 93, in wrapper
+    QMessageBox.warning(UI,'警告','账户信息有误，请检查！')
+NameError: name 'UI' is not defined
+
+
+[2019-10-27 18:40:10]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:40:10]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 535, in run
+    result = self.call_api(voice_text,params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 93, in wrapper
+    QMessageBox.warning(QMessageBox,'警告','账户信息有误，请检查！')
+TypeError: warning(QWidget, str, str, buttons: Union[QMessageBox.StandardButtons, QMessageBox.StandardButton] = QMessageBox.Ok, defaultButton: QMessageBox.StandardButton = QMessageBox.NoButton): argument 1 has unexpected type 'sip.wrappertype'
+
+
+[2019-10-27 18:40:55]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:40:55]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 535, in run
+    result = self.call_api(voice_text,params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 93, in wrapper
+    QMessageBox.warning(args[0],'警告','账户信息有误，请检查！')
+TypeError: warning(QWidget, str, str, buttons: Union[QMessageBox.StandardButtons, QMessageBox.StandardButton] = QMessageBox.Ok, defaultButton: QMessageBox.StandardButton = QMessageBox.NoButton): argument 1 has unexpected type 'Speech_synthesis'
+
+
+[2019-10-27 18:42:29]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:50:29]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 75, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:50:29]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 75, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 75, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 535, in run
+    result = self.call_api(voice_text,params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 93, in wrapper
+    QMessageBox.warning(PUBLICUI, '出错了...', '账户信息错误')
+TypeError: warning(QWidget, str, str, buttons: Union[QMessageBox.StandardButtons, QMessageBox.StandardButton] = QMessageBox.Ok, defaultButton: QMessageBox.StandardButton = QMessageBox.NoButton): argument 1 has unexpected type 'type'
+
+
+[2019-10-27 18:53:49]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:53:49]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 535, in run
+    result = self.call_api(voice_text,params)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 92, in wrapper
+    QMessageBox.warning(PUBLICUI, '出错了...', '账户信息错误')
+NameError: name 'PUBLICUI' is not defined
+
+
+[2019-10-27 18:54:13]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:55:01]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:55:29]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:56:09]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 18:57:02]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 561, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 19:00:05]
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\voice.py", line 562, in call_api
+    result = self.ApiVoice.synthesis(text, options=option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\speech.py", line 92, in synthesis
+    result = self._request(self.__ttsUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 90, in _request
+    params = self._getParams(authObj)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 190, in _getParams
+    params['access_token'] = authObj['access_token']
+KeyError: 'access_token'
+
+
+[2019-10-27 19:02:01]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 210, in imsearch_child_ok_clicked
+    result = self.ApiImsearch.sameHqAdd(option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imagesearch.py", line 60, in sameHqAdd
+    return self._request(self.__sameHqAddUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+
+
+[2019-10-27 19:03:35]
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 331, in _send_until_done
+    return self.connection.send(data)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1737, in send
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\application\python37\lib\site-packages\OpenSSL\SSL.py", line 1624, in _raise_ssl_error
+    raise WantWriteError()
+OpenSSL.SSL.WantWriteError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+socket.timeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\application\python37\lib\site-packages\urllib3\util\retry.py", line 368, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\application\python37\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\application\python37\lib\site-packages\urllib3\connectionpool.py", line 355, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\application\python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "D:\application\python37\lib\http\client.py", line 1055, in _send_output
+    self.send(chunk)
+  File "D:\application\python37\lib\http\client.py", line 977, in send
+    self.sock.sendall(data)
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 342, in sendall
+    sent = self._send_until_done(data[total_sent:total_sent + SSL_WRITE_BLOCKSIZE])
+  File "D:\application\python37\lib\site-packages\urllib3\contrib\pyopenssl.py", line 334, in _send_until_done
+    raise timeout()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\main_ui.py", line 74, in wrapper
+    return func(*args,**kwargs)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\imsearch.py", line 210, in imsearch_child_ok_clicked
+    result = self.ApiImsearch.sameHqAdd(option)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\imagesearch.py", line 60, in sameHqAdd
+    return self._request(self.__sameHqAddUrl, data)
+  File "E:\Programme\GIT\Python\Hotchpotch\ToolBox\baidu_aip\base.py", line 98, in _request
+    ), proxies=self._proxies
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\application\python37\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\application\python37\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout())
+

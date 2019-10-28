@@ -19,6 +19,11 @@ class Voice(Ui):
     def __init__(self, *args):
         super(Voice,self).__init__()
 
+        self.ApiVoice = AipSpeech(self.APPID,self.APIKEY,self.SECRETKEY)
+        self.speech_syn = Speech_synthesis(self.ApiVoice)
+        self.voice_ars = Voice_recognition(self.ApiVoice)
+
+
         self.glayout_voice = QGridLayout()
         self.glayout_main.addLayout(self.glayout_voice,2,0)
         # self.glayout_voice.setContentsMargins(0,0,0,0)
@@ -41,14 +46,20 @@ class Voice(Ui):
     def play_common_player_stateChanged(self,*args):
         if self.play_common_player.state() == 1:
             ico_voice_vol_quit = QIcon()
-            ico_voice_vol_quit.addPixmap(QPixmap('./Ico/pause.ico'), QIcon.Normal,QIcon.Off)
+            ico_voice_vol_quit.addPixmap(QPixmap('{}/Ico/pause.ico'.format(ROOTDIR)), QIcon.Normal,QIcon.Off)
             self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
         else:
             ico_voice_vol_quit = QIcon()
-            ico_voice_vol_quit.addPixmap(QPixmap('./Ico/play.ico'), QIcon.Normal,QIcon.Off)
+            ico_voice_vol_quit.addPixmap(QPixmap('{}/Ico/play.ico'.format(ROOTDIR)), QIcon.Normal,QIcon.Off)
             self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
             self.play_common_player.stop()
             self.play_common_list.clear()
+
+    def lnedit_voice_returned(self,*args):
+        if self.txedit_voice_input_text.toPlainText():
+            self.btn_voice_ok_clicked()
+        else:
+            self.txedit_voice_input_text.setFocus()
 
     @catch_except
     def init_voice_ui(self,*args):
@@ -74,22 +85,22 @@ class Voice(Ui):
         self.btn_voice_ok = QPushButton()
         self.listWidget_voice_used_info = QListWidget()
         self.btn_voice_clear = QPushButton()
-        self.txedit_voice_input_file = QLineEdit()
+        self.lnedit_voice_input_file = QLineEdit()
+        self.lnedit_voice_input_file.setClearButtonEnabled(True)
+        self.lnedit_voice_input_file.returnPressed.connect(self.lnedit_voice_returned)
         self.txedit_voice_input_text = QTextEdit()
 
-        self.speech_syn = Speech_synthesis(self)
-        self.voice_ars = Voice_recognition(self)
 
         self.txedit_voice_input_text.setObjectName('txedit_voice_input_text')
         font_voice = QFont()
         font_voice.setFamily("楷体")
         font_voice.setPointSize(10)
         self.txedit_voice_input_text.setFont(font_voice)
-        # self.txedit_voice_input_text.setText(' 【语音合成】即文字转语音，在上方输入框输入保存文件名(不输入则随机生成），在此处输入需要转换为语音的文字。输出路径：D:/XiaoU/Download/SpeechSynthesis/n【语音识别】即语音转文字，在上方输入框输入音频文件完整路径及文件名，识别结果显示在此处/n【提示】完成需要一定时间，请不要重复提交，输入转换文本前，请先删掉提示内容')
-        self.txedit_voice_input_file.setObjectName('txedit_voice_input_file')
-        self.txedit_voice_input_file.setFixedHeight(25)
-        self.txedit_voice_input_file.setMouseTracking(True)
-        self.glayout_voice.addWidget(self.txedit_voice_input_file, 0, 1, 1, 9)
+        # self.txedit_voice_input_text.setText(' 【语音合成】即文字转语音，在上方输入框输入保存文件名(不输入则随机生成），在此处输入需要转换为语音的文字。输出路径：D:/XiaoU/Download/SpeechSynthesis\n【语音识别】即语音转文字，在上方输入框输入音频文件完整路径及文件名，识别结果显示在此处\n【提示】完成需要一定时间，请不要重复提交，输入转换文本前，请先删掉提示内容')
+        self.lnedit_voice_input_file.setObjectName('lnedit_voice_input_file')
+        self.lnedit_voice_input_file.setFixedHeight(25)
+        self.lnedit_voice_input_file.setMouseTracking(True)
+        self.glayout_voice.addWidget(self.lnedit_voice_input_file, 0, 1, 1, 9)
         self.glayout_voice.addWidget(self.txedit_voice_input_text, 2, 0, 1, 10)
 
         self.btn_voice_clear.setObjectName('btn_voice_clear')
@@ -167,7 +178,7 @@ class Voice(Ui):
         self.btn_voice_quit_vol.setObjectName('btn_voice_quit_vol')
         self.btn_voice_quit_vol.setFixedSize(QSize(25, 25))
         ico_voice_vol_quit = QIcon()
-        ico_voice_vol_quit.addPixmap(QPixmap(r'./Ico/play.ico'), QIcon.Normal,QIcon.Off)
+        ico_voice_vol_quit.addPixmap(QPixmap(r'{}/Ico/play.ico'.format(ROOTDIR)), QIcon.Normal,QIcon.Off)
         self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
         self.btn_voice_quit_vol.setIconSize(QSize(25, 25))
         self.glayout_voice.addWidget(self.btn_voice_quit_vol, 1, 11, 1, 1)
@@ -178,7 +189,7 @@ class Voice(Ui):
         self.btn_voice_folder.setFixedSize(QSize(25, 25))
         self.btn_voice_folder.setIconSize(QSize(15, 15))
         ico_voice_folder = QIcon()
-        ico_voice_folder.addPixmap(QPixmap(r"./Ico/show.png"), QIcon.Normal, QIcon.Off)
+        ico_voice_folder.addPixmap(QPixmap(r"{}/Ico/show.png".format(ROOTDIR)), QIcon.Normal, QIcon.Off)
         self.btn_voice_folder.setIcon(ico_voice_folder)
         self.glayout_voice.addWidget(self.btn_voice_folder, 1, 12, 1, 1)
 
@@ -229,7 +240,7 @@ class Voice(Ui):
 
         self.btn_voice_folder.setFixedSize(25,25)
 
-        self.voice_widgets = [self.spb_voice_vol, self.spb_voice_pit, self.spb_voice_spd, self.btn_voice_folder, self.btn_voice_quit_vol, self.slider_voice_vol, self.label_voice_start, self.label_voice_aue, self.label_voice_vol, self.label_voice_pit, self.label_voice_spd, self.cmbox_voice_aue, self.cmbox_voice_per, self.cmbox_voice_tool, self.btn_voice_ok, self.listWidget_voice_used_info, self.btn_voice_clear, self.txedit_voice_input_file,  self.txedit_voice_input_text]
+        self.voice_widgets = [self.spb_voice_vol, self.spb_voice_pit, self.spb_voice_spd, self.btn_voice_folder, self.btn_voice_quit_vol, self.slider_voice_vol, self.label_voice_start, self.label_voice_aue, self.label_voice_vol, self.label_voice_pit, self.label_voice_spd, self.cmbox_voice_aue, self.cmbox_voice_per, self.cmbox_voice_tool, self.btn_voice_ok, self.listWidget_voice_used_info, self.btn_voice_clear, self.lnedit_voice_input_file,  self.txedit_voice_input_text]
 
         # self.setStyleSheet("")
         # 样式表修改
@@ -239,7 +250,7 @@ class Voice(Ui):
             #       ":pressed{background-color:%s;}" \
             #       "QToolTip{color:%s;font:Yahei;font-size:14px}" %(random_color(),random_color(),random_color(),random_color(),random_color())
 
-            css = "*{background-color:%s;color:%s;border:0;height:25px;font:YaHei;} :pressed{background-color:%s;color:%s;}"%(random_color('background'),random_color('font'),random_color('background'),random_color()) # border:0px \         ,random_color('font')         "QToolTip{color:%s;font:Yahei;font-size:14px}
+            css = "*{background-color:%s;color:%s;border:0;height:25px;font:YaHei;} :pressed{background-color:%s;color:%s;}"%(random_color('background'),random_color('font'),random_color('background'),random_color('font')) # border:0px \         ,random_color('font')         "QToolTip{color:%s;font:Yahei;font-size:14px}
 
             if widget == self.slider_voice_vol:
                 css += "QSlider::handle{border: 0 ;background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s);border-radius:3px}" \
@@ -299,12 +310,12 @@ class Voice(Ui):
     def play_common_player_stateChanged(self, *args):
         if self.play_common_player.state() == 1:
             ico_voice_vol_quit = QIcon()
-            ico_voice_vol_quit.addPixmap(QPixmap('.\Ico\pause.ico'), QIcon.Normal,
+            ico_voice_vol_quit.addPixmap(QPixmap('{}\Ico\pause.ico'.format(ROOTDIR)), QIcon.Normal,
                                      QIcon.Off)
             self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
         else:
             ico_voice_vol_quit = QIcon()
-            ico_voice_vol_quit.addPixmap(QPixmap('.\Ico\play.ico'), QIcon.Normal,
+            ico_voice_vol_quit.addPixmap(QPixmap('{}\Ico\play.ico'.format(ROOTDIR)), QIcon.Normal,
                                      QIcon.Off)
             self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
             self.play_common_player.stop()
@@ -341,6 +352,7 @@ class Voice(Ui):
             self.label_voice_vol.setEnabled(False)
             self.cmbox_voice_per.setEnabled(False)
             self.cmbox_voice_aue.setEnabled(False)
+
     @catch_except
     def speech_syn_log_deal(self, syn_item):
         if isinstance(syn_item,int):
@@ -389,15 +401,64 @@ class Voice(Ui):
         if '【合成】' in listwidget_6_1_item:
             syn_item = listwidget_6_1_item.replace('【合成】 - ', '')
             self.txedit_voice_input_text.setText(
-                '【保存路径】 - {}\n【合成文本】 - {}'.format(syn_items[syn_item][0], syn_items[syn_item][1]))
-            self.play_common_play(syn_items[syn_item][0], 2)
+                '【保存路径】\n{}\n\n【合成文本】\n{}'.format(syn_items[syn_item][0], syn_items[syn_item][1]))
+            if syn_items[syn_item][0].endswith('.pcm'):
+                warn = QMessageBox.warning(self,'提示','pcm格式音频不支持播放\n是否转换为WAV',QMessageBox.Yes|QMessageBox.No)
+                if warn == 16384:
+                    self.label_status_left.setText('PCM --> WAV')
+                    self.pbar_bottom.setValue(1)
+                    self.label_status_right.setText('正在转换...')
+                    with open(syn_items[syn_item][0],'rb') as f:
+                        self.pbar_bottom.setValue(10)
+                        wav = AudioSegment(data=f.read(),channels=1,frame_rate=16000,sample_width=2)
+                        self.pbar_bottom.setValue(30)
+                        new_n = '.wav'
+                        if syn_item.replace('.pcm','.wav') in syn_items.keys():
+                            new_n = '_.wav'
+                        wav.export(syn_items[syn_item][0].replace('.pcm',new_n),format='wav')
+                        self.pbar_bottom.setValue(60)
+                        index = self.listWidget_voice_used_info.currentRow()
+                        self.listWidget_voice_used_info.item(index).setText(listwidget_6_1_item.replace('.pcm',new_n))
+                        self.pbar_bottom.setValue(80)
+                        syn_items[syn_item.replace('.pcm',new_n)] = [syn_items[syn_item][0].replace('.pcm',new_n),syn_items[syn_item][1]]
+                        self.pbar_bottom.setValue(100)
+                        self.label_status_left.setText('PCM --> WAV')
+                        self.label_status_right.setText('转换完成')
+            else:
+                self.play_common_play(syn_items[syn_item][0], 2)
             # playsound(syn_items[syn_item][0], False)
 
         elif '【识别】 -' in listwidget_6_1_item:
             asr_item = listwidget_6_1_item.replace('【识别】 - ', '')
             self.txedit_voice_input_text.setText(
-                '【识别文件】 - {}\n【识别结果】 - {}'.format(asr_items[asr_item][0], asr_items[asr_item][1]))
-            self.play_common_play(asr_items[asr_item][0], 2)
+                '【识别文件】\n{}\n\n【识别结果】\n{}'.format(asr_items[asr_item][0], asr_items[asr_item][1]))
+            if asr_items[asr_item][0].endswith('.pcm'):
+                warn = QMessageBox.warning(self,'提示','pcm格式音频不支持播放\n是否转换为WAV',QMessageBox.Yes|QMessageBox.No)
+                if warn == 16384:
+                    self.label_status_left.setText('PCM --> WAV')
+                    self.pbar_bottom.setValue(1)
+                    self.label_status_right.setText('正在转换...')
+                    with open(asr_items[asr_item][0],'rb') as f:
+                        self.pbar_bottom.setValue(10)
+                        new_n = '.wav'
+                        if asr_item.replace('.pcm','.wav') in asr_items.keys():
+                            new_n = '_.wav'
+                        wav = AudioSegment(data=f.read(),channels=1,frame_rate=16000,sample_width=2)
+                        self.pbar_bottom.setValue(30)
+                        wav.export(asr_items[asr_item][0].replace('.pcm',new_n),format='wav')
+                        self.pbar_bottom.setValue(60)
+                        index = self.listWidget_voice_used_info.currentRow()
+                        self.listWidget_voice_used_info.item(index).setText(listwidget_6_1_item.replace('.pcm', new_n))
+                        self.pbar_bottom.setValue(80)
+                        # 新加一个键值对
+                        asr_items[asr_item.replace('.pcm',new_n)] = [asr_items[asr_item][0].replace('.pcm',new_n),asr_items[asr_item][1]]
+                        self.pbar_bottom.setValue(100)
+                        self.label_status_left.setText('PCM --> WAV')
+                        self.label_status_right.setText('转换完成')
+
+
+            else:
+                self.play_common_play(asr_items[asr_item][0], 2)
 
 
         self.txedit_voice_input_text.show()
@@ -408,19 +469,19 @@ class Voice(Ui):
         if '【合成】 - ' in listwidget_6_1_item:
             syn_item = listwidget_6_1_item.replace('【合成】 - ', '')
             self.txedit_voice_input_text.setText(
-                '【保存路径】 - {}\n【合成文本】 - {}'.format(syn_items[syn_item][0], syn_items[syn_item][1]))
+                '【保存路径】\n{}\n\n【合成文本】\n{}'.format(syn_items[syn_item][0], syn_items[syn_item][1]))
 
         elif '【识别】 - ' in listwidget_6_1_item:
             asr_item = listwidget_6_1_item.replace('【识别】 - ', '')
             self.txedit_voice_input_text.setText(
-                '【识别文件】 - {}\n【识别结果】 - {}'.format(asr_items[asr_item][0], asr_items[asr_item][1]))
+                '【识别文件】\n{}\n\n【识别结果】\n{}'.format(asr_items[asr_item][0], asr_items[asr_item][1]))
 
         self.txedit_voice_input_text.show()
 
     @catch_except
     def btn_voice_ok_clicked(self, *args):
         global Queue_speech, Queue_ASR
-        text = self.txedit_voice_input_file.text()
+        text = self.lnedit_voice_input_file.text()
         if self.cmbox_voice_tool.currentText() == '语音合成':
             speech_name = text
             voice_text = self.txedit_voice_input_text.toPlainText()
@@ -430,6 +491,9 @@ class Voice(Ui):
             vol = self.spb_voice_vol.value()
             aue = self.cmbox_voice_aue.currentText()
             item = [speech_name, voice_text, per, spd, pit, vol, aue]
+            if item in Queue_speech.queue:
+                QMessageBox.information(self,'提示','请不要重复添加任务')
+                return
             Queue_speech.put(item)
             if not self.speech_syn.isRunning():
                 self.speech_syn.start()
@@ -441,11 +505,18 @@ class Voice(Ui):
                 asr_rate = 16000
                 # 自定义值
                 asr_speech = r'{}'.format(text)
-                asr_format = re.findall(r'.*\.(.*)', asr_speech)[0]
+                asr_format = re.findall(r'.*\.(.*)', asr_speech)
+                if asr_format:asr_format = asr_format[0]
+                else:
+                    self.msg('请正确输入文件路径！')
+                    return
 
                 item.append(asr_speech)
                 item.append(asr_format)
                 item.append(asr_rate)
+                if item in Queue_ASR:
+                    QMessageBox.information(self, '提示', '请不要重复添加任务')
+                    return
                 Queue_ASR.put(item)
                 if not self.voice_ars.isRunning():
                     self.voice_ars.start()
@@ -458,7 +529,7 @@ class Voice(Ui):
                                              QMessageBox.Yes | QMessageBox.Cancel, QMessageBox.Cancel)
         if sure == 16384:  # cancal = 4194304
 
-            self.txedit_voice_input_file.clear()
+            self.lnedit_voice_input_file.clear()
             self.txedit_voice_input_text.clear()
             self.listWidget_voice_used_info.clear()
             asr_items = {}
@@ -466,6 +537,10 @@ class Voice(Ui):
 
 class Speech_synthesis(QThread):
     speech_synthesis_log = pyqtSignal(object)
+
+    def __init__(self,ApiVoice):
+        super(Speech_synthesis, self).__init__()
+        self.ApiVoice = ApiVoice
 
     @catch_except
     def run(self, *args):
@@ -494,13 +569,15 @@ class Speech_synthesis(QThread):
             if self.speech_name == '':
                 self.speech_name = time.strftime('%Y%m%d-%H%M%S', time.localtime())
 
-            Client = AipSpeech(APPID,APIKEY,SECRETKEY)
-
-            if not os.path.exists(r'{}/Record/Voice'.format(ROOTDIR)):
-                os.makedirs(r'{}/Record/Voice'.format(ROOTDIR))
-            syn_save_dic = r'{}/Record/Voice/{}.{}'.format(ROOTDIR,self.speech_name, self.out_aue)
+            if not os.path.exists(r'{}\Record\Voice'.format(ROOTDIR)):
+                os.makedirs(r'{}\Record\Voice'.format(ROOTDIR))
+            syn_save_dic = r'{}\Record\Voice\{}.{}'.format(ROOTDIR,self.speech_name, self.out_aue)
             self.speech_synthesis_log.emit(30)
-            f2 = open(syn_save_dic, 'wb')
+            try:
+                f2 = open(syn_save_dic, 'wb')
+            except Exception as e:
+                self.speech_synthesis_log.emit(['语音合成错误', str(e)[-300:] if len(str(e))>301 else str(e)])
+                continue
             voice_texts = []
             if len(self.voice_text) <= 2000:
                 voice_texts.append(self.voice_text)
@@ -513,42 +590,56 @@ class Speech_synthesis(QThread):
             self.speech_synthesis_log.emit(35)
             t = 55 // len(voice_texts)
             num = 35
+            hastrue = False
             for index, voice_text in enumerate(voice_texts):
-
+                result = None
                 params = { 'per': self.per, 'spd': self.spd, 'pit': self.pit,
                           'vol': self.vol, 'aue': self.aue_h,
-                          'cuid': "123456PYTHON"}
-                result = Client.synthesis(voice_text,options=params)
-                if isinstance(result,dict):
+                          'cuid': RUNID} # RUNID程序本次运行的随机ID
+                try:
+                    result = self.ApiVoice.synthesis(voice_text,options=params)
+                except Exception as e:
+                    # print(str(e))
+                    if str(e).endswith("'access_token'"):
+                        self.speech_synthesis_log.emit(['语音合成错误', '请检查账户信息'])
+                    elif str(e).endswith("Read timed out."):
+                        self.speech_synthesis_log.emit(['语音合成错误', '网络连接超时，\n请确认网络状态后重试'])
+                    else:
+                        self.speech_synthesis_log.emit(['语音合成错误', str(e)[-300:] if len(str(e))>301 else str(e)])
+                    continue
+                num += t//2
+                self.speech_synthesis_log.emit(num + t // 2)
+                if (not result) or isinstance(result,dict) or isinstance(result,str):
+                    if result is None: result = '请重试'
                     self.speech_synthesis_log.emit(['语音合成错误', str(result)])
                     continue
 
-                num += t//2
-                self.speech_synthesis_log.emit(num + t // 2)
                 f2.write(result)
                 f2.flush()
-
-            self.speech_synthesis_log.emit(95)
-
-            f2.close()
-            res_log = '语音合成完成'
-            self.syn_name_out = '{}.{}'.format(self.speech_name, self.out_aue)
-            self.syn_result.append(res_log)
-            self.syn_result.append(self.syn_name_out)
-            self.syn_result.append(syn_save_dic)
-            # 将名字，路径，文本保存在字典
-            syn_items[self.syn_name_out] = [syn_save_dic, self.voice_text]
-            self.speech_synthesis_log.emit(100)
-            self.speech_synthesis_log.emit(self.syn_result)
-
+                hastrue = True
+                time.sleep(1)
+            if hastrue:
+                self.speech_synthesis_log.emit(95)
+                f2.close()
+                res_log = '语音合成完成'
+                self.syn_name_out = '{}.{}'.format(self.speech_name, self.out_aue)
+                self.syn_result.append(res_log)
+                self.syn_result.append(self.syn_name_out)
+                self.syn_result.append(syn_save_dic)
+                # 将名字，路径，文本保存在字典
+                syn_items[self.syn_name_out] = [syn_save_dic, self.voice_text]
+                self.speech_synthesis_log.emit(100)
+                self.speech_synthesis_log.emit(self.syn_result)
 
 
 
 class Voice_recognition(QThread):
 
     asr_result = pyqtSignal(object)
-    __asrUrl = 'http://vop.baidu.com/server_api'
-    # __asrUrl = 'http://vop.baidu.com/server_api'
+    def __init__(self,ApiVoice):
+        super(Voice_recognition, self).__init__()
+        self.ApiVoice = ApiVoice
+
     @catch_except
     def run(self, *args):
         """
@@ -557,24 +648,33 @@ class Voice_recognition(QThread):
 
         global Queue_ASR, asr_items
         while not Queue_ASR.empty():
+
             self.asr_result.emit(1)
             result = []
-            # '17376947', 'K7G0KLcoQnTLH4QjmCZMigyM', 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
-            APP_ID = '17376947'
-            APP_KEY = 'K7G0KLcoQnTLH4QjmCZMigyM'
-            SECRET_KEY = 'xqdTGx6mMB6pu3WtD9c0r8yX9Sxy0OiL'
+
             item = Queue_ASR.get()
             speech_dic = item[0]
             asr_format = item[1]
 
-            speech_dic = speech_dic.replace('\\','/')
+            speech_dic = speech_dic.replace('/','\\')
+            if not os.path.isfile(speech_dic):
+                self.asr_result.emit(['语音识别错误','文件{}不存在'.format(speech_dic)])
+                continue
 
-            speech_file = re.findall('.*/(.*)\.(.*)', speech_dic)
+            speech_file = re.findall('.*\\\\(.*)\.(.*)', speech_dic)
             speech_name = speech_file[0][0]
             self.asr_result.emit(5)
             # 获取音频时长
-            sec = mediainfo(speech_dic)
-            if sec:sec = eval(sec['duration'])
+            speech_format = speech_file[0][1]
+            if speech_format.lower() in ['wav','mp3']:
+                sec = AudioSegment.from_file(speech_dic).duration_seconds
+            elif speech_format.lower() == 'pcm':
+                with open(speech_dic,'rb') as f:
+                    sec = AudioSegment(data=f.read(),sample_width=2,frame_rate=16000,channels=1).duration_seconds
+            else:
+                self.asr_result.emit(['语音识别错误','不支持的格式 {} 请使用\nWAV,PCM,MP3格式音频'.format(speech_format)])
+                continue
+            if sec:sec = float(sec)
             else:sec = 0
             self.asr_result.emit(10)
             file_list = []
@@ -608,30 +708,38 @@ class Voice_recognition(QThread):
                 self.asr_result.emit(int(num))
                 with open(file,'rb') as _f:
                     # , options = {"dev_pid": 1536, }
-                    text = AipSpeech(APP_ID,APP_KEY,SECRET_KEY).asr(_f.read(),format=asr_format)
-                    num += t / 2
-                    self.asr_result.emit(int(num))
-                    err_no = text['err_no'] if 'err_no' in text.keys() else text['error_code']
-                    err_msg = text['err_msg'] if 'err_msg' in text.keys() else text['error_msg']
-                    if str(err_no) == "0":
-                        text_sub += text['result'][0]
+                    try:
+                        text = self.ApiVoice.asr(_f.read(), format=asr_format)
+                    except Exception as e:
+                        # print(str(e),'next')
+                        if str(e).endswith("'access_token'"):
+                            self.asr_result.emit(['语音识别错误', '请检查账户信息'])
+                        elif str(e).endswith("Read timed out."):
+                            self.asr_result.emit(['语音识别错误', '网络连接超时，\n请确认网络状态后重试'])
+                        else:
+                            self.asr_result.emit(['语音识别错误', str(e)[-300:] if len(str(e)) > 301 else str(e)])
+                        continue
+                    if text:
+                        num += t / 2
+                        self.asr_result.emit(int(num))
+                        err_no = str(text.get('err_no')) or text.get('error_code')
+                        err_msg = text.get('err_msg') or text.get('error_msg')
+                        if str(err_no) == "0":
+                            text_sub += text.get('result')[0]
+                        else:
+                            err_file += '文件名：' + file + '\n失败原因：' + err_msg + '\n'
                     else:
-                        err_file += '文件名：' + file + '/n失败原因：' + err_msg + '/n'
+                        self.asr_result.emit(['语音识别错误','请检查账户信息'])
             if text_sub:
                 self.asr_result.emit(95)
                 res_log = '语音识别完成'
                 if err_file:
-                    res_log += '/n未识别内容：/n' + err_file
+                    res_log += '\n未识别内容：\n' + err_file
                 result.append(res_log)
-                result.append(speech_name)
+                result.append(speech_name + '.' + speech_format)
                 result.append(speech_dic)
                 result.append(text_sub)
-                asr_items[speech_name] = [speech_dic, text_sub]
-                self.asr_result.emit(result)
-            else:
-                res_log = '语音识别错误'
-                result.append(res_log)
-                result.append(err_file)
+                asr_items[speech_name + '.' + speech_format] = [speech_dic, text_sub]
                 self.asr_result.emit(result)
 
 # if __name__ == "__main__":

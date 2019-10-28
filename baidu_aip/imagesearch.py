@@ -46,14 +46,14 @@ class AipImageSearch(AipBase):
     __productDeleteUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/product/delete'
 
     
-    def sameHqAdd(self, image, options=None):
+    def sameHqAdd(self, options=None):
         """
             相同图检索—入库
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -72,14 +72,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__sameHqAddUrl, data)
     
-    def sameHqSearch(self, image, options=None):
+    def sameHqSearch(self, options=None):
         """
             相同图检索—检索
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -98,14 +98,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__sameHqSearchUrl, data)
     
-    def sameHqUpdate(self, image, options=None):
+    def sameHqUpdate(self,  options=None):
         """
             相同图检索—更新
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -137,14 +137,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__sameHqUpdateUrl, data)
     
-    def sameHqDeleteByImage(self, image, options=None):
+    def sameHqDelete(self, options=None):
         """
             相同图检索—删除
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -176,14 +176,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__sameHqDeleteUrl, data)
     
-    def similarAdd(self, image, options=None):
+    def similarAdd(self, options=None):
         """
             相似图检索—入库
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -202,14 +202,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__similarAddUrl, data)
     
-    def similarSearch(self, image, options=None):
+    def similarSearch(self, options=None):
         """
             相似图检索—检索
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -228,14 +228,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__similarSearchUrl, data)
     
-    def similarUpdate(self, image, options=None):
+    def similarUpdate(self,  options=None):
         """
             相似图检索—更新
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -267,14 +267,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__similarUpdateUrl, data)
     
-    def similarDeleteByImage(self, image, options=None):
+    def similarDelete(self, options=None):
         """
             相似图检索—删除
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -306,14 +306,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__similarDeleteUrl, data)
     
-    def productAdd(self, image, options=None):
+    def productAdd(self, options=None):
         """
             商品检索—入库
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -339,7 +339,7 @@ class AipImageSearch(AipBase):
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -397,14 +397,14 @@ class AipImageSearch(AipBase):
 
         return self._request(self.__productUpdateUrl, data)
     
-    def productDeleteByImage(self, image, options=None):
+    def productDelete(self, options=None):
         """
             商品检索—删除
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
+        # data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 

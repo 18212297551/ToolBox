@@ -116,14 +116,13 @@ class AipImageClassify(AipBase):
 
         return self._request(self.__logoAddUrl, data)
     
-    def logoDeleteByImage(self, image, options=None):
+    def logoDelete(self, image, options=None):
         """
             logo商标识别—删除
         """
         options = options or {}
 
         data = {}
-        data['image'] = base64.b64encode(image).decode()
 
         data.update(options)
 
@@ -245,4 +244,43 @@ class AipImageClassify(AipBase):
         data.update(options)
 
         return self._request(self.__currencyUrl, data)
-    
+
+    __dishaddUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/dish/add'
+    def dishadd(self, image, options=None):
+        """
+            自定义菜品入库
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__dishaddUrl, data)
+
+    __dishsearchUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/dish/search'
+    def dishsearch(self, image, options=None):
+        """
+            自定义菜品检索
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__dishsearchUrl, data)
+
+    __dishdeleteUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/realtime_search/dish/delete'
+    def dishdelete(self, options=None):
+        """
+            自定义菜品删除
+        """
+        options = options or {}
+
+        data = {}
+        data.update(options)
+
+        return self._request(self.__dishdeleteUrl, data)
