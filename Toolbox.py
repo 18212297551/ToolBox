@@ -22,6 +22,8 @@
 通过self.send()函数，监测点击的按钮的text，从而判断是哪个按钮被点击了，该进入哪个业务，重载哪个窗口
 
 """
+from PyQt5.QtWidgets import QCheckBox
+
 from ToolBox.voice import *
 from ToolBox.face_ import *
 from ToolBox.bodyays import *
@@ -30,12 +32,13 @@ from ToolBox.t_ocr import *
 from ToolBox.imsearch import *
 from ToolBox.imgup import *
 from ToolBox.t_nlp import *
+from ToolBox.video import *
 
 
-class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp):
+
+class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
     def __init__(self):
         super(Main, self).__init__()
-
 
 
     def resizeEvent(self, a0: QtGui.QResizeEvent) -> None:
@@ -47,11 +50,35 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp):
         self.resizeEvent_imsearch(a0)
         self.resizeEvent_nlp(a0)
         self.resizeEvent_imup(a0)
+        self.resizeEvent_video(a0)
 
+
+    def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
+        self.keyPressEvent_video(a0)
+
+    def keyReleaseEvent(self, a0: QtGui.QKeyEvent) -> None:
+        self.keyReleaseEvent_video(a0)
+
+    def mouseDoubleClickEvent(self, a0: QtGui.QMouseEvent) -> None:
+        self.mouseDoubleClickEvent_video(a0)
 
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         if Set_UI.isEnabled():
             Set_UI.close()
+
+    def wheelEvent(self, a0: QtGui.QWheelEvent) -> None:
+        self.wheelEvent_video(a0)
+
+    def mouseMoveEvent(self, a0: QtGui.QMouseEvent) -> None:
+        self.mouseMoveEvent_video(a0)
+
+    def mousePressEvent(self, a0: QtGui.QMouseEvent) -> None:
+        self.mousePressEvent_video(a0)
+
+    def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
+        self.mouseReleaseEvent_video(a0)
+
+
 
     def user_info_change(self, infos=None, *args):
         infos = infos or {}
@@ -73,7 +100,6 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp):
 
 
 
-
     def api_reload(self):
         self.ApiVoice = AipSpeech(self.APPID,self.APIKEY,self.SECRETKEY)
         self.speech_syn = Speech_synthesis(self.ApiVoice)
@@ -87,8 +113,19 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp):
         self.ApiFace = AipFace(self.APPID,self.APIKEY,self.SECRETKEY)
         self.ApiImrec = AipImageClassify(self.APPID,self.APIKEY,self.SECRETKEY)
 
-        print(self.APPID,self.APIKEY,self.SECRETKEY)
+        # print(self.APPID,self.APIKEY,self.SECRETKEY)
 
+    def form_top(self,mode='TOP'):
+        if mode == 'TOP':
+            self.setWindowFlags(Qt.WindowStaysOnTopHint) # 窗口置顶
+        elif mode == 'BOTTOM':
+            self.setWindowFlags(Qt.WindowShadeButtonHint) # 底部
+        else:
+            self.setWindowFlags(Qt.WindowNoState) # 取消窗口置顶
+
+
+    def form_ui_opacity(self,value=1):
+        self.setWindowOpacity(value)
 
 
 class Setting(QWidget):
@@ -99,7 +136,7 @@ class Setting(QWidget):
 
     def __init_ui(self):
         self.setWindowTitle('设置')
-        self.resize(QSize(300,200))
+        self.setFixedSize(QSize(360,270))
         self.setWindowIcon(QIcon('{}/Ico/toolbox2.png'.format(ROOTDIR)))
         # self.setMaximumSize(QSize(640,480))
         self.setWindowFlags(Qt.WindowStaysOnTopHint) # 窗口置顶
@@ -124,13 +161,13 @@ class Setting(QWidget):
         self.glayout_set_ui_center = QGridLayout()
         self.glayout_set_ui.addLayout(self.glayout_set_ui_center,1,0)
 
-        self.lnedit_set_ui_appid = QLineEdit()
+        self.lnedit_set_ui_appid = MLineEdit()
         self.label_set_ui_appid = QLabel()
         self.label_set_ui_appid.setText('APPID')
-        self.lnedit_set_ui_apikey = QLineEdit()
+        self.lnedit_set_ui_apikey = MLineEdit()
         self.label_set_ui_apikey = QLabel()
         self.label_set_ui_apikey.setText('APIKEY')
-        self.lnedit_set_ui_secretkey = QLineEdit()
+        self.lnedit_set_ui_secretkey = MLineEdit()
         self.label_set_ui_secretkey = QLabel()
         self.label_set_ui_secretkey.setText('SECRETKEY')
 
@@ -143,10 +180,22 @@ class Setting(QWidget):
 
         self.label_set_ui_changeUser = QLabel('账号信息')
 
+        self.label_set_ui_form_top = QLabel('窗口样式')
+        self.cmbox_set_ui_form_top = QComboBox()
+        self.cmbox_set_ui_form_top.addItems(['Normal','Top','Bottom','NoFrame'])
+        self.cmbox_set_ui_form_top.currentTextChanged.connect(self.cmbox_set_ui_form_top_changed)
+        self.label_set_ui_opacity = QLabel('透明度')
+        self.sd_set_ui_opacity = QSlider()
+        self.sd_set_ui_opacity.setOrientation(Qt.Horizontal)
+        self.sd_set_ui_opacity.setRange(0,100)
+        self.sd_set_ui_opacity.setValue(0)
+        self.sd_set_ui_opacity.valueChanged.connect(self.sd_set_ui_opacity_valuechanged)
+
+
         self.btn_set_ui_cancel.clicked.connect(self.btn_set_ui_cancel_clicked)
         self.btn_set_ui_ok.clicked.connect(self.btn_set_ui_ok_clicked)
 
-        self.set_ui_widgets = [[self.label_set_ui_changeUser],[self.label_set_ui_appid,self.lnedit_set_ui_appid],[self.label_set_ui_apikey,self.lnedit_set_ui_apikey],[self.label_set_ui_secretkey,self.lnedit_set_ui_secretkey],
+        self.set_ui_widgets = [[self.label_set_ui_form_top,self.cmbox_set_ui_form_top],[self.label_set_ui_opacity,self.sd_set_ui_opacity],[self.label_set_ui_changeUser],[self.label_set_ui_appid,self.lnedit_set_ui_appid],[self.label_set_ui_apikey,self.lnedit_set_ui_apikey],[self.label_set_ui_secretkey,self.lnedit_set_ui_secretkey],
                                ]
 
 
@@ -161,11 +210,40 @@ class Setting(QWidget):
                     self.glayout_set_ui_center.addWidget(widget,row, col, 1, 1)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                        widget.setFixedWidth(60)
+                        widget.setFixedWidth(80)
 
-                widget.setStyleSheet("*{color:%s;background:%s;border:0;height:30px}"%(random_color(mode='font'),random_color(mode='background')))
+                css = "*{color:%s;background:%s;border:0;height:30px}" % (
+                random_color(mode='font'), random_color(mode='background'))
+                if widget == self.sd_set_ui_opacity:
+                    css += "QSlider::handle{border: 0 ;background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s);border-radius:3px}" \
+                           "QSlider::sub-page:horizontal{background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s)}" % (
+                               random_color('background'), random_color('font'), random_color('background'),
+                               random_color(
+                                   'font'))
 
+                widget.setStyleSheet(css)
 
+    def sd_set_ui_opacity_valuechanged(self,p):
+        # UI.form_ui_opacity(p)
+        value = float(100 - p) / 100
+        UI.setWindowOpacity(value)
+        text = "透明度（{}）".format(p)
+        self.label_set_ui_opacity.setText(text)
+
+    def cmbox_set_ui_form_top_changed(self,mode):
+        if mode == 'Top':
+            UI.setWindowFlags(Qt.WindowStaysOnTopHint) # 窗口置顶
+
+        elif mode == 'Bottom':
+            UI.setWindowFlags(Qt.WindowStaysOnBottomHint) # 底部
+        elif mode == 'NoFrame':
+            warn = QMessageBox.warning(self,'提示','窗口将无法拖动、关闭和调整大小\n调整为其他类型即可恢复',QMessageBox.Ok|QMessageBox.Cancel)
+            if warn == 1024:
+                UI.setWindowFlags(Qt.FramelessWindowHint)
+        else:
+            UI.setWindowFlags(Qt.Window) # 取消窗口置顶
+
+        UI.show()
 
 
     def btn_set_ui_ok_clicked(self):
@@ -184,6 +262,7 @@ class Setting(QWidget):
             self.close()
 
 
+
     def btn_set_ui_cancel_clicked(self):
         self.close()
 
@@ -192,11 +271,16 @@ class Setting(QWidget):
         self.lnedit_set_ui_appid.setText(self.infos.get('APPID'))
         self.lnedit_set_ui_apikey.setText(self.infos.get('APIKEY'))
         self.lnedit_set_ui_secretkey.setText(self.infos.get('SECRETKEY'))
-        self.lnedit_set_ui_secretkey.setEchoMode(QLineEdit.PasswordEchoOnEdit)
+        self.lnedit_set_ui_secretkey.setEchoMode(MLineEdit.PasswordEchoOnEdit)
 
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         UI.setEnabled(True)
         a0.accept()
+
+
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

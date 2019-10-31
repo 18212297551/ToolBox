@@ -15,6 +15,7 @@
 
 
 """
+import shutil
 import os
 import pickle
 import re
@@ -32,15 +33,17 @@ from PIL import Image,ImageDraw
 import pyautogui
 import cv2
 from multiprocessing import Process,Queue
-from ToolBox.baidu_aip import AipSpeech, AipFace, AipBodyAnalysis, AipImageClassify,AipOcr,AipImageSearch,AipNlp,AipContentCensor,AipKg,imageprocess
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtCore import Qt, QTimer, QPoint, QSize, QThread, pyqtSignal, QUrl, QFileSelector,QFile
-from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont, QTransform
+from PyQt5.QtCore import Qt, QTimer, QPoint, QSize, QThread, pyqtSignal, QUrl, QFileSelector, QFile, QRect
+from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont, QTransform, QPen, QColor
+from PyQt5.QtMultimediaWidgets import QVideoWidget
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QProgressBar, QPushButton, QMenuBar, QAction, qApp, \
-    QMenu, QTextEdit, QLabel, QColorDialog, QToolButton, QLineEdit, QListWidget, QComboBox, QSlider,QSpinBox,\
-    QMessageBox,QFileDialog
+    QMenu, QTextEdit, QLabel, QColorDialog, QToolButton, QLineEdit, QListWidget, QComboBox, QSlider, QSpinBox, \
+    QMessageBox, QFileDialog, QListWidgetItem
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
+
+from ToolBox.baidu_aip import AipSpeech, AipFace, AipBodyAnalysis, AipImageClassify,AipOcr,AipImageSearch,AipNlp,AipContentCensor,AipKg,imageprocess
 from ToolBox.encrypt import *
 
 # =========================================全局变量==============================================
@@ -59,9 +62,9 @@ socket.setdefaulttimeout(15)
 RUNID = time.strftime('%Y%m%d%H%M%S', time.localtime()) + str(random.randint(0,9))
 BGCOLORS = [] # 背景设置使用过的颜色，保证文字与背景颜色不同
 
-my_dirs = ['Record/Voice/Temp','Record/Img/Crop','Record/Img/Merge','Record/Img/Draw','Record/Img/BodySeg','Config','Record\Img\Imgup']
+__init_my_dirs = ['Record/Voice/Temp', 'Record/Img/Crop', 'Record/Img/Merge', 'Record/Img/Draw', 'Record/Img/BodySeg', 'Config', 'Record\Img\Imgup']
 
-for di in my_dirs:
+for di in __init_my_dirs:
     di = os.path.abspath(di)
     if not os.path.exists(di): os.makedirs(di)
 
@@ -79,7 +82,7 @@ def catch_except(func):
                 print(_error)
                 _err = _error[-400:] if len(_error) > 401 else _error
                 classname = type(args[0]).__name__
-                if not classname in ['Speech_synthesis','Voice_recognition','Setting']:
+                if not classname in ['Speech_synthesis','Voice_recognition','Setting','QVideoWidget','ScrollLabel']:
                     try:
                         args[0].pbar_bottom.reset()
                     except Exception as e:
@@ -140,6 +143,7 @@ def layout_dele(func):
                         delete(layouts.itemAt(_i))
                     elif not layouts.itemAt(_i).widget() is None:
                         layouts.itemAt(_i).widget().setVisible(False)
+                        layouts.itemAt(_i).widget().close()
         delete(before_layout)
         func_before = func
         before_layout = func(*args)
@@ -190,6 +194,7 @@ def random_color(mode='rgb',r=None,g=None,b=None):
 
     return color
 
+TopColor = random_color('background')
 
 
 class Ui(QWidget):
@@ -206,11 +211,22 @@ class Ui(QWidget):
 
         self.__init_var__() # 包含时间关联，最后初始化
 
+        self.btn_home_audit.clicked.connect(self.no_compele)
+        self.btn_home_kgraph.clicked.connect(self.no_compele)
+        self.setAcceptDrops(True)
+
+
+    def no_compele(self):
+        QMessageBox.information(self,'提示','还没有开发呢')
 
     def __init_ui__(self,*args):
-        self.resize(640,480)
+        self.resize(715,480)
         self.setWindowTitle('Toolbox')
-        self.setWindowIcon(QIcon('{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR)))
+        # self.setWindowIcon(QIcon('{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR)))
+        f = open(r'{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR),'rb')
+        pix = QPixmap()
+        pix.loadFromData(f.read()) # 读取文件流生成图标
+        self.setWindowIcon(QIcon(pix))
         self.setMouseTracking(True)
         # self.setWindowOpacity(0.8)
 
@@ -338,7 +354,7 @@ class Ui(QWidget):
         self.glayout_top_right = QGridLayout()
         self.glayout_top.addLayout(self.glayout_top_right,0,2)
 
-        self.label_top_right = QLabel()
+        self.label_top_right = ScrollLabel()
         self.label_top_right.setObjectName('label_top_right')
         # self.label_top_right.setText('label')
         self.label_top_right.setFixedWidth(150)
@@ -349,7 +365,7 @@ class Ui(QWidget):
         self.glayout_top_right.addWidget(self.label_top_right, 0, 0, 1, 1)
 
         self.meau_widgets = [self.meau_main,self.btn_top_back,self.btn_top_forward,self.label_top_center,self.label_top_right]
-        color = (random_color(mode='background'), random_color(mode='font'), random_color(mode='background'),
+        color = (TopColor, random_color(mode='font'), random_color(mode='background'),
                 random_color(mode='font'))
         # self.meau_main.setStyleSheet("*{background-color:%s;color:%s;border:0;font:YaHei;} :pressed{background-color:%s;color:%s;}" % color)
 
@@ -612,6 +628,21 @@ class Ui(QWidget):
         painter.drawPixmap(self.rect(), QPixmap('{}/Ico/bg_img.png'.format(ROOTDIR)))
 
 
+    def dirs_to_files(self,path):
+        my_files = []
+        if os.path.isfile(path):
+            my_files.append(path)
+        elif os.path.isdir(path):
+            alls = list(os.walk(path))
+            for files in alls:
+                for index, file in enumerate(files[2]):
+                    filepath = r'{}\{}'.format(files[0],file)
+                    my_files.append(filepath)
+        if my_files:
+            return my_files
+        return False
+
+
 
 
 # class QTextEdit(QTextEdit):
@@ -625,6 +656,93 @@ class Ui(QWidget):
 #
 #
 
+class MLineEdit(QLineEdit):
+    __doc__ = 'MLineEdit()' # 控件隐藏函数需要
+    def __init__(self):
+        super(MLineEdit, self).__init__()
+        # self.acceptDrops()
+        self.setObjectName('MLineEdit')
+        self.setAcceptDrops(True)
+
+    def dragEnterEvent(self, a0: QtGui.QDragEnterEvent) -> None:
+        if a0.mimeData():
+            a0.accept()
+        else:
+            a0.ignore()
+
+    def dropEvent(self, a0: QtGui.QDropEvent) -> None:
+        text = a0.mimeData().text().replace('file:///','')
+        self.setText(text)
+
+
+
+
+
+class ScrollLabel(QLabel):
+    __doc__ = 'QLabel()'
+    def __init__(self):
+        super(ScrollLabel, self).__init__()
+        """重写QLabel,增加绘制文本滚动"""
+        self.init_pen()
+        self.newx = 0
+        self.maxText =  self.width()// self.fontInfo().pointSize()
+
+        self.painter_timer = QTimer()
+        self.painter_timer.timeout.connect(self.__draw_text)
+
+    def init_pen(self):
+        penColor = random_color('font')
+        color = re.findall('.*?\((.*?),(.*?),(.*?)\)$',penColor)
+        if color:
+            color = color[0]
+            r, g, b = [int(x) for x in color]
+            self.penColor = QColor.fromRgb(r,g,b)
+        else: self.penColor = Qt.gray
+        self.pen = QPen(self.penColor, 2)
+
+        color = re.findall('.*?\((.*?),(.*?),(.*?)\)$',TopColor)
+        if color:
+            color = color[0]
+            r, g, b = [int(x) for x in color]
+            self.pixColor = QColor.fromRgb(r,g,b)
+        else:
+            self.pixColor = QColor(Qt.gray)
+
+    def setText(self, a0: str, scroll=True) -> None:
+        self.maxText = self.width() // self.fontInfo().pointSize() # 修正最大容量
+        self.txt = ' '*self.maxText + a0
+        if len(a0) > self.maxText and scroll: #判断文字长度和scroll参数，满足启用滚动
+            self.painter_timer.start(500)
+        else:
+            a = (self.maxText - len(a0)) // 2
+            text = ' '*a + a0 + ' '*a # 文字居中
+            self.painter_timer.stop()
+            self.__draw_text(text)\
+
+    def new_text(self):
+        if len(self.txt) <= self.newx:
+            self.newx = 0
+        txt = self.txt[self.newx:self.newx + self.maxText] if len(self.txt) > self.newx + self.maxText else self.txt[self.newx:]
+
+        return txt
+
+    @catch_except
+    def __draw_text(self, txt=None, *args):
+        """绘制文字"""
+        pix = QPixmap(self.width(), self.height())
+        pix.fill(self.pixColor)
+        painter = QPainter(pix)
+        painter.setPen(self.pen)
+        self.newx += 2
+        if not txt:
+            txt = self.new_text()
+        painter.drawText(0, self.height()-self.font().pointSize(), txt)
+        self.setPixmap(pix)
+        del painter
+
+
+
+
 class Outter_Run(QThread):
     sign = pyqtSignal(object)
 
@@ -636,6 +754,11 @@ class Outter_Run(QThread):
         for value in self.value:
             time.sleep(0.2)
             self.sign.emit(value)
+
+
+
+
+
 
 if __name__ == "__main__":
 

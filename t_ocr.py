@@ -122,7 +122,7 @@ class Ocr(Ui):
         self.label_ocr_child_option = QLabel('可选参数')#2
         self.btn_ocr_child_img = QPushButton('图片')#3
         self.btn_ocr_child_img.clicked.connect(self.btn_ocr_child_img_clicked)
-        self.lnedit_ocr_child_img = QLineEdit()
+        self.lnedit_ocr_child_img = MLineEdit()
         self.label_ocr_child_lan = QLabel('语言')# 4
         self.cmbox_ocr_child_lan = QComboBox()
         lans = ['中英','英文','葡萄牙语','法语','德语','意大利语','西班牙语','俄语','日语','韩语']
@@ -208,7 +208,7 @@ class Ocr(Ui):
                     widget.setStyleSheet(css)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     if len(widgets) == 1:
                         widget.setFixedHeight(25)
@@ -463,7 +463,7 @@ class Ocr(Ui):
         self.label_ocr_invoice_option = QLabel('可选参数')  # 2
         self.btn_ocr_invoice_img = QPushButton('图片')  # 3
         self.btn_ocr_invoice_img.clicked.connect(self.btn_ocr_invoice_img_clicked)
-        self.lnedit_ocr_invoice_img = QLineEdit()
+        self.lnedit_ocr_invoice_img = MLineEdit()
         self.label_ocr_invoice_accuracy = QLabel('精度')  # 4
         self.cmbox_ocr_invoice_accuracy = QComboBox()
         self.cmbox_ocr_invoice_accuracy.addItems(['normal', 'high'])
@@ -537,7 +537,7 @@ class Ocr(Ui):
                     widget.setStyleSheet(css)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     if len(widgets) == 1:
                         widget.setFixedHeight(25)
@@ -765,7 +765,7 @@ class Ocr(Ui):
         self.label_ocr_other_option = QLabel('可选参数')  # 2
         self.btn_ocr_other_img = QPushButton('图片')  # 3
         self.btn_ocr_other_img.clicked.connect(self.btn_ocr_other_img_clicked)
-        self.lnedit_ocr_other_img = QLineEdit()
+        self.lnedit_ocr_other_img = MLineEdit()
         self.label_ocr_other_accuracy = QLabel('精度')  # 4
         self.cmbox_ocr_other_accuracy = QComboBox()
         self.cmbox_ocr_other_accuracy.addItems(['normal', 'high'])
@@ -811,7 +811,7 @@ class Ocr(Ui):
         self.cmbox_ocr_other_table_border = QComboBox()
         self.cmbox_ocr_other_table_border.addItems(['normal', 'none'])
         self.label_ocr_other_request_id = QLabel('请求ID')  # 17
-        self.lnedit_ocr_other_request_id = QLineEdit()
+        self.lnedit_ocr_other_request_id = MLineEdit()
         # self.cmbox_ocr_other_sync_type = QComboBox()
         # self.cmbox_ocr_other_sync_type.addItems(['异步发送','异步获取'])
 
@@ -879,7 +879,7 @@ class Ocr(Ui):
                     widget.setStyleSheet(css)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     if len(widgets) == 1:
                         widget.setFixedHeight(25)

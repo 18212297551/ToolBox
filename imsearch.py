@@ -96,12 +96,12 @@ class Imsearch(Ui):
         self.label_imsearch_child_option = QLabel('可选参数')#2
         self.btn_imsearch_child_img = QPushButton('图片')#3
         self.btn_imsearch_child_img.clicked.connect(self.btn_imsearch_child_img_clicked)
-        self.lnedit_imsearch_child_img = QLineEdit()
+        self.lnedit_imsearch_child_img = MLineEdit()
         self.lnedit_imsearch_child_img.setClearButtonEnabled(True)
         self.label_imsearch_child_brief = QLabel('ID')#4
-        self.lnedit_imsearch_child_brief = QLineEdit()
+        self.lnedit_imsearch_child_brief = MLineEdit()
         self.label_imsearch_child_tags = QLabel('标签')#5
-        self.lnedit_imsearch_child_tags = QLineEdit()
+        self.lnedit_imsearch_child_tags = MLineEdit()
         self.lnedit_imsearch_child_tags.setValidator(QtGui.QIntValidator())
         self.label_imsearch_child_tag_logic = QLabel('检索逻辑')#6
         self.cmbox_imsearch_child_tag_logic = QComboBox()
@@ -115,9 +115,9 @@ class Imsearch(Ui):
         self.spb_imsearch_child_rn.setValue(300)
         self.spb_imsearch_child_rn.setRange(1,10000)
         self.label_imsearch_child_class_id1 = QLabel('分类1') #9
-        self.lnedit_imsearch_child_class_id1 = QLineEdit()
+        self.lnedit_imsearch_child_class_id1 = MLineEdit()
         self.label_imsearch_child_class_id2 = QLabel('分类2')#10
-        self.lnedit_imsearch_child_class_id2 = QLineEdit()
+        self.lnedit_imsearch_child_class_id2 = MLineEdit()
 
 
         self.imsearch_child_widgets = [[self.label_imsearch_child_title],[self.btn_imsearch_child_ok],[self.label_imsearch_child_option],
@@ -164,7 +164,7 @@ class Imsearch(Ui):
                     widget.setStyleSheet(css)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     if len(widgets) == 1:
                         widget.setFixedHeight(25)

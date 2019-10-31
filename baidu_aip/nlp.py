@@ -57,14 +57,19 @@ class AipNlp(AipBase):
         if sys.version_info.major == 2:
             return json.loads(content.decode('gbk', 'ignore').encode('utf8')) or {}
         else:
-            return json.loads(str(content, 'gbk')) or {}
+            try:
+                return json.loads(str(content, 'gbk')) or {}
+            except:
+                return json.loads(str(content, 'utf-8')) or {}
 
     def _proccessRequest(self, url, params, data, headers):
         """
             _proccessRequest
         """
+        if data.get('data'): #实体标准
+            return json.dumps(data, ensure_ascii=False).encode('utf-8')
 
-        if sys.version_info.major == 2:
+        elif sys.version_info.major == 2:
             return json.dumps(data, ensure_ascii=False).decode('utf8').encode('gbk')
         else:
             return json.dumps(data, ensure_ascii=False).encode('gbk')
@@ -241,6 +246,14 @@ class AipNlp(AipBase):
         data.update(options)
 
         return self._request(self.__emotionUrl, data)
+
+    __entity_annotationUrl = 'https://aip.baidubce.com/rpc/2.0/kg/v1/cognitive/entity_annotation'
+    def entity_annotation(self, text):
+        """
+            实体标注
+        """
+        data = {"data":text}
+        return self._request(self.__entity_annotationUrl, data=data)
     
     def newsSummary(self, content, max_summary_len, options=None):
         """

@@ -25,12 +25,13 @@ class Nlp(Ui):
         self.btn_nlp_home_8 = QPushButton("情感倾向分析")
         self.btn_nlp_home_9 = QPushButton("文章标签")
         self.btn_nlp_home_10 = QPushButton("文本纠错")
-        self.btn_nlp_home_11 = QPushButton("对话情绪\n识别接口")
-        self.btn_nlp_home_12 = QPushButton("新闻摘要接口")
+        self.btn_nlp_home_11 = QPushButton("对话情绪\n识别")
+        self.btn_nlp_home_12 = QPushButton("新闻摘要")
         self.btn_nlp_home_13 = QPushButton('文章分类')
         self.btn_nlp_home_14 = QPushButton('依存词法分析')
+        self.btn_nlp_home_15 = QPushButton('实体标注')
 
-        self.nlp_home_btns = [self.btn_nlp_home_1,self.btn_nlp_home_2,self.btn_nlp_home_14,self.btn_nlp_home_3,self.btn_nlp_home_4,self.btn_nlp_home_5,self.btn_nlp_home_6,self.btn_nlp_home_7,self.btn_nlp_home_8,self.btn_nlp_home_9,self.btn_nlp_home_13,self.btn_nlp_home_10,self.btn_nlp_home_11,self.btn_nlp_home_12]
+        self.nlp_home_btns = [self.btn_nlp_home_1,self.btn_nlp_home_2,self.btn_nlp_home_14,self.btn_nlp_home_3,self.btn_nlp_home_4,self.btn_nlp_home_5,self.btn_nlp_home_6,self.btn_nlp_home_7,self.btn_nlp_home_8,self.btn_nlp_home_9,self.btn_nlp_home_13,self.btn_nlp_home_10,self.btn_nlp_home_11,self.btn_nlp_home_12,self.btn_nlp_home_15]
         
         self.glayout_nlp_home.setSpacing(int(self.width()*0.2/6))
         self.glayout_nlp_home.setContentsMargins(10,10,10,10)
@@ -91,12 +92,12 @@ class Nlp(Ui):
         self.label_nlp_child_option = QLabel('可选参数')#2
 
         self.label_nlp_child_text = QLabel('文本')#3
-        self.lnedit_nlp_child_text = QLineEdit()
+        self.lnedit_nlp_child_text = MLineEdit()
         self.label_nlp_child_mode = QLabel('模型')
         self.cmbox_nlp_child_mode = QComboBox()
         self.cmbox_nlp_child_mode.addItems(['0','1'])#4
         self.label_nlp_child_estitle = QLabel('标题')#5
-        self.lnedit_nlp_child_estitle = QLineEdit()
+        self.lnedit_nlp_child_estitle = MLineEdit()
         self.txedit_nlp_child_escontent = QTextEdit()#6
         self.txedit_nlp_child_escontent.setPlaceholderText('文本')
         self.txedit_nlp_child_escontent2 = QTextEdit()
@@ -126,7 +127,7 @@ class Nlp(Ui):
         self.txedit_nlp_child_escontent.setPlaceholderText('文本')
         self.txedit_nlp_child_escontent2.setPlaceholderText('文本2')
         self.nlp_child_params = []
-        if mode in ['词法分析','词法分析（定制版）','词向量表示','DNN语言模型','评论观点抽取','情感倾向分析','文本纠错','对话情绪识别接口']:
+        if mode in ['实体标注','词法分析','词法分析（定制版）','词向量表示','DNN语言模型','评论观点抽取','情感倾向分析','文本纠错','对话情绪识别']:
             self.nlp_child_params = [6]
         elif mode in ['依存词法分析']:
             self.nlp_child_params = [4,6]
@@ -138,7 +139,7 @@ class Nlp(Ui):
             self.nlp_child_params = [6,7]
         elif mode in ['短文本相似度']:
             self.nlp_child_params = [8,6,7]
-        elif mode in ['新闻摘要接口']:
+        elif mode in ['新闻摘要']:
             self.txedit_nlp_child_escontent.setPlaceholderText('标题')
             self.nlp_child_params = [6,7,9]
         
@@ -157,7 +158,7 @@ class Nlp(Ui):
                     if widget.__doc__.startswith('QLabel'):
                         widget.setFixedHeight(25)
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     elif widget.__doc__.startswith('QTextEdit'):
                         # widget.setMinimumHeight(60)
@@ -191,7 +192,7 @@ class Nlp(Ui):
         mode = self.nlp_child_mode
         result = {}
         others = {}
-        if mode in ['词法分析','词法分析（定制版）','词向量表示','DNN语言模型','评论观点抽取','情感倾向分析','文本纠错','对话情绪识别接口']:
+        if mode in ['实体标注','词法分析','词法分析（定制版）','词向量表示','DNN语言模型','评论观点抽取','情感倾向分析','文本纠错','对话情绪识别']:
             text = self.txedit_nlp_child_escontent.toPlainText()
             if mode == '词法分析':
                 result = self.Apinlp.lexer(text)
@@ -208,10 +209,13 @@ class Nlp(Ui):
                 result = self.Apinlp.sentimentClassify(text)
             elif mode == '文本纠错':
                 result = self.Apinlp.ecnet(text)
-            elif mode == '对话情绪识别接口':
+            elif mode == '对话情绪识别':
                 result = self.Apinlp.emotion(text)
+            elif mode == '实体标注':
+                print(text)
+                result = self.Apinlp.entity_annotation(text=text)
 
-        elif mode == '新闻摘要接口':
+        elif mode == '新闻摘要':
             content = self.txedit_nlp_child_escontent2.toPlainText()
             max_summary_len = self.spb_nlp_child_max_summary_len.text()
             title = self.txedit_nlp_child_escontent.toPlainText()

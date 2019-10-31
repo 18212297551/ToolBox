@@ -102,7 +102,7 @@ class Imrec(Ui):
         self.btn_imrec_child_img = QPushButton('图片') # 3
         self.btn_imrec_child_img.clicked.connect(self.btn_imrec_child_img_clicked)
         self.btn_imrec_child_img.setIcon(QIcon('{}/Ico/floder.png'.format(ROOTDIR)))
-        self.lnedit_child_imrec_img = QLineEdit()
+        self.lnedit_child_imrec_img = MLineEdit()
         self.label_imrec_child_baike_num = QLabel('百科结果数') #4
         self.spb_imrec_child_baike_num = QSpinBox()
         self.spb_imrec_child_baike_num.setRange(0,10)
@@ -122,9 +122,9 @@ class Imrec(Ui):
         self.cmbox_imrec_child_userdef.addItems(userdef)
         self.cmbox_imrec_child_userdef.currentTextChanged.connect(self.cmbox_imrec_child_userdef_changed)
         self.label_imrec_child_brief = QLabel('摘要信息')#9
-        self.lnedit_imrec_child_brief = QLineEdit()
+        self.lnedit_imrec_child_brief = MLineEdit()
         self.label_imrec_child_area = QLabel('区域') # 10
-        self.lnedit_imrec_child_area = QLineEdit()
+        self.lnedit_imrec_child_area = MLineEdit()
         self.label_imrec_child_logo = QLabel('操作')#11
         self.cmbox_imrec_child_logo = QComboBox()
         logo = ['logo商标识别','logo商标识别—添加','logo商标识别—删除']
@@ -200,7 +200,7 @@ class Imrec(Ui):
                     widget.setStyleSheet(css)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     if len(widgets) == 1:
                         widget.setFixedHeight(25)

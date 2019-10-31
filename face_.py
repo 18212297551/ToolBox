@@ -141,7 +141,7 @@ class Face(Ui):
         self.btn_face_child_folder.setText('图片') # 0
         self.btn_face_child_folder.setIcon(QIcon('{}/Ico/floder.png'.format(ROOTDIR)))
         self.btn_face_child_folder.clicked.connect(self.btn_face_child_folder_clicked)
-        self.lnedit_face_child_img = QLineEdit()
+        self.lnedit_face_child_img = MLineEdit()
         self.lnedit_face_child_img.setPlaceholderText('图片路径(BASE64)、URL、人脸唯一标识')
         self.label_face_child_imgtype = QLabel()
         self.label_face_child_imgtype.setText('图片类型') # 1
@@ -161,13 +161,13 @@ class Face(Ui):
 
         self.label_face_child_userid = QLabel()
         self.label_face_child_userid.setText('用户ID') # 4
-        self.lnedit_face_child_userid = QLineEdit()
+        self.lnedit_face_child_userid = MLineEdit()
         self.label_face_child_groupid = QLabel()
         self.label_face_child_groupid.setText('用户组ID') # 5
-        self.lnedit_face_child_groupid = QLineEdit()
+        self.lnedit_face_child_groupid = MLineEdit()
         self.label_face_child_facefield = QLabel()
         self.label_face_child_facefield.setText('获取字段') # 6
-        self.lnedit_face_child_facefield = QLineEdit()
+        self.lnedit_face_child_facefield = MLineEdit()
         self.label_face_child_maxface = QLabel()
         self.label_face_child_maxface.setText('最多人脸数') # 7
         self.spb_face_child_maxface = QSpinBox()
@@ -177,7 +177,7 @@ class Face(Ui):
         self.btn_face_child_folder2.clicked.connect(self.btn_face_child_folder2_clicked)
 
         self.btn_face_child_folder2.setIcon(QIcon('{}/Ico/floder.png'.format(ROOTDIR)))
-        self.lnedit_face_child_img2 = QLineEdit()
+        self.lnedit_face_child_img2 = MLineEdit()
         self.lnedit_face_child_img2.setPlaceholderText('图片路径(BASE64)、URL、人脸唯一标识')
         self.label_face_child_imgtype2 = QLabel()
         self.label_face_child_imgtype2.setText('图片类型2') # 9
@@ -211,7 +211,7 @@ class Face(Ui):
         self.cmbox_face_child_actiontype.addItems(actiontype)
         self.label_face_child_user_info = QLabel()
         self.label_face_child_user_info.setText('用户资料') #15
-        self.lnedit_face_child_user_info = QLineEdit()
+        self.lnedit_face_child_user_info = MLineEdit()
         self.label_face_child_option = QLabel()
         self.label_face_child_option.setText('可选参数') # 16
         #age,beauty,expression,face_shape,gender,glasses,landmark,landmark150,race,quality,eye_status,emotion,face_type信息
@@ -230,16 +230,16 @@ class Face(Ui):
         self.cmbox_face_child_optioninfo.addItems(optioninfo)
         self.label_face_child_facelocation = QLabel()
         self.label_face_child_facelocation.setText('模板人脸位置') # 20
-        self.lnedit_face_child_facelocation = QLineEdit()
+        self.lnedit_face_child_facelocation = MLineEdit()
         self.label_face_child_facelocation2 = QLabel()
         self.label_face_child_facelocation2.setText('目标人脸位置') # 21
-        self.lnedit_face_child_facelocation2 = QLineEdit()
+        self.lnedit_face_child_facelocation2 = MLineEdit()
         self.label_face_child_user_info = QLabel()
         self.label_face_child_user_info.setText('用户信息') # 22
-        self.lnedit_face_child_user_info = QLineEdit()
+        self.lnedit_face_child_user_info = MLineEdit()
         self.label_face_child_groupid2 = QLabel()
         self.label_face_child_groupid2.setText('目标用户组ID') # 23
-        self.lnedit_face_child_groupid2 = QLineEdit()
+        self.lnedit_face_child_groupid2 = MLineEdit()
         self.label_face_index_start = QLabel()
         self.label_face_index_start.setText('起始序号') # 24
         self.spb_face_child_index_start = QSpinBox()
@@ -251,18 +251,18 @@ class Face(Ui):
         self.spb_face_child_length.setValue(100)
         self.label_face_child_face_token = QLabel()
         self.label_face_child_face_token.setText('人脸token') # 26
-        self.lnedit_face_child_face_token = QLineEdit()
+        self.lnedit_face_child_face_token = MLineEdit()
         self.btn_face_child_folder3 = QPushButton()
         self.btn_face_child_folder3.setText('视频')
         self.btn_face_child_folder3.clicked.connect(self.btn_face_child_folder3_clicked)
         self.btn_face_child_folder3.setIcon(QIcon('{}/Ico/floder.png'.format(ROOTDIR))) # 27
-        self.lnedit_face_child_video = QLineEdit()
+        self.lnedit_face_child_video = MLineEdit()
         self.lnedit_face_child_video.setToolTip('视频路径')
         self.label_face_child_imgcut = QLabel('生成人脸图') # 28
         self.cmbox_face_child_imgcut = QComboBox()
         self.cmbox_face_child_imgcut.addItems(['NONE','CROP','DRAW','ALL'])
         self.label_face_child_changepos = QLabel('人脸位置调整')# 29
-        self.lnedit_face_child_changepos = QLineEdit()
+        self.lnedit_face_child_changepos = MLineEdit()
         self.label_face_child_deal_type = QLabel('处理途径') #30
         self.cmbox_face_child_deal_type = QComboBox()
         self.cmbox_face_child_deal_type.addItems(['NET','LOCAL','ALL'])
@@ -433,7 +433,7 @@ class Face(Ui):
                 if widget[0].__doc__.startswith('QLabel'):
                     widget[0].setAlignment(Qt.AlignCenter)
 
-                if widget[1].__doc__.startswith('QLineEdit'):
+                if widget[1].__doc__.startswith('MLineEdit'):
                     widget[1].setClearButtonEnabled(True)
 
 

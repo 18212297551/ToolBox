@@ -88,7 +88,6 @@ class AipBase(object):
 
             authObj = self._auth()
             params = self._getParams(authObj)
-
             data = self._proccessRequest(url, params, data, headers)
             headers = self._getAuthHeaders('POST', url, params, headers)
             response = self.__client.post(url, data=data, params=params,
@@ -128,10 +127,8 @@ class AipBase(object):
         """
             参数处理
         """
-
         params['aipSdk'] = 'python'
         params['aipVersion'] = self.__version
-
         return data
 
     def _proccessResult(self, content):
@@ -274,5 +271,6 @@ class AipBase(object):
         """
             self.post('', {})
         """
-
         return self._request(url, data, headers)
+
+

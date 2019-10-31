@@ -86,7 +86,7 @@ class ImgUp(Ui):
         self.label_imup_child_option = QLabel('可选参数')#2
         self.btn_imup_child_img = QPushButton('图片')#3
         self.btn_imup_child_img.clicked.connect(self.imup_child_img_clicked)
-        self.lnedit_imup_child_img = QLineEdit()
+        self.lnedit_imup_child_img = MLineEdit()
         self.lnedit_imup_child_img.setClearButtonEnabled(True)
         self.label_imup_child_img_option = QLabel('风格')#4
         self.cmbox_imup_child_img_option = QComboBox()
@@ -122,7 +122,7 @@ class ImgUp(Ui):
                     widget.setStyleSheet(css)
                     if widget.__doc__.startswith('QLabel'):
                         widget.setAlignment(Qt.AlignCenter)
-                    elif widget.__doc__.startswith('QLineEdit'):
+                    elif widget.__doc__.startswith('MLineEdit'):
                         widget.setClearButtonEnabled(True)
                     if len(widgets) == 1:
                         widget.setFixedHeight(25)
@@ -191,8 +191,6 @@ class ImgUp(Ui):
             if filepath:
                 filepath = filepath.replace('\\','/')
                 name = re.findall('(.*)/(.*)\.(.*?)$',filepath)
-                print(name)
-
                 name = name[0][1] if name else _session_id
             else:name = _session_id
             path = r'{}\Record\Img\Imgup\{}.png'.format(ROOTDIR,name)
