@@ -254,7 +254,7 @@ class Ui(QWidget):
                 if data:
                     data = json.loads(data)
                     if 'APPID' and 'APIKEY' and 'SECRETKEY' in data.keys():
-                        self.user_info_all_dict = data
+                        self.user_info_all_dict.update(data)
                         self.APPID = self.user_info_all_dict.get('APPID')
                         self.APIKEY = self.user_info_all_dict.get('APIKEY')
                         self.SECRETKEY = self.user_info_all_dict.get('SECRETKEY')
@@ -757,6 +757,90 @@ class Outter_Run(QThread):
 
 
 
+
+class MPushButton(QPushButton):
+    """video播放列表定制"""
+    doubleClicked = pyqtSignal(object)
+    focusIned = pyqtSignal(object)
+    focusOuted = pyqtSignal(object)
+    def __init__(self):
+        super(MPushButton, self).__init__()
+
+    def focusInEvent(self, a0: QtGui.QFocusEvent) -> None:
+        self.focusIned.emit(a0)
+
+    def mouseDoubleClickEvent(self, a0: QtGui.QMouseEvent) -> None:
+        self.doubleClicked.emit(a0)
+
+    def focusOutEvent(self, a0: QtGui.QFocusEvent) -> None:
+        self.focusOuted.emit(a0)
+
+class MWidget(QWidget):
+    """video播放列表定制"""
+    def __init__(self,path):
+        super(MWidget, self).__init__()
+        self.setMouseTracking(True)
+        self.btn_dele = MPushButton()
+        self.btn_dele.setIcon(QIcon('{}/Ico/dele.png'.format(ROOTDIR)))
+        self.btn_dele.setFixedSize(30, 30)
+        self.btn_dele.setObjectName('dele')
+        self.filename = MPushButton()
+        self.filename.setObjectName('filename')
+        # self.filename.focusOuted.connect(self.btn_dele_setVisible)
+        self.filename.clicked.connect(self.btn_dele_setVisible)
+        self.btn_dele.focusOuted.connect(self.btn_dele_focusOutEvent)
+
+        glayout_widget = QGridLayout()
+        glayout_widget.setSpacing(0)
+        glayout_widget.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(glayout_widget)
+        self.setFixedHeight(30)
+        new_path = path.replace('\\', '/')
+        name = re.findall('.*/(.*?)$', new_path)
+        if name:
+            self.filename.setText(name[0])
+        else:
+            self.filename.setText(path)
+        self.filename.setFixedHeight(30)
+        self.filename.setToolTip('双击播放')
+        # self.filename.setContentsMargins(0, 0, 0, 0)
+        css = ":hover{background-color:%s;color:%s}" \
+              "*{background-color:%s;color:%s;text-align:left}" \
+              ":pressed{background-color:%s;color:%s;}" \
+              "QToolTip{background-color:%s;color:%s;font:Yahei;font-size:14px}" % (
+                  random_color('background'), random_color('font'), random_color('background'), random_color('font'),
+                  random_color('background'), random_color('font'), random_color('background'), random_color('font'))  # border:0px
+        self.setStyleSheet(css)
+        glayout_widget.addWidget(self.btn_dele, 0, 0, 1, 1)
+        glayout_widget.addWidget(self.filename, 0, 1, 1, 1)
+        self.btn_dele.setVisible(False)
+
+
+    def btn_dele_setVisible(self,p):
+        if self.btn_dele.isVisible():
+            self.btn_dele.setVisible(False)
+
+        else:
+            self.btn_dele.setVisible(True)
+            # self.btn_dele.setFocus()
+
+        self.setFocus() # 必须设置焦点给widhet要不然listwidget无法正常更新当前选中
+
+    def focusOutEvent(self, a0: QtGui.QFocusEvent) -> None:
+        if not  (self.btn_dele.hasFocus() or self.filename.hasFocus()):
+            self.btn_dele.setVisible(False)
+
+    def btn_dele_focusOutEvent(self,*args):
+        if not  (self.btn_dele.hasFocus() or self.filename.hasFocus()):
+            self.btn_dele.setVisible(False)
+
+class VLable(QLabel):
+    def __init__(self):
+        super(VLable, self).__init__()
+        self.setAcceptDrops(True)
+
+    def dropEvent(self, a0: QtGui.QDropEvent) -> None:
+        print(a0)
 
 
 

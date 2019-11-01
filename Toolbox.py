@@ -51,23 +51,21 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
         self.resizeEvent_nlp(a0)
         self.resizeEvent_imup(a0)
         self.resizeEvent_video(a0)
+        a0.accept()
 
-
-    def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
-        self.keyPressEvent_video(a0)
-
-    def keyReleaseEvent(self, a0: QtGui.QKeyEvent) -> None:
-        self.keyReleaseEvent_video(a0)
 
     def mouseDoubleClickEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mouseDoubleClickEvent_video(a0)
+        a0.accept()
 
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         if Set_UI.isEnabled():
             Set_UI.close()
+        a0.accept()
 
     def wheelEvent(self, a0: QtGui.QWheelEvent) -> None:
         self.wheelEvent_video(a0)
+        a0.accept()
 
     def mouseMoveEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mouseMoveEvent_video(a0)
@@ -78,6 +76,11 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mouseReleaseEvent_video(a0)
 
+    def keyReleaseEvent(self, a0: QtGui.QKeyEvent) -> None:
+        self.keyPressEvent_video(a0)
+
+    def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
+        self.keyPressEvent_video(a0)
 
 
     def user_info_change(self, infos=None, *args):
@@ -99,7 +102,6 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
         self.userinfo_change_save()
 
 
-
     def api_reload(self):
         self.ApiVoice = AipSpeech(self.APPID,self.APIKEY,self.SECRETKEY)
         self.speech_syn = Speech_synthesis(self.ApiVoice)
@@ -113,19 +115,6 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
         self.ApiFace = AipFace(self.APPID,self.APIKEY,self.SECRETKEY)
         self.ApiImrec = AipImageClassify(self.APPID,self.APIKEY,self.SECRETKEY)
 
-        # print(self.APPID,self.APIKEY,self.SECRETKEY)
-
-    def form_top(self,mode='TOP'):
-        if mode == 'TOP':
-            self.setWindowFlags(Qt.WindowStaysOnTopHint) # 窗口置顶
-        elif mode == 'BOTTOM':
-            self.setWindowFlags(Qt.WindowShadeButtonHint) # 底部
-        else:
-            self.setWindowFlags(Qt.WindowNoState) # 取消窗口置顶
-
-
-    def form_ui_opacity(self,value=1):
-        self.setWindowOpacity(value)
 
 
 class Setting(QWidget):

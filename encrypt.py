@@ -22,11 +22,12 @@ def encrypt(raw:str, key_str=None):
     :return:
     """
     if not isinstance(raw, str): raise TypeError('raw required str but got {}'.format(type(raw).__name__))
-    raw_bytes:bytes = raw.encode()
-    raw_int:int = int.from_bytes(raw_bytes, 'big')
+    raw_bytes = raw.encode()
+    raw_int = int.from_bytes(raw_bytes, 'big')
     if not key_str: key_str = random_key(10)
-    key_int:int = int.from_bytes(key_str.encode(), 'big')
-    return raw_int ^ key_int, key_str
+    key_int = int.from_bytes(key_str.encode(), 'big')
+    data = raw_int ^ key_int
+    return data, key_str
 
 
 def decrypt(encrypted:int, key:str):
@@ -43,5 +44,34 @@ def decrypt(encrypted:int, key:str):
     decrypted_bytes:bytes = int.to_bytes(decrypted, length, byteorder='big')
     return decrypted_bytes.decode()
 
+
+
+def encryptFile(path:str,outpath:str, key:str):
+    with open(path, 'rb') as f:
+        newkey = int.from_bytes(bytes(key, 'utf-8'), 'big')
+        newkey = newkey * newkey
+        data = b'file' + f.read(1000) + bytes(str(newkey),'utf-8') + f.read()
+        with open(outpath, 'wb') as f2:
+            new_data = {'file':data}
+            pickle.dump(new_data,f2)
+
+
+def decryptFile(path:str, key:str):
+    with open(path, 'rb') as f:
+        raw = pickle.loads(f.read())
+        for k, v in raw.items():
+            newkey = int.from_bytes(bytes(key, 'utf-8'), 'big')
+            newkey = newkey * newkey
+            length = len(str(newkey))
+
+            data = v[4:1004] + v[1004+length:]
+            return data
+
+
+if __name__ == '__main__':
+    # encryptFile(r"E:\Programme\GIT\Python\Hotchpotch\ToolBox\Ico\audit.png",'./file.png','bnm123')
+    d = decryptFile('file.png','bnm123')
+    with open('./file2.png','wb') as f:
+        f.write(d)
 
 
