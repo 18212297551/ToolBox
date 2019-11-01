@@ -151,7 +151,7 @@ class Video(Ui):
         self.lwdt_video_info.setItemWidget(item, widget)
 
         # 初始化界面刷新
-        file = "{}\Ico\\video_back.png".format(ROOTDIR)
+        file = r"{}\Ico\\video_back.png".format(ROOTDIR)
         item_load = QListWidgetItem()
         item_load.setText(file)
         item_load.setSizeHint(QSize(60,5))
@@ -292,7 +292,9 @@ class Video(Ui):
         if files:
             files = files[0]
             for file in files:
-                self.video_plist_additem(file, False)
+                if self.video_player.state() == 1:
+                    self.video_plist_additem(file, False)
+                else:self.video_plist_additem(file, True)
 
     @catch_except
     def lwdt_video_info_item_doubleclicked(self, p=None):
