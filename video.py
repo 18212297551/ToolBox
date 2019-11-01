@@ -364,7 +364,8 @@ class Video(Ui):
     def video_player_positionchanged(self,p):
         """player进度改变驱动，设置进度条显示进度和进度时间显示"""
         self.slider_video_process.setValue(p)
-        self.label_propos_textchange(p)
+        if self.video_plist.currentIndex() > 0:
+            self.label_propos_textchange(p)
 
     @catch_except
     def video_player_stateChanged(self, p):
@@ -408,6 +409,8 @@ class Video(Ui):
                     self.label_top_right.setText(name[0][1])
         if index > 0 and self.video_plist.playbackMode() == QMediaPlaylist.CurrentItemInLoop:
             self.video_plist.setPlaybackMode(QMediaPlaylist.Sequential)
+        elif index == 0:
+            self.label_video_proPos.clear()
 
     @catch_except
     def video_player_currentMediaChanged(self,*args):
