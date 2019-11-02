@@ -185,17 +185,19 @@ class Video(Ui):
                     self.video_player.play()
                     self.lwdt_video_info_opened = False
 
-                elif self.lwdt_video_info_opened and self.video_player.state() == 0:
+                elif self.lwdt_video_info_opened and self.video_player.state() == 0 and not self.lwdt_video_info.isVisible():
                     self.lwdt_video_info_opened = False
                     self.video_plist.setPlaybackMode(QMediaPlaylist.CurrentItemInLoop)
                     self.video_plist.setCurrentIndex(0)
                     self.video_player.play()
 
-            elif self.lwdt_video_info_opened:
+            elif self.lwdt_video_info_opened and not self.lwdt_video_info.isVisible():
                 self.lwdt_video_info_opened = False
                 self.video_plist.setPlaybackMode(QMediaPlaylist.CurrentItemInLoop)
                 self.video_plist.setCurrentIndex(0)
                 self.video_player.play()
+            elif self.video_plist.playbackMode() == QMediaPlaylist.CurrentItemInLoop:
+                self.video_player.stop()
 
             else:self.video_player.stop()
 
@@ -212,7 +214,7 @@ class Video(Ui):
             self.lwdt_video_info.clear()
             self.video_plist.clear()
             self.__init_lwdt_video_toolBtn()
-            self.timer_video_update.start(2000)
+            self.timer_video_update.start(15000)
             self.user_info_all_dict['video_userDatas'] = []
             with open(r'{}\Config\userDatas'.format(ROOTDIR), 'wb') as fv:
                 pickle.dump(self.user_info_all_dict, fv)
@@ -282,7 +284,6 @@ class Video(Ui):
 
         self.lwdt_video_info.addItem(item)
         self.lwdt_video_info.setItemWidget(item, widget)
-
 
 
     @catch_except
@@ -393,7 +394,7 @@ class Video(Ui):
             self.btn_video_pause.setText('')
             self.btn_video_home_ok.setText('播放')  # ok按钮设置
             self.btn_video_pause.setText('')
-            self.timer_video_update.start(1000)
+            self.timer_video_update.start(1500)
 
     @catch_except
     def video_player_durationChanged(self, p, *args):
@@ -632,7 +633,7 @@ class Video(Ui):
         if self.__init_video_first:
             self.__init_userInfo_load()
             self.__init_video_first = False
-        self.timer_video_update.start(1000)
+        self.timer_video_update.start(1500)
 
         return self.glayout_video_home
 
