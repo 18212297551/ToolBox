@@ -13,7 +13,7 @@ class ImgUp(Ui):
     def __init_imup_home_ui(self):
         self.glayout_imup_home = QGridLayout()
         self.glayout_imup_home.setObjectName('grade_2')
-        self.glayout_main.addLayout(self.glayout_imup_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_imup_home, 2, 0, Qt.AlignCenter)
         self.btn_imup_home_1 = QPushButton("图像去雾")
         self.btn_imup_home_2 = QPushButton("图像对比度增加")
         self.btn_imup_home_3 = QPushButton("图像无损放大")
@@ -71,7 +71,7 @@ class ImgUp(Ui):
     def __init_imup_child_ui(self,*args):
 
         self.glayout_imup_child = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_imup_child,2,0)
+        self.glayout_main.addLayout(self.glayout_imup_child, 2, 0)
         self.glayout_imup_child.setObjectName('grade_3')
 
         self.glayout_imup_child_params = QGridLayout()

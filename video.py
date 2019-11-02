@@ -18,7 +18,7 @@ class Video(Ui):
         self.glayout_video_home = QGridLayout()
         self.glayout_video_home.setObjectName('grade_2')
         self.glayout_video_home.setSpacing(0)
-        self.glayout_main.addLayout(self.glayout_video_home,2,0,Qt.AlignTop)
+        self.glayout_main.addLayout(self.glayout_video_home, 2, 0, Qt.AlignTop)
 
         self.glayout_video_top = QGridLayout()
         self.glayout_video_home.addLayout(self.glayout_video_top,0,0)

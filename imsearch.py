@@ -14,7 +14,7 @@ class Imsearch(Ui):
     def __init_imsearch_home_ui(self,*args):
 
         self.glayout_imsearch_home = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_imsearch_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_imsearch_home, 2, 0, Qt.AlignCenter)
         self.glayout_imsearch_home.setObjectName('grade_2')
 
         self.btn_imsearch_home_1 = QPushButton("相同图片搜索\n入库")
@@ -80,7 +80,7 @@ class Imsearch(Ui):
         """图片搜索子窗口初始化"""
         self.glayout_imsearch_child = QGridLayout()
         self.glayout_imsearch_child.setObjectName('grade_3')
-        self.glayout_main.addLayout(self.glayout_imsearch_child,2,0)
+        self.glayout_main.addLayout(self.glayout_imsearch_child, 2, 0)
 
         self.glayout_imsearch_child_params = QGridLayout()
         self.glayout_imsearch_child_content = QGridLayout()

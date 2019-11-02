@@ -12,7 +12,7 @@ class Nlp(Ui):
     def __init_nlp_home_ui(self,*args):
         """自然语言处理主页初始化"""
         self.glayout_nlp_home = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_nlp_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_nlp_home, 2, 0, Qt.AlignCenter)
         self.glayout_nlp_home.setObjectName('grade_2')
 
         self.btn_nlp_home_1 = QPushButton("词法分析")
@@ -77,7 +77,7 @@ class Nlp(Ui):
 
     def __nlp_child_ui(self,*args):
         self.glayout_nlp_child = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_nlp_child,2,0)
+        self.glayout_main.addLayout(self.glayout_nlp_child, 2, 0)
         self.glayout_nlp_child.setObjectName('grade_3')
 
         self.glayout_nlp_child_params = QGridLayout()

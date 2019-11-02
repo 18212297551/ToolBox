@@ -18,7 +18,7 @@ class Imrec(Ui):
 
         self.glayout_imrec_home = QGridLayout()
         self.glayout_imrec_home.setObjectName('grade_2')
-        self.glayout_main.addLayout(self.glayout_imrec_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_imrec_home, 2, 0, Qt.AlignCenter)
         self.glayout_imrec_home.setSpacing(int(self.width()*0.2/6))
         self.glayout_imrec_home.setContentsMargins(10,10,10,10)
 
@@ -79,7 +79,7 @@ class Imrec(Ui):
 
         self.glayout_imrec_child = QGridLayout()
         self.glayout_imrec_child.setObjectName('grade_3')
-        self.glayout_main.addLayout(self.glayout_imrec_child,2,0)
+        self.glayout_main.addLayout(self.glayout_imrec_child, 2, 0)
 
         # 参数区域
         self.glayout_imrec_child_paramms = QGridLayout()

@@ -194,7 +194,7 @@ def random_color(mode='rgb',r=None,g=None,b=None):
 
     return color
 
-TopColor = random_color('background')
+TopColor = random_color('background') # 顶部菜单栏随机颜色，为label_top_right颜色一致
 
 
 class Ui(QWidget):
@@ -223,9 +223,9 @@ class Ui(QWidget):
         self.resize(715,480)
         self.setWindowTitle('Toolbox')
         # self.setWindowIcon(QIcon('{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR)))
-        f = open(r'{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR),'rb')
+        f_ico = open(r'{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR),'rb')
         pix = QPixmap()
-        pix.loadFromData(f.read()) # 读取文件流生成图标
+        pix.loadFromData(f_ico.read()) # 读取文件流生成图标
         self.setWindowIcon(QIcon(pix))
         self.setMouseTracking(True)
         # self.setWindowOpacity(0.8)
@@ -235,7 +235,7 @@ class Ui(QWidget):
         # 总布局
         self.glayout_main = QGridLayout()
         self.glayout_main.setSpacing(0)
-        self.glayout_main.setContentsMargins(0,0,0,0)
+        self.glayout_main.setContentsMargins(0, 0, 0, 0)
         # 为窗体添加布局
         self.setLayout(self.glayout_main)
 
@@ -249,8 +249,8 @@ class Ui(QWidget):
         self.user_info_all_dict = {}
         path = r'{}/Config/config'.format(ROOTDIR)
         if os.path.exists(path):
-            with open(path, 'r') as f:
-                data = self.read_info_from_file(f.read())
+            with open(path, 'r') as f_config:
+                data = self.read_info_from_file(f_config.read())
                 if data:
                     data = json.loads(data)
                     if 'APPID' and 'APIKEY' and 'SECRETKEY' in data.keys():
@@ -309,7 +309,7 @@ class Ui(QWidget):
         """
         # 窗口顶部主布局
         self.glayout_top = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_top,1,0,Qt.AlignTop)
+        self.glayout_main.addLayout(self.glayout_top, 1, 0, Qt.AlignTop)
 
         # 菜单栏 左侧
         self.glayout_meau = QGridLayout()
@@ -417,7 +417,7 @@ class Ui(QWidget):
 
     def __init_status__(self,*args):
         self.glayout_status = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_status,3,0,Qt.AlignBottom)
+        self.glayout_main.addLayout(self.glayout_status, 3, 0, Qt.AlignBottom)
         self.label_status_left = QLabel()
         # self.label_status_left.setText('这是状态栏')
         self.label_status_left.setFixedWidth(200)
@@ -452,7 +452,7 @@ class Ui(QWidget):
         """
         self.glayout_home = QGridLayout()
         self.glayout_home.setObjectName('grade_1')
-        self.glayout_main.addLayout(self.glayout_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_home, 2, 0, Qt.AlignCenter)
         self.glayout_home.setSpacing(int(self.width()*0.2/6))
         self.glayout_home.setContentsMargins(10,10,10,10)
 
@@ -476,13 +476,15 @@ class Ui(QWidget):
         self.btn_home_nlp = QPushButton()
         self.home_btns.append([self.btn_home_nlp,1,3,1,1,'自然语言处理','btn_home_nlp',80,60,'{}/Ico/nlp.png'.format(ROOTDIR)])
         self.btn_home_kgraph = QPushButton()
-        self.home_btns.append([self.btn_home_kgraph,2,0,1,1,'知识图谱','btn_home_kgraph',80,60,'{}/Ico/kgraph.png'.format(ROOTDIR)])
+        # self.home_btns.append([self.btn_home_kgraph,2,0,1,1,'知识图谱','btn_home_kgraph',80,60,'{}/Ico/kgraph.png'.format(ROOTDIR)])
         self.btn_home_audit = QPushButton()
-        self.home_btns.append([self.btn_home_audit,2,1,1,1,'内容审核','btn_home_audit',80,60,'{}/Ico/audit.png'.format(ROOTDIR)])
+        # self.home_btns.append([self.btn_home_audit,2,1,1,1,'内容审核','btn_home_audit',80,60,'{}/Ico/audit.png'.format(ROOTDIR)])
         self.btn_home_music = QPushButton()
-        self.home_btns.append([self.btn_home_music,2,2,1,1,'音乐','btn_home_music',80,60,'{}/Ico/music.png'.format(ROOTDIR)])
+        # self.home_btns.append([self.btn_home_music,2,2,1,1,'音乐','btn_home_music',80,60,'{}/Ico/music.png'.format(ROOTDIR)])
+        self.btn_home_browser = QPushButton()
+        # self.home_btns.append([self.btn_home_browser,2,1,1,1,'浏览器','btn_home_music',80,60,'{}/Ico/music.png'.format(ROOTDIR)])
         self.btn_home_video = QPushButton()
-        self.home_btns.append([self.btn_home_video,2,3,1,1,'视频','btn_home_video',80,60,'{}/Ico/video.png'.format(ROOTDIR)])
+        self.home_btns.append([self.btn_home_video,2,0,1,1,'视频','btn_home_video',80,60,'{}/Ico/video.png'.format(ROOTDIR)])
 
 
         # 为btn设置参数
@@ -642,25 +644,20 @@ class Ui(QWidget):
             return my_files
         return False
 
+    def setVisible_by_layout(self, layout, state):
+        """隐藏或显示布里的控件"""
+        for i in range(layout.count()):
+            widget = layout.itemAt(i)
+            if widget.__doc__.startswith('QGridLayout'):
+                self.setVisible_by_layout(widget,state)
+            else:widget.widget().setVisible(state)
 
-
-
-# class QTextEdit(QTextEdit):
-#     def __init__(self):
-#         super(QTextEdit, self).__init__()
-#         font = QFont()
-#         font.setFamily('YaHei')
-#         font.setPointSize(12)
-#         self.setFont(font)
-#         self.setAlignment(Qt.AlignLeft)
-#
-#
 
 class MLineEdit(QLineEdit):
+    """增加接受拽入"""
     __doc__ = 'MLineEdit()' # 控件隐藏函数需要
     def __init__(self):
         super(MLineEdit, self).__init__()
-        # self.acceptDrops()
         self.setObjectName('MLineEdit')
         self.setAcceptDrops(True)
 
@@ -673,9 +670,6 @@ class MLineEdit(QLineEdit):
     def dropEvent(self, a0: QtGui.QDropEvent) -> None:
         text = a0.mimeData().text().replace('file:///','')
         self.setText(text)
-
-
-
 
 
 class ScrollLabel(QLabel):
@@ -741,8 +735,6 @@ class ScrollLabel(QLabel):
         del painter
 
 
-
-
 class Outter_Run(QThread):
     sign = pyqtSignal(object)
 
@@ -754,8 +746,6 @@ class Outter_Run(QThread):
         for value in self.value:
             time.sleep(0.2)
             self.sign.emit(value)
-
-
 
 
 class MPushButton(QPushButton):
@@ -833,14 +823,6 @@ class MWidget(QWidget):
     def btn_dele_focusOutEvent(self,*args):
         if not  (self.btn_dele.hasFocus() or self.filename.hasFocus()):
             self.btn_dele.setVisible(False)
-
-class VLable(QLabel):
-    def __init__(self):
-        super(VLable, self).__init__()
-        self.setAcceptDrops(True)
-
-    def dropEvent(self, a0: QtGui.QDropEvent) -> None:
-        print(a0)
 
 
 

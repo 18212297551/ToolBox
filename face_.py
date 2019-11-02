@@ -12,14 +12,14 @@ class Face(Ui):
         super(Face,self).__init__()
         # 人脸主窗口
         self.glayout_face_home = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_face_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_face_home, 2, 0, Qt.AlignCenter)
         self.glayout_face_home.setObjectName('grade_2')
         self.btn_home_face.clicked.connect(self.face_home_reload)
 
         # 人脸子窗口
         self.glayout_face_child = QGridLayout()
         self.glayout_face_child.setObjectName('grade_3')
-        self.glayout_main.addLayout(self.glayout_face_child,2,0)
+        self.glayout_main.addLayout(self.glayout_face_child, 2, 0)
 
 
         self.ApiFace = AipFace(self.APPID, self.APIKEY, self.SECRETKEY)

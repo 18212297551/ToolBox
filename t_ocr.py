@@ -26,7 +26,7 @@ class Ocr(Ui):
     def __ocr_home_ui(self,*args):
 
         self.glayout_ocr_home = QGridLayout()
-        self.glayout_main.addLayout(self.glayout_ocr_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_ocr_home, 2, 0, Qt.AlignCenter)
         self.glayout_ocr_home.setObjectName('grade_2')
 
         self.btn_ocr_home_1 = QPushButton("通用文字识别")
@@ -106,7 +106,7 @@ class Ocr(Ui):
         """功能窗口控件初始化"""
         self.glayout_ocr_child = QGridLayout()
         self.glayout_ocr_child.setObjectName('grade_3')
-        self.glayout_main.addLayout(self.glayout_ocr_child,2,0)
+        self.glayout_main.addLayout(self.glayout_ocr_child, 2, 0)
 
         # 参数
         self.glayout_ocr_child_params = QGridLayout()
@@ -369,7 +369,7 @@ class Ocr(Ui):
         # 主页布局
         self.glayout_ocr_invoice_home = QGridLayout()
         self.glayout_ocr_invoice_home.setObjectName('grade_3')
-        self.glayout_main.addLayout(self.glayout_ocr_invoice_home,2,0,Qt.AlignCenter)
+        self.glayout_main.addLayout(self.glayout_ocr_invoice_home, 2, 0, Qt.AlignCenter)
 
 
         self.btn_ocr_invoice_home_1 = QPushButton("增值税发票\n识别")

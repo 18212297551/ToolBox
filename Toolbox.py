@@ -33,13 +33,15 @@ from ToolBox.imsearch import *
 from ToolBox.imgup import *
 from ToolBox.t_nlp import *
 from ToolBox.video import *
+# from ToolBox.music import *
+# from ToolBox.Browser import *
 
 
 
 class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
     def __init__(self):
         super(Main, self).__init__()
-
+        self.setAcceptDrops(True)
 
     def resizeEvent(self, a0: QtGui.QResizeEvent) -> None:
         self.resizeEvent_ui(a0)
@@ -265,7 +267,6 @@ class Setting(QWidget):
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         UI.setEnabled(True)
         a0.accept()
-
 
 
 
