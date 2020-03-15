@@ -3,7 +3,7 @@
 @data   2019.10.20
 
 实现：
-    调用百度API，实现所有功能，并且可以通过微信进行调用
+    调用百度API，实现所有功能，并且可-以通过微信进行调用
 
 思路：
     窗体使用PYQT5进行设计，
@@ -19,9 +19,10 @@
 采用窗口控件先加载，要访问哪个业务，就重载出那个业务所需的控件，使用layouy_dele装饰器函数，将其他未使用的控件进行隐藏，
 由此实现不同业务的多窗口需求，
 通过在调用layout_dele装饰器时，记录各个层次窗口，以实现forward和back功能
-通过self.send()函数，监测点击的按钮的text，从而判断是哪个按钮被点击了，该进入哪个业务，重载哪个窗口
+通过self.sender()函数，监测点击的按钮的text，从而判断是哪个按钮被点击了，该进入哪个业务，重载哪个窗口
 
 """
+from PyQt5.QtCore import QObject, QEvent
 from PyQt5.QtWidgets import QCheckBox
 
 from ToolBox.voice import *
@@ -33,12 +34,14 @@ from ToolBox.imsearch import *
 from ToolBox.imgup import *
 from ToolBox.t_nlp import *
 from ToolBox.video import *
+from ToolBox.screen import *
+from ToolBox.styleSheet import *
 # from ToolBox.music import *
 # from ToolBox.Browser import *
 
 
 
-class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
+class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video, Screen):
     def __init__(self):
         super(Main, self).__init__()
         self.setAcceptDrops(True)
@@ -53,8 +56,8 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
         self.resizeEvent_nlp(a0)
         self.resizeEvent_imup(a0)
         self.resizeEvent_video(a0)
+        self.resizeEvent_screen(a0)
         a0.accept()
-
 
     def mouseDoubleClickEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mouseDoubleClickEvent_video(a0)
@@ -72,11 +75,15 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
     def mouseMoveEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mouseMoveEvent_video(a0)
 
+
     def mousePressEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mousePressEvent_video(a0)
 
+
+
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.mouseReleaseEvent_video(a0)
+
 
     def keyReleaseEvent(self, a0: QtGui.QKeyEvent) -> None:
         self.keyPressEvent_video(a0)
@@ -84,6 +91,11 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
     def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
         self.keyPressEvent_video(a0)
 
+    def paintEvent(self, a0: QtGui.QPaintEvent) -> None:
+        self.paintEvent_main(a0)
+        self.paintEvent_screen(a0)
+
+        self.update()
 
     def user_info_change(self, infos=None, *args):
         infos = infos or {}
@@ -116,7 +128,6 @@ class Main(Voice,Face,Body,Imrec,Ocr,Imsearch,ImgUp,Nlp,Video):
         self.ApiBody = AipBodyAnalysis(self.APPID,self.APIKEY,self.SECRETKEY)
         self.ApiFace = AipFace(self.APPID,self.APIKEY,self.SECRETKEY)
         self.ApiImrec = AipImageClassify(self.APPID,self.APIKEY,self.SECRETKEY)
-
 
 
 class Setting(QWidget):

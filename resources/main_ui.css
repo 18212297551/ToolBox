@@ -1,0 +1,57 @@
+﻿
+/**{*/
+/*    color: #000000;*/
+/*    background-color: #ffffff;*/
+/*}*/
+QGridLayout{
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px;
+}
+
+QLineEdit{
+    color: #000000;
+    border: 0;
+    height: 33px;
+    }
+
+QToolButton#btn_tools,#btn_zoom,#btn_btab{
+    color: #000000;
+    background-color: #FFFFFF;
+    border: 0;
+    width: 30px;
+    height: 30px;
+}
+QPushButton#new_tab{
+    color: #000000;
+    background-color: #E4E4E4;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    height: 30px;
+    max-width: 80px;
+}
+QLabel#label_btab_last{
+    color: #C3C3C3;
+    background-color: #FFFFFF;
+    height: 30px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei UI", serif;
+}
+QLabel#label_btab_first{
+    color: #C3C3C3;
+    background-color: #FFFFFF;
+    height: 30px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei UI", serif;
+
+}
+/*#glayout_tab_main{*/
+/*    child-align: left;*/
+/*}*/
+
+/*QGridLayout#glayout_first_row{*/
+/*    background-color: #FFFFFF;;*/
+/*}*/
+
+/* !*QToolButton, QGridLayout, QHBoxLayout, QLineEdit, QLabel*!*/
+

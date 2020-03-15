@@ -7,7 +7,6 @@ class Face(Ui):
     """
     人脸相关模块
     """
-    @catch_except
     def __init__(self):
         super(Face,self).__init__()
         # 人脸主窗口

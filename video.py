@@ -60,22 +60,19 @@ class Video(Ui):
         self.video_player.setVolume(30)
         self.video_videowidget = QVideoWidget()
         self.video_player.setVideoOutput(self.video_videowidget)
-        self.glayout_video_center.addWidget(self.video_videowidget,0,1,1,3)
+        self.glayout_video_center.addWidget(self.video_videowidget,0,0,1,4)
         # self.video_plist_additem(r"{}\Ico\b8.png".format(ROOTDIR))
         self.video_videowidget.setMouseTracking(True)
-        self.pix_video_center = QPixmap(self.video_videowidget.size())
-        self.video_videowidget.addAction(QAction(QIcon().addPixmap(self.pix_video_center)))
+        self.video_videowidget.setSizePolicy(15, 15)
+        self.video_videowidget.show()
 
-
-        # self.widget_video_center = QWidget()
-        # glayout_video = QGridLayout()
-        # self.widget_video_center.setLayout(glayout_video)
-        #
 
         self.video_videowidget.dropEnterChanged.connect(self.video_plist_additem)
         self.video_player.durationChanged.connect(self.video_player_durationChanged)
         self.video_player.positionChanged.connect(self.video_player_positionchanged)
         self.video_player.stateChanged.connect(self.video_player_stateChanged)
+
+
 
         # 播放列表
         self.lwdt_video_info = QListWidget()
@@ -87,15 +84,24 @@ class Video(Ui):
         self.lwdt_video_info_opened = True
         self.__init_lwdt_video_toolBtn() # 生成播放列表顶部tool按键
 
+        # 播放列表隐藏按钮
+        self.btn_video_show_info = QToolButton()
+        self.btn_video_show_info.setIconSize(QSize(20,40))
+        self.btn_video_show_info.setFixedSize(20,40)
+        self.btn_video_show_info.setIcon(QIcon(r"{}/Ico/videoShow.png".format(ROOTDIR)))
+        self.btn_video_show_info.clicked.connect(partial(self.lwdt_video_info.setVisible,True))
+        self.btn_video_show_info.clicked.connect(partial(self.btn_video_show_info.setVisible,False))
+        self.glayout_video_center.addWidget(self.btn_video_show_info, 0, 3, 1, 1)
+
         # self.lwdt_video_info.setSpacing(2)
         self.slider_video_process = QSlider()
-        self.glayout_video_center.addWidget(self.slider_video_process,0,0,1,1 )
+        self.glayout_video_center.addWidget(self.slider_video_process,0,0,1,1)
         self.slider_video_process.setOrientation(Qt.Vertical)
         self.slider_video_process.setFixedWidth(5)
         self.slider_video_process.sliderMoved.connect(self.slider_video_process_sliderMoved)
 
 
-        self.video_home_widgets = [self.lwdt_video_info, self.btn_video_pause, self.label_video_proPos, self.slider_video_vol, self.slider_video_process, self.lnedit_video_url, self.btn_video_home_ok, self.video_videowidget]
+        self.video_home_widgets = [self.btn_video_show_info,self.lwdt_video_info, self.btn_video_pause, self.label_video_proPos, self.slider_video_vol, self.slider_video_process, self.lnedit_video_url, self.btn_video_home_ok, self.video_videowidget]
         for widget in self.video_home_widgets:
             color = (random_color(mode='background'), random_color(mode='font'), random_color(mode='background'), random_color(mode='font'), random_color(mode='background'),
                      random_color(mode='font'))
@@ -116,7 +122,7 @@ class Video(Ui):
         self.timer_video_update.timeout.connect(self.timer_video_update_timeout)
 
     def __init_lwdt_video_toolBtn(self):
-        """初始化时生成播放列表顶部功能按键，需复用-清空列表是"""
+        """初始化时生成播放列表顶部功能按键，需复用-清空列表"""
         item = QListWidgetItem()
         item.setFont(QFont('YaHei', 10))
         item.setTextAlignment(Qt.AlignLeft)
@@ -165,6 +171,7 @@ class Video(Ui):
 
 
     def __init_userInfo_load(self):
+        """加载用户数据"""
         if os.path.exists(r'{}\Config\userDatas'.format(ROOTDIR)):
             with open(r'{}\Config\userDatas'.format(ROOTDIR),'rb') as video_f:
                 datas = pickle.loads(video_f.read())
@@ -178,7 +185,9 @@ class Video(Ui):
         self.user_info_all_dict['video_userDatas'] = []
 
 
+
     def timer_video_update_timeout(self,*args):
+        """刷新播放窗口"""
         if self.video_videowidget.isVisible():
             if self.video_plist.currentIndex() > 0:
                 if self.video_player.state() == 0 and not self.lwdt_video_info.isVisible() and self.lwdt_video_info_opened and self.video_plist.mediaCount() == 1:
@@ -382,7 +391,6 @@ class Video(Ui):
 
 
         elif self.video_player.state() == 2:
-            self.label_top_right.setText('')
             self.btn_video_home_ok.setText('播放') # ok按钮设置
             self.btn_video_pause.setText('继续')
             if self.timer_video_update.isActive() and self.video_plist.currentIndex() > 0:
@@ -390,11 +398,13 @@ class Video(Ui):
 
         else:
             self.label_video_proPos.clear()
-            self.label_top_right.setText('')
             self.btn_video_pause.setText('')
             self.btn_video_home_ok.setText('播放')  # ok按钮设置
             self.btn_video_pause.setText('')
             self.timer_video_update.start(1500)
+
+        if p != 1:
+            self.label_top_right.setText(' ')
 
     @catch_except
     def video_player_durationChanged(self, p, *args):
@@ -408,10 +418,12 @@ class Video(Ui):
             filepath = filepath.replace('/', '\\')
             name = re.findall('(.*)\\\\(.*?)$', filepath)
             if name:
-                if index != 0:
+                if index > 0:
                     self.label_top_right.setText(name[0][1])
-        if index > 0 and self.video_plist.playbackMode() == QMediaPlaylist.CurrentItemInLoop:
-            self.video_plist.setPlaybackMode(QMediaPlaylist.Sequential)
+        if index > 0:
+            if self.video_plist.playbackMode() == QMediaPlaylist.CurrentItemInLoop:
+                self.video_plist.setPlaybackMode(QMediaPlaylist.Sequential)
+
         elif index == 0:
             self.label_video_proPos.clear()
 
@@ -574,13 +586,13 @@ class Video(Ui):
     def mouseMoveEvent_video(self, a0: QtGui.QMouseEvent) -> None:
         if self.video_videowidget.isVisible():
             # 播放列表显示
-            if a0.pos().x() > self.width() - 80 and a0.pos().y() > self.height() // 5:
+            if a0.pos().x() > self.width()-30 and 100 < a0.pos().y() < self.height()-100:
                 self.lwdt_video_info.setFixedWidth(self.width() // 4)
-                self.lwdt_video_info.setVisible(True)
+                self.btn_video_show_info.setVisible(True)
                 self.lwdt_video_info_opened = True
 
             else:
-                self.lwdt_video_info.setVisible(False)
+                self.btn_video_show_info.setVisible(False)
                 self.lwdt_video_info.hide()
 
             if self.isFullScreen():
@@ -615,6 +627,17 @@ class Video(Ui):
                 else:
                     self.video_fullscreen_play(False)
 
+    def paintEvent_screen(self, a0):
+        if self.video_videowidget.isVisible() and self.label_status_right.isVisible():
+            for i in range(self.glayout_status.count()):
+                widget = self.glayout_status.itemAt(i).widget()
+                widget.setVisible(False)
+
+        elif not (self.label_status_right.isVisible() or self.video_videowidget.isVisible()):
+            for i in range(self.glayout_status.count()):
+                widget = self.glayout_status.itemAt(i).widget()
+                widget.setVisible(True)
+
 
 
     @layout_dele
@@ -633,7 +656,7 @@ class Video(Ui):
         if self.__init_video_first:
             self.__init_userInfo_load()
             self.__init_video_first = False
-        self.timer_video_update.start(1500)
+        self.timer_video_update.start(1000)
 
         return self.glayout_video_home
 

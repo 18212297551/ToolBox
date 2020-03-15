@@ -10,7 +10,6 @@ class Imsearch(Ui):
         self.btn_home_imgsearch.clicked.connect(self.imsearch_home_reload)
 
 
-    @catch_except
     def __init_imsearch_home_ui(self,*args):
 
         self.glayout_imsearch_home = QGridLayout()

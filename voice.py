@@ -20,7 +20,7 @@ class Voice(Ui):
     语音相关模块
     """
 
-    def __init__(self, *args):
+    def __init__(self):
         super(Voice, self).__init__()
 
         self.ApiVoice = AipSpeech(self.APPID, self.APIKEY, self.SECRETKEY)
@@ -71,7 +71,7 @@ class Voice(Ui):
         self.spb_voice_vol = QSpinBox()
         self.spb_voice_pit = QSpinBox()
         self.spb_voice_spd = QSpinBox()
-        self.btn_voice_folder = QToolButton()
+        # self.btn_voice_folder = QToolButton()
         self.btn_voice_quit_vol = QToolButton()
         self.slider_voice_vol = QSlider()
         self.label_voice_start = QLabel()
@@ -99,24 +99,19 @@ class Voice(Ui):
         self.lnedit_voice_input_file.setObjectName('lnedit_voice_input_file')
         self.lnedit_voice_input_file.setFixedHeight(25)
         self.lnedit_voice_input_file.setMouseTracking(True)
-        self.glayout_voice.addWidget(self.lnedit_voice_input_file, 0, 1, 1, 9)
-        self.glayout_voice.addWidget(self.txedit_voice_input_text, 2, 0, 1, 10)
 
         self.btn_voice_clear.setObjectName('btn_voice_clear')
         self.btn_voice_clear.setFixedSize(QSize(50, 25))
         self.btn_voice_clear.setText('清空')
-        self.glayout_voice.addWidget(self.btn_voice_clear, 0, 11, 1, 2)
         self.listWidget_voice_used_info.setObjectName('listWidget_voice_used_info')
-        self.glayout_voice.addWidget(self.listWidget_voice_used_info, 2, 10, 1, 3)
+        self.listWidget_voice_used_info.setFixedWidth(125)
         self.btn_voice_ok.setObjectName('btn_voice_ok')
-        self.btn_voice_ok.setFixedSize(QSize(60, 25))
-        self.glayout_voice.addWidget(self.btn_voice_ok, 0, 10, 1, 1)
+        self.btn_voice_ok.setFixedSize(QSize(50, 25))
         self.btn_voice_ok.setText('确定')
 
         self.cmbox_voice_tool.setObjectName('cmbox_voice_tool')
         self.cmbox_voice_tool.setFixedSize(QSize(85, 25))
         # self.cmbox_voice_tool.setMinimumSize(QSize(60, 25))
-        self.glayout_voice.addWidget(self.cmbox_voice_tool, 0, 0, 1, 2)
         tool = ['语音合成', '语音识别']
         self.cmbox_voice_tool.addItems(tool)
 
@@ -127,7 +122,6 @@ class Voice(Ui):
         self.cmbox_voice_per.setFixedSize(QSize(85, 25))
         # self.cmbox_voice_per.setMinimumSize(QSize(60, 25))
         self.cmbox_voice_per.addItems(cm_6_per)
-        self.glayout_voice.addWidget(self.cmbox_voice_per, 1, 0, 1, 1)
         # 格式
         self.cmbox_voice_aue.setObjectName('cmbox_voice_aue')
         self.cmbox_voice_aue.setMaximumSize(QSize(70, 25))
@@ -135,25 +129,20 @@ class Voice(Ui):
         cm_6_aue = ["wav", "mp3", "pcm-16k"]  # "pcm-8k",
         # 下载的文件格式, 3：mp3(default) 4： pcm-16k 5： pcm-8k 6. wav
         self.cmbox_voice_aue.addItems(cm_6_aue)
-        self.glayout_voice.addWidget(self.cmbox_voice_aue, 1, 8, 1, 1)
         # label
 
         self.label_voice_spd.setObjectName('label_voice_spd')
         self.label_voice_spd.setMaximumSize(QSize(45, 25))
         self.label_voice_spd.setMinimumSize(QSize(1, 1))
-        self.glayout_voice.addWidget(self.label_voice_spd, 1, 1, 1, 1)
         self.label_voice_pit.setObjectName('label_voice_pit')
         self.label_voice_pit.setMaximumSize(QSize(45, 25))
         self.label_voice_pit.setMinimumSize(QSize(1, 1))
-        self.glayout_voice.addWidget(self.label_voice_pit, 1, 3, 1, 1)
         self.label_voice_vol.setObjectName('label_voice_vol')
         self.label_voice_vol.setMaximumSize(QSize(45, 25))
         self.label_voice_vol.setMinimumSize(QSize(1, 1))
-        self.glayout_voice.addWidget(self.label_voice_vol, 1, 5, 1, 1)
         self.label_voice_aue.setObjectName('label_voice_aue')
-        self.label_voice_aue.setMaximumSize(QSize(45, 25))
+        self.label_voice_aue.setMaximumSize(45,25)
         self.label_voice_aue.setMinimumSize(QSize(1, 1))
-        self.glayout_voice.addWidget(self.label_voice_aue, 1, 7, 1, 1)
         self.label_voice_aue.setText(' 格式')
         self.label_voice_pit.setText(' 音调')
         self.label_voice_spd.setText(' 语速')
@@ -161,16 +150,14 @@ class Voice(Ui):
 
         # 补空
         self.label_voice_start.setObjectName('label_voice_start')
-        self.glayout_voice.addWidget(self.label_voice_start, 1, 9, 1, 1)
-
+        # self.glayout_voice.setAlignment(Qt.AlignLeft)
         self.slider_voice_vol.setOrientation(Qt.Horizontal)
         self.slider_voice_vol.setObjectName('slider_voice_vol')
-        self.slider_voice_vol.setFixedSize(QSize(60, 25))
+        self.slider_voice_vol.setFixedSize(QSize(125, 25))
         self.slider_voice_vol.setRange(0, 100)
         self.slider_voice_vol.setValue(30)
         # self.slider_voice_vol.setStyleSheet("QSlider::handle{background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 %s, stop:1 %s); border-radius:4px;}"%(random_color(),random_color())) #border-radius:px  background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
 
-        self.glayout_voice.addWidget(self.slider_voice_vol, 1, 10, 1, 1)
 
         self.btn_voice_quit_vol.setObjectName('btn_voice_quit_vol')
         self.btn_voice_quit_vol.setFixedSize(QSize(25, 25))
@@ -178,24 +165,14 @@ class Voice(Ui):
         ico_voice_vol_quit.addPixmap(QPixmap(r'{}/Ico/play.ico'.format(ROOTDIR)), QIcon.Normal, QIcon.Off)
         self.btn_voice_quit_vol.setIcon(ico_voice_vol_quit)
         self.btn_voice_quit_vol.setIconSize(QSize(25, 25))
-        self.glayout_voice.addWidget(self.btn_voice_quit_vol, 1, 11, 1, 1)
 
-        # self.btn_voice_quit_vol.clicked.connect(self.play_common_stop)
 
-        self.btn_voice_folder.setObjectName('btn_voice_folder')
-        self.btn_voice_folder.setFixedSize(QSize(25, 25))
-        self.btn_voice_folder.setIconSize(QSize(15, 15))
-        ico_voice_folder = QIcon()
-        ico_voice_folder.addPixmap(QPixmap(r"{}/Ico/show.png".format(ROOTDIR)), QIcon.Normal, QIcon.Off)
-        self.btn_voice_folder.setIcon(ico_voice_folder)
-        self.glayout_voice.addWidget(self.btn_voice_folder, 1, 12, 1, 1)
 
         # Qspinbox
         # 语速
         self.spb_voice_spd.setObjectName('spb_voice_spd')
         self.spb_voice_spd.setMaximumSize(QSize(60, 25))
         self.spb_voice_spd.setMinimumSize(QSize(45, 25))
-        self.glayout_voice.addWidget(self.spb_voice_spd, 1, 2, 1, 1)
         self.spb_voice_spd.setMinimum(0)
         self.spb_voice_spd.setValue(5)
         self.spb_voice_spd.setMaximum(15)
@@ -204,7 +181,6 @@ class Voice(Ui):
 
         self.spb_voice_pit.setMaximumSize(QSize(60, 25))
         self.spb_voice_pit.setMinimumSize(QSize(45, 25))
-        self.glayout_voice.addWidget(self.spb_voice_pit, 1, 4, 1, 1)
         self.spb_voice_pit.setMinimum(0)
         self.spb_voice_pit.setValue(5)
         self.spb_voice_pit.setMaximum(15)
@@ -212,7 +188,6 @@ class Voice(Ui):
         self.spb_voice_vol.setObjectName('spb_voice_vol')
         self.spb_voice_vol.setMaximumSize(QSize(60, 25))
         self.spb_voice_vol.setMinimumSize(QSize(45, 25))
-        self.glayout_voice.addWidget(self.spb_voice_vol, 1, 6, 1, 1)
         self.spb_voice_vol.setMinimum(0)
         self.spb_voice_vol.setValue(5)
         self.spb_voice_vol.setMaximum(9)
@@ -226,15 +201,35 @@ class Voice(Ui):
         self.listWidget_voice_used_info.clicked.connect(self.listWidget_voice_used_info_clicked)
         self.listWidget_voice_used_info.doubleClicked.connect(self.listWidget_voice_used_info_doubleclicked)
         self.cmbox_voice_tool.currentTextChanged.connect(self.cmbox_voice_tool_currentTextChanged)
-        self.btn_voice_folder.clicked.connect(self.open_folder)
+        # self.btn_voice_folder.clicked.connect(self.open_folder)
+
+        self.glayout_voice.addWidget(self.cmbox_voice_tool, 0, 0, 1, 2)
+        self.glayout_voice.addWidget(self.lnedit_voice_input_file, 0, 1, 1, 9)
+        self.glayout_voice.addWidget(self.btn_voice_ok, 0, 10, 1, 1)
+        self.glayout_voice.addWidget(self.btn_voice_clear, 0, 11, 1, 1)
+        self.glayout_voice.addWidget(self.btn_voice_quit_vol, 0, 12, 1, 1)
+
+        self.glayout_voice.addWidget(self.cmbox_voice_per, 1, 0, 1, 1)
+        self.glayout_voice.addWidget(self.label_voice_spd, 1, 1, 1, 1)
+        self.glayout_voice.addWidget(self.spb_voice_spd, 1, 2, 1, 1)
+        self.glayout_voice.addWidget(self.label_voice_pit, 1, 3, 1, 1)
+        self.glayout_voice.addWidget(self.spb_voice_pit, 1, 4, 1, 1)
+        self.glayout_voice.addWidget(self.label_voice_vol, 1, 5, 1, 1)
+        self.glayout_voice.addWidget(self.spb_voice_vol, 1, 6, 1, 1)
+        self.glayout_voice.addWidget(self.label_voice_aue, 1, 7, 1, 1)
+        self.glayout_voice.addWidget(self.cmbox_voice_aue, 1, 8, 1, 1)
+        self.glayout_voice.addWidget(self.label_voice_start, 1, 9, 1, 1)
+        self.glayout_voice.addWidget(self.slider_voice_vol, 1, 10, 1, 3)
+        self.glayout_voice.addWidget(self.txedit_voice_input_text, 2, 0, 1, 10)
+
+        self.glayout_voice.addWidget(self.listWidget_voice_used_info, 2, 10, 1, 3)
 
         # 信号处理
         self.speech_syn.speech_synthesis_log.connect(self.speech_syn_log_deal)
         self.voice_ars.asr_result.connect(self.voice_asr_result_deal)
 
-        self.btn_voice_folder.setFixedSize(25, 25)
 
-        self.voice_widgets = [self.spb_voice_vol, self.spb_voice_pit, self.spb_voice_spd, self.btn_voice_folder,
+        self.voice_widgets = [self.spb_voice_vol, self.spb_voice_pit, self.spb_voice_spd,
                               self.btn_voice_quit_vol, self.slider_voice_vol, self.label_voice_start,
                               self.label_voice_aue, self.label_voice_vol, self.label_voice_pit, self.label_voice_spd,
                               self.cmbox_voice_aue, self.cmbox_voice_per, self.cmbox_voice_tool, self.btn_voice_ok,

@@ -15,6 +15,8 @@
 
 
 """
+
+
 import shutil
 import os
 import pickle
@@ -26,28 +28,34 @@ import time
 import threading
 import traceback
 from pydub import AudioSegment
+from functools import partial
 import requests
 import json
 import base64
 from PIL import Image,ImageDraw
 import pyautogui
 import cv2
+from PIL import Image, ImageGrab
+import numpy as np
 from multiprocessing import Process,Queue
+import win32gui
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtCore import Qt, QTimer, QPoint, QSize, QThread, pyqtSignal, QUrl, QFileSelector, QFile, QRect
-from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont, QTransform, QPen, QColor
+from PyQt5.QtCore import Qt, QTimer, QPoint, QSize, QThread, pyqtSignal, QUrl, QFileSelector, QFile, QRect, QEvent, \
+    QObject
+from PyQt5.QtGui import QIcon, QPalette, QBrush, QPixmap, QPainter, QFont, QTransform, \
+    QPen, QColor, QMouseEvent
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QProgressBar, QPushButton, QMenuBar, QAction, qApp, \
     QMenu, QTextEdit, QLabel, QColorDialog, QToolButton, QLineEdit, QListWidget, QComboBox, QSlider, QSpinBox, \
-    QMessageBox, QFileDialog, QListWidgetItem
+    QMessageBox, QFileDialog, QListWidgetItem, QDesktopWidget, QSplashScreen, QSizePolicy
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 
 from ToolBox.baidu_aip import AipSpeech, AipFace, AipBodyAnalysis, AipImageClassify,AipOcr,AipImageSearch,AipNlp,AipContentCensor,AipKg,imageprocess
 from ToolBox.encrypt import *
-
+from ToolBox.styleSheet import *
 # =========================================全局变量==============================================
-ROOTDIR = os.getcwd() # 当前根目录
+ROOTDIR = r"{}".format(os.getcwd()) # 当前根目录
 func_historys = [None,None,None,None,None,None] # 之前访问的各级窗口初始化函数，用于实现back and forward
 func_before = None #上次刷新窗口调用的函数
 before_layout = None # 当前窗口所在布局
@@ -60,9 +68,9 @@ socket.setdefaulttimeout(15)
 
 # 用于语音合成等
 RUNID = time.strftime('%Y%m%d%H%M%S', time.localtime()) + str(random.randint(0,9))
-BGCOLORS = [] # 背景设置使用过的颜色，保证文字与背景颜色不同
 
-__init_my_dirs = ['Record/Voice/Temp', 'Record/Img/Crop', 'Record/Img/Merge', 'Record/Img/Draw', 'Record/Img/BodySeg', 'Config', 'Record\Img\Imgup']
+
+__init_my_dirs = ["Record/Img/ScreenShots","Record/Video",'Record/Voice/Temp', 'Record/Img/Crop', 'Record/Img/Merge', 'Record/Img/Draw', 'Record/Img/BodySeg', 'Config', 'Record\Img\Imgup']
 
 for di in __init_my_dirs:
     di = os.path.abspath(di)
@@ -161,38 +169,6 @@ def layout_dele(func):
 
     return inner
 
-def random_color(mode='rgb',r=None,g=None,b=None):
-    """获取随机颜色"""
-    mode = mode.lower()
-    if mode == 'hex':
-        value = list(range(10))
-        value.extend(['A','B','C','D','E','F'])
-        color = '#'
-        for i in range(6): color += str(random.choice(value))
-    elif mode == 'rgb':
-        if r is None: r = random.randint(50, 200)
-        if g is None: g = random.randint(50,200)
-        if b is None : b = random.randint(50,200)
-        color = 'rgb({},{},{})'.format(r,g,b)
-
-    elif mode == 'background':
-        r = random.randint(140, 255)
-        g = random.randint(140,255)
-        b = random.randint(140,255)
-        color = 'rgb({},{},{})'.format(r, g, b)
-        BGCOLORS.append(color)
-
-    elif mode == 'font':
-        r = random.randint(0, 100)
-        g = random.randint(0,100)
-        b = random.randint(0,100)
-        color = 'rgb({},{},{})'.format(r,g,b)
-        if color in BGCOLORS:
-            return random_color(mode,r,g,b)
-
-    else: raise TypeError("invalid parameter {}".format(mode))
-
-    return color
 
 TopColor = random_color('background') # 顶部菜单栏随机颜色，为label_top_right颜色一致
 
@@ -201,7 +177,7 @@ class Ui(QWidget):
     """
     窗体主模块
     """
-    def __init__(self,*args):
+    def __init__(self):
         super(Ui, self).__init__()
         self.__init_main__()
         self.__init_ui__() # 其他窗口依赖项
@@ -220,7 +196,8 @@ class Ui(QWidget):
         QMessageBox.information(self,'提示','还没有开发呢')
 
     def __init_ui__(self,*args):
-        self.resize(715,480)
+        self.resize(715,458)
+        self.setFont(QFont('YaHei', 10))
         self.setWindowTitle('Toolbox')
         # self.setWindowIcon(QIcon('{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR)))
         f_ico = open(r'{}/Ico/toolbox.png'.format(ROOTDIR).format(ROOTDIR),'rb')
@@ -241,6 +218,27 @@ class Ui(QWidget):
 
         # C = QColorDialog().getColor()
 
+    def eventFilter(self, watched, event):
+        print(event.type(), event.__doc__)
+        if watched == self.label1:  # 只对label1的点击事件进行过滤，重写其行为，其他的事件会被忽略
+            if event.type() == QEvent.MouseButtonPress:  # 这里对鼠标按下事件进行过滤，重写其行为
+                mouseEvent = QMouseEvent(event)
+                if mouseEvent.buttons() == Qt.LeftButton:
+                    self.LabelState.setText("按下鼠标左键")
+                elif mouseEvent.buttons() == Qt.MidButton:
+                    self.LabelState.setText("按下鼠标中间键")
+                elif mouseEvent.buttons() == Qt.RightButton:
+                    self.LabelState.setText("按下鼠标右键")
+
+                '''转换图片大小'''
+                transform = QTransform()
+                transform.scale(0.5, 0.5)
+                tmp = self.image1.transformed(transform)
+                self.label1.setPixmap(QPixmap.fromImage(tmp))
+            if event.type() == QEvent.MouseButtonRelease:  # 这里对鼠标释放事件进行过滤，重写其行为
+                self.LabelState.setText("释放鼠标按钮")
+                self.label1.setPixmap(QPixmap.fromImage(self.image1))
+        return QWidget.eventFilter(self, watched, event)  # 其他情况会返回系统默认的事件处理方法。
 
     def __init_main__(self):
         self.APPID = '17621214'
@@ -323,6 +321,13 @@ class Ui(QWidget):
         self.set_btn.setText('设置')
         # meau.triggered.connect(self._test_ui)
         self.meau_main.addAction(self.set_btn)
+        self.floder_btn = QAction('文件', self.meau_main)
+        self.floder_btn.setText('文件')
+        self.floder_btn.setToolTip('打开所有用户数据保存文件夹')
+        self.floder_btn.triggered.connect(self.floder_btn_triggered)
+        # meau.triggered.connect(self._test_ui)
+        self.meau_main.addAction(self.floder_btn)
+
 
 
         # 返回按钮等
@@ -376,6 +381,8 @@ class Ui(QWidget):
         self.btn_top_forward.clicked.connect(self.btn_top_forward_clicked)
         self.btn_top_back.clicked.connect(self.btn_top_back_clicked)
 
+    def floder_btn_triggered(self):
+        os.system('start explorer "{}\Record"'.format(ROOTDIR))
 
     @catch_except
     def btn_top_back_clicked(self,*args):
@@ -396,6 +403,7 @@ class Ui(QWidget):
         self.pbar_bottom.reset()
         self.label_status_left.clear()
         self.label_status_right.clear()
+        # self.label_top_right.setText('')
 
     @catch_except
     def btn_top_forward_clicked(self,*args):
@@ -481,8 +489,8 @@ class Ui(QWidget):
         # self.home_btns.append([self.btn_home_audit,2,1,1,1,'内容审核','btn_home_audit',80,60,'{}/Ico/audit.png'.format(ROOTDIR)])
         self.btn_home_music = QPushButton()
         # self.home_btns.append([self.btn_home_music,2,2,1,1,'音乐','btn_home_music',80,60,'{}/Ico/music.png'.format(ROOTDIR)])
-        self.btn_home_browser = QPushButton()
-        # self.home_btns.append([self.btn_home_browser,2,1,1,1,'浏览器','btn_home_music',80,60,'{}/Ico/music.png'.format(ROOTDIR)])
+        self.btn_home_screen = QPushButton()
+        self.home_btns.append([self.btn_home_screen,2,1,1,1,'录屏','btn_home_music',80,60,r'{}/Ico/record.png'.format(ROOTDIR)])
         self.btn_home_video = QPushButton()
         self.home_btns.append([self.btn_home_video,2,0,1,1,'视频','btn_home_video',80,60,'{}/Ico/video.png'.format(ROOTDIR)])
 
@@ -617,13 +625,24 @@ class Ui(QWidget):
 
         return value
 
+    @catch_except
+    def text_to_newline(self, text, length, temp='', *args):
+        if len(text) > length:
+            temp += text[:length] + '\r\n'
+            return self.text_to_newline(text[length:], length, temp)
+
+        else:
+            temp += text
+            print(temp)
+            return temp
+
     def resizeEvent_ui(self, a0: QtGui.QResizeEvent) -> None:
         value = int(self.width()*0.2 /6)
         self.glayout_home.setSpacing(value)
         pass
 
 
-    def paintEvent(self, a0: QtGui.QPaintEvent) -> None:
+    def paintEvent_main(self, a0: QtGui.QPaintEvent) -> None:
 
         # 背景
         painter = QPainter(self)
@@ -702,16 +721,34 @@ class ScrollLabel(QLabel):
         else:
             self.pixColor = QColor(Qt.gray)
 
-    def setText(self, a0: str, scroll=True) -> None:
-        self.maxText = self.width() // self.fontInfo().pointSize() # 修正最大容量
+    def setText(self, a0: str, scroll=True, alive=True, maxt=None, sec=500) -> None:
+        """
+        :param a0: 显示文本
+        :param scroll: 是否滚动
+        :param alive: True,一直滚动, time:int 滚动多少毫秒
+        :param maxt: 设置显示最多字数
+        :param sec: 滚动时间间隔
+        :return:
+        """
+        if maxt: self.maxText = maxt
+        else: self.maxText = self.width() // self.fontInfo().pointSize() # 修正最大容量
         self.txt = ' '*self.maxText + a0
         if len(a0) > self.maxText and scroll: #判断文字长度和scroll参数，满足启用滚动
-            self.painter_timer.start(500)
+            if alive is True:
+                self.painter_timer.start(sec)
+            else:
+                QTimer.singleShot(alive, self.stop_clear)
+
         else:
             a = (self.maxText - len(a0)) // 2
             text = ' '*a + a0 + ' '*a # 文字居中
             self.painter_timer.stop()
-            self.__draw_text(text)\
+            self.__draw_text(text)
+
+    def stop_clear(self):
+        # 停止滚动并清空内容
+        self.painter_timer.stop()
+        self.__draw_text(' ')
 
     def new_text(self):
         if len(self.txt) <= self.newx:
